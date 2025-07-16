@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnifying Glass Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 600vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .magnifying-glass {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            position: fixed;
+            top: 50%;
+            right: 75px;
+            transform: translateY(-50%);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .pill-box {
+            width: 550px;
+            height: 150px;
+            border-radius: 75px;
+            position: fixed;
+            top: 50%;
+            left: 75px;
+            transform: translateY(-50%);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .glass-header-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            overflow: hidden;
+        }
+
+        /* VISIBLE SMALL ELEMENTS */
+        .small-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            right: 320px;
+            transform: translateX(50%);
+            top: 150vh;
+            background-image: url('https://jwk.no/pictures/index/benk.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+
+        .terrarium-text {
+            position: absolute;
+            left: 200px;
+            top: calc(150vh + 100px);
+            width: 300px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 100;
+            transform: translateY(-50%);
+        }
+
+        /* HIDDEN LARGE ELEMENTS - SAME SIZE AS GLASS BOXES */
+        .large-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            position: absolute;
+            right: 320px;
+            transform: translateX(50%);
+            top: 130vh;
+            background-image: url('https://jwk.no/pictures/index/benk.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.6);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .large-terrarium-text {
+            position: absolute;
+            left: 75px;
+            top: calc(150vh + 0px);
+            width: 550px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: -1;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            border-radius: 75px;
+            
+            backdrop-filter: blur(5px);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.7;
+            z-index: 100;
+        }
+
+        .scroll-arrow {
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- JWK bilde -->
+<div class="small-image" style="top: 40vh; background-image: url('https://jwk.no/pictures/about/meg.jpg');"></div>
+<div class="terrarium-text" style="top: calc(50vh + 0px);">JWK</div>
+
+<div class="large-image" style="top: 25vh; background-image: url('https://jwk.no/pictures/about/meg.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(42vh + 0px);">JWK</div>
+<!-- Ekstra bilder og tekst -->
+<!-- 1 -->
+<div class="small-image" style="top: 210vh; background-image: url('https://jwk.no/pictures/index/oval.jpg');"></div>
+<div class="terrarium-text" style="top: calc(210vh + 100px);">Oval</div>
+<div class="large-image" style="top: 190vh; background-image: url('https://jwk.no/pictures/index/oval.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(210vh + 0px);">Oval</div>
+
+<!-- 2 -->
+<div class="small-image" style="top: 270vh; background-image: url('https://jwk.no/pictures/index/front_without.jpg');"></div>
+<div class="terrarium-text" style="top: calc(270vh + 100px);">Woody</div>
+<div class="large-image" style="top: 250vh; background-image: url('https://jwk.no/pictures/index/front_without.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(270vh + 0px);">Woody</div>
+
+<!-- 3 -->
+<div class="small-image" style="top: 330vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
+<div class="terrarium-text" style="top: calc(330vh + 100px);">Ludo</div>
+<div class="large-image" style="top: 310vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(330vh + 0px);">Ludo</div>
+
+<!-- 4 -->
+<div class="small-image" style="top: 390vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
+<div class="terrarium-text" style="top: calc(390vh + 100px);">Ryggrad</div>
+<div class="large-image" style="top: 370vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(390vh + 0px);">Ryggrad</div>
+
+<!-- 5 -->
+<div class="small-image" style="top: 450vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
+<div class="terrarium-text" style="top: calc(450vh + 100px);">Dørhåndtak</div>
+<div class="large-image" style="top: 430vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(450vh + 0px);">Dørhåndtak</div>
+
+
+    
+    <!-- Magnifying glass fixed on the right -->
+    <div class="magnifying-glass">
+        <div class="glass-header-content"></div>
+    </div>
+
+    <!-- Pill-shaped box on the left -->
+    <div class="pill-box">
+        <div class="glass-header-content"></div>
+    </div>
+
+    <!-- VISIBLE SMALL ELEMENTS -->
+    <div class="small-image"></div>
+    <div class="terrarium-text">Terrarium benk</div>
+
+    <!-- HIDDEN LARGE ELEMENTS - FULL SIZE -->
+    <div class="large-image"></div>
+    <div class="large-terrarium-text">Terrarium benk</div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-arrow">↑</div>
+        <div>Scroll opp for å forstørre bildet</div>
+    </div>
+
+    <script>
+        // MAGNIFYING GLASS CLASS
+        let glassInstances = [];
+        let scrollTimeout = null;
+        let resizeTimeout = null;
+
+        class MagnifyingGlass {
+            constructor(element) {
+                console.log('Creating MagnifyingGlass instance');
+                
+                this.element = element;
+                this.glassContent = element.querySelector('.glass-header-content');
+                this.currentZoom = 1.05;
+                this.edgeThicknessRatio = 0.15;
+                this.numLayers = 15;
+                this.cachedBodyClone = null;
+                this.lastRenderKey = null;
+                this.lastScrollY = window.scrollY;
+                this.layers = [];
+                
+                if (!this.glassContent) {
+                    console.error('No .glass-header-content found!');
+                    return;
+                }
+                
+                this.createStaticCache();
+                this.render();
+            }
+
+            createStaticCache() {
+                this.cachedBodyClone = document.body.cloneNode(true);
+                
+                // Hide the glass boxes in the cached version
+                this.cachedBodyClone.querySelectorAll('.magnifying-glass, .pill-box').forEach(el => {
+                    el.style.display = 'none';
+                    el.style.visibility = 'hidden';
+                });
+                
+                // Hide the small visible elements, show only the large hidden ones
+                this.cachedBodyClone.querySelectorAll('.small-image, .terrarium-text').forEach(el => {
+                    el.style.display = 'none';
+                    el.style.visibility = 'hidden';
+                });
+                
+                // Make the large elements visible in the cached version
+                this.cachedBodyClone.querySelectorAll('.large-image, .large-terrarium-text').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.visibility = 'visible';
+                    el.style.zIndex = '100';
+                });
+                
+                // Remove effects for performance
+                this.cachedBodyClone.querySelectorAll('*').forEach(el => {
+                    el.style.boxShadow = 'none';
+                    el.style.textShadow = 'none';
+                    el.style.filter = 'none';
+                    el.style.backdropFilter = 'none';
+                });
+            }
+
+            updateLayerPositions() {
+                const scrollDiff = window.scrollY - this.lastScrollY;
+                this.lastScrollY = window.scrollY;
+                
+                for (let i = 0; i < this.layers.length; i++) {
+                    const layer = this.layers[i];
+                    if (!layer) continue;
+                    
+                    const contentDiv = layer.firstElementChild;
+                    if (contentDiv && contentDiv.style.transform) {
+                        const currentTransform = contentDiv.style.transform;
+                        const match = currentTransform.match(/translate3d\(([^,]+),\s*([^,]+),\s*([^)]+)\)/);
+                        if (match) {
+                            const x = parseFloat(match[1]);
+                            const y = parseFloat(match[2]) - scrollDiff;
+                            contentDiv.style.transform = currentTransform.replace(
+                                /translate3d\([^)]+\)/,
+                                `translate3d(${x}px, ${y}px, 0)`
+                            );
+                        }
+                    }
+                }
+            }
+
+            render() {
+                if (this.animationFrameId) {
+                    cancelAnimationFrame(this.animationFrameId);
+                    this.animationFrameId = null;
+                }
+                
+                this.animationFrameId = requestAnimationFrame(() => {
+                    const glassRect = this.element.getBoundingClientRect();
+                    if (glassRect.width === 0) return;
+
+                    const renderKey = `${this.currentZoom}-${this.edgeThicknessRatio}-${this.numLayers}-${Math.round(glassRect.width/10)*10}-${Math.round(glassRect.height/10)*10}`;
+                    const scrollDiff = Math.abs(window.scrollY - this.lastScrollY);
+                    
+                    if (this.lastRenderKey === renderKey && scrollDiff < 300) {
+                        this.updateLayerPositions();
+                        return;
+                    }
+                    
+                    this.lastRenderKey = renderKey;
+                    this.lastScrollY = window.scrollY;
+                    
+                    this.fullRender(glassRect);
+                });
+            }
+
+            fullRender(glassRect) {
+                if (!this.cachedBodyClone || !this.glassContent) return;
+                
+                this.glassContent.innerHTML = '';
+                this.layers = [];
+                
+                const w = glassRect.width;
+                const h = glassRect.height;
+                const totalThickness = Math.min(w, h) * this.edgeThicknessRatio;
+                
+                let layerCount = 0;
+                
+                const createLayer = (scale, mask) => {
+                    const layerDiv = document.createElement('div');
+                    
+                    if (layerCount === 0) {
+                        console.log('Creating FIRST layer WITHOUT mask-image');
+                        layerDiv.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;transform:translate3d(0,0,0);will-change:transform;`;
+                    } else {
+                        layerDiv.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;-webkit-mask-image:${mask};mask-image:${mask};-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;transform:translate3d(0,0,0);will-change:transform;`;
+                    }
+                    
+                    layerCount++;
+                    
+                    const centerX = glassRect.left + w / 2;
+                    const centerY = glassRect.top + h / 2 + window.scrollY;
+                    const offsetX = -(centerX * scale - w / 2);
+                    const offsetY = -(centerY * scale - h / 2);
+                    
+                    const contentDiv = document.createElement('div');
+                    contentDiv.style.cssText = `
+                        position:absolute;
+                        left:${offsetX}px;
+                        top:${offsetY}px;
+                        width:${document.documentElement.scrollWidth}px;
+                        height:${document.documentElement.scrollHeight}px;
+                        transform:scale(${scale}) translate3d(0,0,0);
+                        transform-origin:0 0;
+                        will-change:transform;
+                        -webkit-backface-visibility:hidden;
+                        -webkit-transform-style:preserve-3d;
+                        -webkit-font-smoothing:antialiased;
+                        image-rendering:-webkit-optimize-contrast;
+                        image-rendering:crisp-edges;
+                        text-rendering:optimizeLegibility;
+                    `;
+                    
+                    const clonedBody = this.cachedBodyClone.cloneNode(true);
+                    contentDiv.appendChild(clonedBody);
+                    layerDiv.appendChild(contentDiv);
+                    this.glassContent.appendChild(layerDiv);
+                    this.layers.push(layerDiv);
+                };
+                
+                const createPillPath = (rect) => {
+                    const radius = rect.h / 2;
+                    const straightWidth = rect.w - (radius * 2);
+                    
+                    if (straightWidth <= 0) {
+                        return `M${rect.x + radius},${rect.y} A${radius},${radius} 0 0 1 ${rect.x + radius},${rect.y + rect.h} A${radius},${radius} 0 0 1 ${rect.x + radius},${rect.y} Z`;
+                    }
+                    
+                    return `M${rect.x + radius},${rect.y} 
+                            H${rect.x + radius + straightWidth} 
+                            A${radius},${radius} 0 0 1 ${rect.x + radius + straightWidth},${rect.y + rect.h} 
+                            H${rect.x + radius} 
+                            A${radius},${radius} 0 0 1 ${rect.x + radius},${rect.y} Z`;
+                };
+                
+                const createCirclePath = (rect) => `M${rect.x + rect.rx},${rect.y} H${rect.x + rect.w - rect.rx} A${rect.rx},${rect.ry} 0 0 1 ${rect.x + rect.w},${rect.y + rect.ry} V${rect.y + rect.h - rect.ry} A${rect.rx},${rect.ry} 0 0 1 ${rect.x + rect.w - rect.rx},${rect.y + rect.h} H${rect.x + rect.rx} A${rect.rx},${rect.ry} 0 0 1 ${rect.x},${rect.y + rect.h - rect.ry} V${rect.y + rect.ry} A${rect.rx},${rect.ry} 0 0 1 ${rect.x + rect.rx},${rect.y} Z`;
+                
+                const getRadius = (currentW, currentH, thickness) => {
+                    const computedStyle = window.getComputedStyle(this.element);
+                    const originalRxString = computedStyle.borderTopLeftRadius;
+                    const isPercentageRadius = originalRxString.includes('%');
+                    
+                    if (isPercentageRadius) {
+                        return { rx: currentW / 2, ry: currentH / 2 };
+                    }
+                    
+                    const originalRx = parseFloat(originalRxString) || Math.min(currentW, currentH) / 2;
+                    return { rx: Math.max(0, originalRx - thickness), ry: Math.max(0, originalRx - thickness) };
+                };
+
+                const isPillBox = this.element.classList.contains('pill-box');
+
+                // Center layer (no mask)
+                const centerW = w - totalThickness * 2;
+                const centerH = h - totalThickness * 2;
+                const centerRect = { x: totalThickness, y: totalThickness, w: centerW, h: centerH };
+                
+                let centerPath, centerSvg;
+                if (isPillBox) {
+                    centerPath = createPillPath(centerRect);
+                } else {
+                    const centerRadii = getRadius(centerW, centerH, totalThickness);
+                    centerRect.rx = centerRadii.rx;
+                    centerRect.ry = centerRadii.ry;
+                    centerPath = createCirclePath(centerRect);
+                }
+                
+                centerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><path d="${centerPath}" fill="white"/></svg>`;
+                createLayer(this.currentZoom, `url("data:image/svg+xml;base64,${btoa(centerSvg)}")`);
+
+                // Edge layers
+                for (let i = 0; i < this.numLayers; i++) {
+                    const progress = i / (this.numLayers - 1);
+                    const smoothProgress = progress * progress * (2 - 2 * progress);
+                    const exponentialProgress = Math.pow(progress, 1.8);
+                    const combinedProgress = (smoothProgress + exponentialProgress) / 2;
+                    
+                    // Different scaling for pill vs circle
+                    let scale;
+                    if (isPillBox) {
+                        // For pill: less aggressive scaling to reduce distortion
+                        scale = this.currentZoom + (combinedProgress * 1.5);
+                    } else {
+                        scale = this.currentZoom + (combinedProgress * 2.5);
+                    }
+                    
+                    const outerThick = totalThickness * Math.pow(1 - (i / this.numLayers), 2.5);
+                    const innerThick = (i === this.numLayers - 1) ? 0 : totalThickness * Math.pow(1 - ((i + 1) / this.numLayers), 2.8) - 2.5;
+                    
+                    const outerW = w - outerThick * 2;
+                    const outerH = h - outerThick * 2;
+                    const innerW = w - innerThick * 2;
+                    const innerH = h - innerThick * 2;
+                    
+                    const outer = { x: outerThick, y: outerThick, w: outerW, h: outerH };
+                    const inner = { x: innerThick, y: innerThick, w: innerW, h: innerH };
+                    
+                    let framePath;
+                    if (isPillBox) {
+                        const outerPath = createPillPath(outer);
+                        const innerPath = createPillPath(inner);
+                        framePath = `${outerPath} ${innerPath}`;
+                    } else {
+                        const outerRadii = getRadius(outerW, outerH, outerThick);
+                        const innerRadii = getRadius(innerW, innerH, innerThick);
+                        outer.rx = outerRadii.rx;
+                        outer.ry = outerRadii.ry;
+                        inner.rx = innerRadii.rx;
+                        inner.ry = innerRadii.ry;
+                        const outerPath = createCirclePath(outer);
+                        const innerPath = createCirclePath(inner);
+                        framePath = `${outerPath} ${innerPath}`;
+                    }
+                    
+                    const frameSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><path d="${framePath}" fill-rule="evenodd" fill="white"/></svg>`;
+                    createLayer(scale, `url("data:image/svg+xml;base64,${btoa(frameSvg)}")`);
+                }
+                
+                console.log(`Created ${this.layers.length} layers`);
+            }
+
+            destroy() {
+                if (this.animationFrameId) {
+                    cancelAnimationFrame(this.animationFrameId);
+                    this.animationFrameId = null;
+                }
+                this.cachedBodyClone = null;
+                this.layers = [];
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('resize', () => {
+            if (resizeTimeout) return;
+            resizeTimeout = setTimeout(() => {
+                glassInstances.forEach(inst => {
+                    inst.lastRenderKey = null;
+                    inst.render();
+                });
+                resizeTimeout = null;
+            }, 100);
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            console.log('Page loaded, initializing magnifying glass');
+            
+            setTimeout(() => {
+                document.querySelectorAll('.magnifying-glass, .pill-box').forEach(el => {
+                    console.log('Found glass element', el);
+                    glassInstances.push(new MagnifyingGlass(el));
+                });
+                console.log(`Created ${glassInstances.length} instances`);
+            }, 200);
+        });
+
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) return;
+            scrollTimeout = setTimeout(() => {
+                glassInstances.forEach(inst => inst.render());
+                scrollTimeout = null;
+            }, 16);
+        }, { passive: true });
+
+        window.addEventListener('beforeunload', () => {
+            glassInstances.forEach(instance => instance.destroy());
+            glassInstances = [];
+        });
+    </script>
+</body>
+</html>
