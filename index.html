@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 600vh;
+            background: linear-gradient(92deg, #0b0b14, #444d85);
+            min-height: 510vh;
             color: white;
             overflow-x: hidden;
         }
@@ -132,7 +132,7 @@
         }
 
         .scroll-indicator {
-            position: fixed;
+            position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
@@ -147,6 +147,27 @@
             font-size: 20px;
             animation: bounce 2s infinite;
         }
+
+        .jwk-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #bbbbbb;
+    transition: color 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 2000;
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.jwk-logo:hover {
+    color: #000;
+    background-color: rgba(255, 255, 255, 1);
+}
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
@@ -163,12 +184,14 @@
 </head>
 <body>
 
+<a href="#" class="jwk-logo">JWK</a>    
+
     <!-- JWK bilde -->
 <div class="small-image" style="top: 40vh; background-image: url('https://jwk.no/pictures/about/meg.jpg');"></div>
-<div class="terrarium-text" style="top: calc(50vh + 0px);">JWK</div>
+<div class="terrarium-text" style="top: calc(50vh + 0px);">Velkommen</div>
 
 <div class="large-image" style="top: 25vh; background-image: url('https://jwk.no/pictures/about/meg.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(42vh + 0px);">JWK</div>
+<div class="large-terrarium-text" style="top: calc(42vh + 0px);">Velkommen</div>
 <!-- Ekstra bilder og tekst -->
 <!-- 1 -->
 <div class="small-image" style="top: 210vh; background-image: url('https://jwk.no/pictures/index/oval.jpg');"></div>
@@ -223,7 +246,7 @@
     <!-- Scroll indicator -->
     <div class="scroll-indicator">
         <div class="scroll-arrow">↑</div>
-        <div>Scroll opp for å forstørre bildet</div>
+        <div>Scroll opp for portefølje</div>
     </div>
 
     <script>
@@ -240,7 +263,7 @@
                 this.glassContent = element.querySelector('.glass-header-content');
                 this.currentZoom = 1.05;
                 this.edgeThicknessRatio = 0.15;
-                this.numLayers = 15;
+                this.numLayers = 18;
                 this.cachedBodyClone = null;
                 this.lastRenderKey = null;
                 this.lastScrollY = window.scrollY;
@@ -450,7 +473,7 @@
                     let scale;
                     if (isPillBox) {
                         // For pill: less aggressive scaling to reduce distortion
-                        scale = this.currentZoom + (combinedProgress * 1.5);
+                        scale = this.currentZoom + (combinedProgress * 3.5);
                     } else {
                         scale = this.currentZoom + (combinedProgress * 2.5);
                     }
