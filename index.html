@@ -11,14 +11,38 @@
             box-sizing: border-box;
         }
 
+        html, body {
+    /* Hindrer den vanlige, innebygde scrollingen */
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(92deg, #0b0b14, #444d85);
-            min-height: 510vh;
+            
+            min-height: 610vh;
             color: white;
             overflow-x: hidden;
         }
 
+        .large-background {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/020/940/816/large_2x/abstract-liquid-blue-background-liquid-color-waves-background-marbled-blue-abstract-background-liquid-marble-pattern-colorful-fancy-liquify-background-glossy-liquid-acrylic-paint-texture-photo.jpg');
+    background-repeat: repeat-y;
+    background-size: 200% 100%; /* dekker bredden, høyden følger bildet */
+    background-position: top center;
+    opacity: 0; /* NB: dette skjuler hele elementet hvis ikke endret */
+    min-height: 610vh;
+    color: white;
+    overflow-x: hidden;
+    
+    
+}
         .magnifying-glass {
             width: 500px;
             height: 500px;
@@ -184,6 +208,9 @@
 </head>
 <body>
 
+<div class="large-background":></div>
+        
+
 <a href="#" class="jwk-logo">JWK</a>    
 
     <!-- JWK bilde -->
@@ -206,22 +233,28 @@
 <div class="large-terrarium-text" style="top: calc(270vh + 0px);">Woody</div>
 
 <!-- 3 -->
-<div class="small-image" style="top: 330vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
-<div class="terrarium-text" style="top: calc(330vh + 100px);">Ludo</div>
-<div class="large-image" style="top: 310vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(330vh + 0px);">Ludo</div>
+<div class="small-image" style="top: 330vh; background-image: url('https://jwk.no/pictures/index/benk.jpg');"></div>
+<div class="terrarium-text" style="top: calc(330vh + 100px);">Terrarium benk</div>
+<div class="large-image" style="top: 310vh; background-image: url('https://jwk.no/pictures/index/benk.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(330vh + 0px);">Terrarium benk</div>
 
 <!-- 4 -->
-<div class="small-image" style="top: 390vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
-<div class="terrarium-text" style="top: calc(390vh + 100px);">Ryggrad</div>
-<div class="large-image" style="top: 370vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(390vh + 0px);">Ryggrad</div>
+<div class="small-image" style="top: 390vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
+<div class="terrarium-text" style="top: calc(390vh + 100px);">Ludo</div>
+<div class="large-image" style="top: 370vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(390vh + 0px);">Ludo</div>
 
 <!-- 5 -->
-<div class="small-image" style="top: 450vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
-<div class="terrarium-text" style="top: calc(450vh + 100px);">Dørhåndtak</div>
-<div class="large-image" style="top: 430vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(450vh + 0px);">Dørhåndtak</div>
+<div class="small-image" style="top: 450vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
+<div class="terrarium-text" style="top: calc(450vh + 100px);">Ryggrad</div>
+<div class="large-image" style="top: 430vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(450vh + 0px);">Ryggrad</div>
+
+<!-- 6 -->
+<div class="small-image" style="top: 510vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
+<div class="terrarium-text" style="top: calc(510vh + 100px);">Dørhåndtak</div>
+<div class="large-image" style="top: 490vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
+<div class="large-terrarium-text" style="top: calc(510vh + 0px);">Dørhåndtak</div>
 
 
     
@@ -235,13 +268,7 @@
         <div class="glass-header-content"></div>
     </div>
 
-    <!-- VISIBLE SMALL ELEMENTS -->
-    <div class="small-image"></div>
-    <div class="terrarium-text">Terrarium benk</div>
 
-    <!-- HIDDEN LARGE ELEMENTS - FULL SIZE -->
-    <div class="large-image"></div>
-    <div class="large-terrarium-text">Terrarium benk</div>
 
     <!-- Scroll indicator -->
     <div class="scroll-indicator">
@@ -250,20 +277,19 @@
     </div>
 
     <script>
-        // MAGNIFYING GLASS CLASS
         let glassInstances = [];
         let scrollTimeout = null;
         let resizeTimeout = null;
-
+    
         class MagnifyingGlass {
             constructor(element) {
                 console.log('Creating MagnifyingGlass instance');
                 
                 this.element = element;
                 this.glassContent = element.querySelector('.glass-header-content');
-                this.currentZoom = 1.05;
-                this.edgeThicknessRatio = 0.15;
-                this.numLayers = 18;
+                this.currentZoom = 1.05; // Zoom for alle elementer, inkludert .large-background
+                this.edgeThicknessRatio = 0.14;
+                this.numLayers = 15;
                 this.cachedBodyClone = null;
                 this.lastRenderKey = null;
                 this.lastScrollY = window.scrollY;
@@ -277,7 +303,7 @@
                 this.createStaticCache();
                 this.render();
             }
-
+    
             createStaticCache() {
                 this.cachedBodyClone = document.body.cloneNode(true);
                 
@@ -287,7 +313,7 @@
                     el.style.visibility = 'hidden';
                 });
                 
-                // Hide the small visible elements, show only the large hidden ones
+                // Hide the small visible elements
                 this.cachedBodyClone.querySelectorAll('.small-image, .terrarium-text').forEach(el => {
                     el.style.display = 'none';
                     el.style.visibility = 'hidden';
@@ -295,9 +321,18 @@
                 
                 // Make the large elements visible in the cached version
                 this.cachedBodyClone.querySelectorAll('.large-image, .large-terrarium-text').forEach(el => {
-                    el.style.opacity = '1';
+                    el.style.opacity = '0.9';
                     el.style.visibility = 'visible';
                     el.style.zIndex = '100';
+                });
+                
+                // Make the background visible with correct sizing and repetition
+                this.cachedBodyClone.querySelectorAll('.large-background').forEach(el => {
+                    el.style.opacity = '0.05';
+                    el.style.visibility = 'visible';
+                    el.style.zIndex = '99';
+                    
+                   
                 });
                 
                 // Remove effects for performance
@@ -308,7 +343,7 @@
                     el.style.backdropFilter = 'none';
                 });
             }
-
+    
             updateLayerPositions() {
                 const scrollDiff = window.scrollY - this.lastScrollY;
                 this.lastScrollY = window.scrollY;
@@ -332,7 +367,7 @@
                     }
                 }
             }
-
+    
             render() {
                 if (this.animationFrameId) {
                     cancelAnimationFrame(this.animationFrameId);
@@ -341,9 +376,9 @@
                 
                 this.animationFrameId = requestAnimationFrame(() => {
                     const glassRect = this.element.getBoundingClientRect();
-                    if (glassRect.width === 0) return;
-
-                    const renderKey = `${this.currentZoom}-${this.edgeThicknessRatio}-${this.numLayers}-${Math.round(glassRect.width/10)*10}-${Math.round(glassRect.height/10)*10}`;
+                    if (glassRect.width === 0 || glassRect.height === 0) return;
+    
+                    const renderKey = `${this.currentZoom}-${this.edgeThicknessRatio}-${this.numLayers}-${glassRect.width}-${glassRect.height}`;
                     const scrollDiff = Math.abs(window.scrollY - this.lastScrollY);
                     
                     if (this.lastRenderKey === renderKey && scrollDiff < 300) {
@@ -357,7 +392,7 @@
                     this.fullRender(glassRect);
                 });
             }
-
+    
             fullRender(glassRect) {
                 if (!this.cachedBodyClone || !this.glassContent) return;
                 
@@ -383,7 +418,7 @@
                     layerCount++;
                     
                     const centerX = glassRect.left + w / 2;
-                    const centerY = glassRect.top + h / 2 + window.scrollY;
+                    const centerY = glassRect.top + h / 2 + window.scrollY; // Følge scroll
                     const offsetX = -(centerX * scale - w / 2);
                     const offsetY = -(centerY * scale - h / 2);
                     
@@ -441,9 +476,9 @@
                     const originalRx = parseFloat(originalRxString) || Math.min(currentW, currentH) / 2;
                     return { rx: Math.max(0, originalRx - thickness), ry: Math.max(0, originalRx - thickness) };
                 };
-
+    
                 const isPillBox = this.element.classList.contains('pill-box');
-
+    
                 // Center layer (no mask)
                 const centerW = w - totalThickness * 2;
                 const centerH = h - totalThickness * 2;
@@ -461,18 +496,16 @@
                 
                 centerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><path d="${centerPath}" fill="white"/></svg>`;
                 createLayer(this.currentZoom, `url("data:image/svg+xml;base64,${btoa(centerSvg)}")`);
-
+    
                 // Edge layers
                 for (let i = 0; i < this.numLayers; i++) {
                     const progress = i / (this.numLayers - 1);
                     const smoothProgress = progress * progress * (2 - 2 * progress);
-                    const exponentialProgress = Math.pow(progress, 1.8);
+                    const exponentialProgress = Math.pow(progress, 2.8);
                     const combinedProgress = (smoothProgress + exponentialProgress) / 2;
                     
-                    // Different scaling for pill vs circle
                     let scale;
                     if (isPillBox) {
-                        // For pill: less aggressive scaling to reduce distortion
                         scale = this.currentZoom + (combinedProgress * 3.5);
                     } else {
                         scale = this.currentZoom + (combinedProgress * 2.5);
@@ -512,7 +545,7 @@
                 
                 console.log(`Created ${this.layers.length} layers`);
             }
-
+    
             destroy() {
                 if (this.animationFrameId) {
                     cancelAnimationFrame(this.animationFrameId);
@@ -522,8 +555,7 @@
                 this.layers = [];
             }
         }
-
-        // Event listeners
+    
         window.addEventListener('resize', () => {
             if (resizeTimeout) return;
             resizeTimeout = setTimeout(() => {
@@ -534,8 +566,7 @@
                 resizeTimeout = null;
             }, 100);
         });
-
-        // Initialize on load
+    
         window.addEventListener('load', () => {
             console.log('Page loaded, initializing magnifying glass');
             
@@ -547,7 +578,7 @@
                 console.log(`Created ${glassInstances.length} instances`);
             }, 200);
         });
-
+    
         window.addEventListener('scroll', () => {
             if (scrollTimeout) return;
             scrollTimeout = setTimeout(() => {
@@ -555,11 +586,127 @@
                 scrollTimeout = null;
             }, 16);
         }, { passive: true });
-
+    
         window.addEventListener('beforeunload', () => {
             glassInstances.forEach(instance => instance.destroy());
             glassInstances = [];
         });
+    
+        (() => {
+            let scrollPositions = [];
+            let isAnimating = false;
+            let lastDelta = 0;
+            let lastTime = 0;
+            const scrollOffset = -30;
+    
+            function updateScrollPositions() {
+                scrollPositions = Array.from(document.querySelectorAll('.small-image'))
+                    .map((el, i) => {
+                        const elTop = el.getBoundingClientRect().top + window.scrollY;
+                        const offset = elTop - (window.innerHeight / 2) + (el.offsetHeight / 2) + scrollOffset;
+                        return i === 0 ? 0 : Math.round(offset);
+                    });
+            }
+    
+            function findCurrentIndex(scrollY) {
+                let closest = 0;
+                let smallestDiff = Infinity;
+    
+                scrollPositions.forEach((pos, i) => {
+                    const diff = Math.abs(pos - scrollY);
+                    if (diff < smallestDiff) {
+                        closest = i;
+                        smallestDiff = diff;
+                    }
+                });
+    
+                return closest;
+            }
+    
+            function animateScroll(to, duration = 700) {
+                if (isAnimating) return;
+                isAnimating = true;
+    
+                const start = window.scrollY;
+                const change = to - start;
+                const startTime = performance.now();
+    
+                function easeInOutQuad(t) {
+                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                }
+    
+                function step(timestamp) {
+                    const elapsed = timestamp - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeInOutQuad(progress);
+                    
+                    window.scrollTo(0, start + change * easedProgress);
+    
+                    if (elapsed < duration) {
+                        requestAnimationFrame(step);
+                    } else {
+                        isAnimating = false;
+                    }
+                }
+    
+                requestAnimationFrame(step);
+            }
+    
+            function findNextScroll(currentY, direction) {
+                const currentIndex = findCurrentIndex(currentY);
+                let targetIndex = currentIndex + direction;
+    
+                if (targetIndex < 0) targetIndex = 0;
+                if (targetIndex >= scrollPositions.length) targetIndex = scrollPositions.length - 1;
+    
+                return scrollPositions[targetIndex];
+            }
+    
+            window.addEventListener('wheel', (e) => {
+                const now = performance.now();
+                const timeDiff = now - lastTime;
+                const delta = e.deltaY;
+                const accel = Math.abs(delta) > Math.abs(lastDelta) && timeDiff < 300;
+    
+                lastTime = now;
+                lastDelta = delta;
+    
+                if (!accel || isAnimating) return;
+    
+                e.preventDefault();
+    
+                const direction = delta > 0 ? 1 : -1;
+                const target = findNextScroll(window.scrollY, direction);
+                animateScroll(target, 700);
+            }, { passive: false });
+    
+            window.addEventListener('keydown', (e) => {
+                if (isAnimating) return;
+    
+                const direction =
+                    (e.key === 'ArrowDown' || e.key === 'PageDown') ? 1 :
+                    (e.key === 'ArrowUp' || e.key === 'PageUp') ? -1 : 0;
+    
+                if (direction !== 0) {
+                    e.preventDefault();
+                    const target = findNextScroll(window.scrollY, direction);
+                    animateScroll(target, 700);
+                }
+            });
+    
+            window.addEventListener('resize', () => {
+                setTimeout(updateScrollPositions, 200);
+            });
+    
+            window.addEventListener('load', () => {
+                window.scrollTo(0, 0);
+                updateScrollPositions();
+            });
+    
+            window.addEventListener('scroll', () => {
+                console.log('Scroll Y:', window.scrollY.toFixed(0));
+            });
+        })();
     </script>
 </body>
 </html>
