@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magnifying Glass Effect</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html, body {
+html, body {
     /* Hindrer den vanlige, innebygde scrollingen */
     overflow: hidden;
     height: 100%;
@@ -19,18 +20,15 @@
     padding: 0;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(92deg, #0b0b14, #444d85);
+    min-height: 610vh;
+    color: white;
+    overflow-x: hidden;
+}
 
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(92deg, #0b0b14, #444d85);
-            
-            min-height: 610vh;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        .large-background {
+.large-background {
     font-family: 'Arial', sans-serif;
     background-image: url('https://static.vecteezy.com/system/resources/previews/020/940/816/large_2x/abstract-liquid-blue-background-liquid-color-waves-background-marbled-blue-abstract-background-liquid-marble-pattern-colorful-fancy-liquify-background-glossy-liquid-acrylic-paint-texture-photo.jpg');
     background-repeat: repeat-y;
@@ -40,139 +38,267 @@
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
-    
-    
 }
-        .magnifying-glass {
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            position: fixed;
-            top: 50%;
-            right: 75px;
-            transform: translateY(-50%);
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
 
-        .pill-box {
-            width: 550px;
-            height: 150px;
-            border-radius: 75px;
-            position: fixed;
-            top: 50%;
-            left: 75px;
-            transform: translateY(-50%);
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
+.magnifying-glass {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    position: fixed;
+    top: 50%;
+    right: 75px;
+    transform: translateY(-50%);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
 
-        .glass-header-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: inherit;
-            overflow: hidden;
-        }
+.pill-box {
+    width: 550px;
+    height: 150px;
+    border-radius: 75px;
+    position: fixed;
+    top: 50%;
+    left: 75px;
+    transform: translateY(-50%);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
 
-        /* VISIBLE SMALL ELEMENTS */
-        .small-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: absolute;
-            right: 320px;
-            transform: translateX(50%);
-            top: 150vh;
-            background-image: url('https://jwk.no/pictures/index/benk.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-            border: 2px solid rgba(255,255,255,0.6);
-        }
 
-        .terrarium-text {
-            position: absolute;
-            left: 200px;
-            top: calc(150vh + 100px);
-            width: 300px;
-            text-align: center;
-            font-size: 25px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            z-index: 100;
-            transform: translateY(-50%);
-        }
+.glass-header-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+}
 
-        /* HIDDEN LARGE ELEMENTS - SAME SIZE AS GLASS BOXES */
-        .large-image {
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            position: absolute;
-            right: 320px;
-            transform: translateX(50%);
-            top: 130vh;
-            background-image: url('https://jwk.no/pictures/index/benk.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-            border: 2px solid rgba(255,255,255,0.6);
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            z-index: -1;
-        }
+/* VISIBLE SMALL ELEMENTS */
+.small-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    right: 320px;
+    transform: translateX(50%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
+}
 
-        .large-terrarium-text {
-            position: absolute;
-            left: 75px;
-            top: calc(150vh + 0px);
-            width: 550px;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            z-index: -1;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            border-radius: 75px;
-            
-            backdrop-filter: blur(5px);
-        }
+.terrarium-text {
+    position: absolute;
+    left: 200px;
+    width: 300px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 100;
+    transform: translateY(-50%);
+}
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            text-align: center;
-            font-size: 14px;
-            opacity: 0.7;
-            z-index: 100;
-        }
+/* HIDDEN LARGE ELEMENTS - SAME SIZE AS GLASS BOXES */
+.large-image {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    position: absolute;
+    right: 320px;
+    transform: translateX(50%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
+    opacity: 0;
+    visibility: hidden;
+    pointe-events: none;
+    z-index: -1;
+}
 
-        .scroll-arrow {
-            font-size: 20px;
-            animation: bounce 2s infinite;
-        }
+.large-terrarium-text {
+    position: absolute;
+    left: 75px;
+    width: 550px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    border-radius: 75px;
+    backdrop-filter: blur(5px);
+}
 
-        .jwk-logo {
+/* POSISJONERING AV ELEMENTER */
+/* Velkommen - posisjon 1 */
+.hero-image-small {
+    top: calc(50vh - 100px);
+    background-image: url('https://jwk.no/pictures/about/meg.jpg');
+}
+
+.hero-text-small {
+    top: calc(50vh + 50px);
+}
+
+.hero-image-large {
+    top: calc(50vh - 125px);
+    background-image: url('https://jwk.no/pictures/about/meg.jpg');
+}
+
+.hero-text-large {
+    top: calc(50vh + 25px);
+}
+
+/* Oval - posisjon 2 */
+.oval-image-small {
+    top: calc(50vh + 160vh - 100px);
+    background-image: url('https://jwk.no/pictures/index/oval.jpg');
+}
+
+.oval-text-small {
+    top: calc(50vh + 160vh + 50px);
+}
+
+.oval-image-large {
+    top: calc(50vh + 160vh - 125px);
+    background-image: url('https://jwk.no/pictures/index/oval.jpg');
+}
+
+.oval-text-large {
+    top: calc(50vh + 160vh + 25px);
+}
+
+/* Woody - posisjon 3 */
+.woody-image-small {
+    top: calc(50vh + 220vh - 100px);
+    background-image: url('https://jwk.no/pictures/index/front_without.jpg');
+}
+
+.woody-text-small {
+    top: calc(50vh + 220vh + 50px);
+}
+
+.woody-image-large {
+    top: calc(50vh + 220vh - 125px);
+    background-image: url('https://jwk.no/pictures/index/front_without.jpg');
+}
+
+.woody-text-large {
+    top: calc(50vh + 220vh + 25px);
+}
+
+/* Terrarium benk - posisjon 4 */
+.terrarium-image-small {
+    top: calc(50vh + 280vh - 100px);
+    background-image: url('https://jwk.no/pictures/index/benk.jpg');
+}
+
+.terrarium-text-small {
+    top: calc(50vh + 280vh + 50px);
+}
+
+.terrarium-image-large {
+    top: calc(50vh + 280vh - 125px);
+    background-image: url('https://jwk.no/pictures/index/benk.jpg');
+}
+
+.terrarium-text-large {
+    top: calc(50vh + 280vh + 25px);
+}
+
+/* Ludo - posisjon 5 */
+.ludo-image-small {
+    top: calc(50vh + 340vh - 100px);
+    background-image: url('https://jwk.no/pictures/index/ludo.jpg');
+}
+
+.ludo-text-small {
+    top: calc(50vh + 340vh + 50px);
+}
+
+.ludo-image-large {
+    top: calc(50vh + 340vh - 125px);
+    background-image: url('https://jwk.no/pictures/index/ludo.jpg');
+}
+
+.ludo-text-large {
+    top: calc(50vh + 340vh + 25px);
+}
+
+/* Ryggrad - posisjon 6 */
+.ryggrad-image-small {
+    top: calc(50vh + 400vh - 100px);
+    background-image: url('https://jwk.no/pictures/index/stolen.jpg');
+}
+
+.ryggrad-text-small {
+    top: calc(50vh + 400vh + 50px);
+}
+
+.ryggrad-image-large {
+    top: calc(50vh + 400vh - 125px);
+    background-image: url('https://jwk.no/pictures/index/stolen.jpg');
+}
+
+.ryggrad-text-large {
+    top: calc(50vh + 400vh + 25px);
+}
+
+/* Dørhåndtak - posisjon 7 */
+.doorhandle-image-small {
+    top: calc(50vh + 460vh - 100px);
+    background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
+}
+
+.doorhandle-text-small {
+    top: calc(50vh + 460vh + 50px);
+}
+
+.doorhandle-image-large {
+    top: calc(50vh + 460vh - 125px);
+    background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
+}
+
+.doorhandle-text-large {
+    top: calc(50vh + 460vh + 25px);
+}
+
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+    z-index: 100;
+}
+
+.scroll-arrow {
+    font-size: 20px;
+    animation: bounce 2s infinite;
+}
+
+.jwk-logo {
     position: fixed;
     top: 20px;
     left: 20px;
@@ -193,71 +319,245 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* RESPONSIVE DESIGN - UNDER 1300px */
+@media screen and (max-width: 1299px) {
+    .magnifying-glass {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        top: calc(50% - 100px);
+    }
+
+    .pill-box {
+        width: 350px;
+        height: 100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: calc(50% + 150px);
+    }
+
+
+    /* Small visible elements - mobile positioning */
+    .small-image {
+        width: 150px;
+        height: 150px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .terrarium-text {
+        width: 250px;
+        font-size: 20px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    /* Large hidden elements - mobile positioning */
+    .large-image {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .large-terrarium-text {
+        width: 350px;
+        height: 100px;
+        font-size: 40px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    /* Mobile positioning for all elements */
+    /* Velkommen - posisjon 1 */
+     .hero-image-small {
+        top: calc(50vh - 160px);
+    }
+    
+    .hero-text-small {
+        top: calc(50vh + 140px);
+    }
+    
+    .hero-image-large {
+        top: calc(50vh - 230px);
+    }
+    
+    .hero-text-large {
+        top: calc(50vh + 100px);
+    }
+
+    /* Oval - posisjon 2 */
+    .oval-image-small {
+        top: calc(50vh + 130vh - 195px);
+    }
+    
+    .oval-text-small {
+        top: calc(50vh + 130vh + 113px);
+    }
+    
+    .oval-image-large {
+        top: calc(50vh + 130vh - 280px);
+    }
+    
+    .oval-text-large {
+        top: calc(50vh + 130vh + 74px);
+    }
+
+    /* Woody - posisjon 3 */
+    .woody-image-small {
+        top: calc(50vh + 190vh - 200px);
+    }
+    
+    .woody-text-small {
+        top: calc(50vh + 190vh + 110px);
+    }
+    
+    .woody-image-large {
+        top: calc(50vh + 190vh - 280px);
+    }
+    
+    .woody-text-large {
+        top: calc(50vh + 190vh + 68px);
+    }
+
+    /* Terrarium benk - posisjon 4 */
+    .terrarium-image-small {
+        top: calc(50vh + 250vh - 200px);
+    }
+    
+    .terrarium-text-small {
+        top: calc(50vh + 250vh + 110px);
+    }
+    
+    .terrarium-image-large {
+        top: calc(50vh + 250vh - 280px);
+    }
+    
+    .terrarium-text-large {
+        top: calc(50vh + 250vh + 68px);
+    }
+
+    /* Ludo - posisjon 5 */
+    .ludo-image-small {
+        top: calc(50vh + 310vh - 75px);
+    }
+    
+    .ludo-text-small {
+        top: calc(50vh + 310vh + 100px);
+    }
+    
+    .ludo-image-large {
+        top: calc(50vh + 310vh - 160px);
+    }
+    
+    .ludo-text-large {
+        top: calc(50vh + 310vh + 190px);
+    }
+
+    /* Ryggrad - posisjon 6 */
+    .ryggrad-image-small {
+        top: calc(50vh + 370vh - 75px);
+    }
+    
+    .ryggrad-text-small {
+        top: calc(50vh + 370vh + 230px);
+    }
+    
+    .ryggrad-image-large {
+        top: calc(50vh + 370vh - 160px);
+    }
+    
+    .ryggrad-text-large {
+        top: calc(50vh + 370vh + 190px);
+    }
+
+    /* Dørhåndtak - posisjon 7 */
+    .doorhandle-image-small {
+        top: calc(50vh + 430vh - 75px);
+    }
+    
+    .doorhandle-text-small {
+        top: calc(50vh + 430vh + 230px);
+    }
+    
+    .doorhandle-image-large {
+        top: calc(50vh + 430vh - 160px);
+    }
+    
+    .doorhandle-text-large {
+        top: calc(50vh + 430vh + 190px);
+    }
+}
+
     </style>
 </head>
 <body>
 
-<div class="large-background":></div>
+<div class="large-background"></div>
         
 
 <a href="#" class="jwk-logo">JWK</a>    
 
-    <!-- JWK bilde -->
-<div class="small-image" style="top: 40vh; background-image: url('https://jwk.no/pictures/about/meg.jpg');"></div>
-<div class="terrarium-text" style="top: calc(50vh + 0px);">Velkommen</div>
+    <!-- Velkommen -->
+    <div class="small-image hero-image-small"></div>
+    <div class="terrarium-text hero-text-small">Velkommen</div>
+    <div class="large-image hero-image-large"></div>
+    <div class="large-terrarium-text hero-text-large">Velkommen</div>
 
-<div class="large-image" style="top: 25vh; background-image: url('https://jwk.no/pictures/about/meg.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(42vh + 0px);">Velkommen</div>
-<!-- Ekstra bilder og tekst -->
-<!-- 1 -->
-<div class="small-image" style="top: 210vh; background-image: url('https://jwk.no/pictures/index/oval.jpg');"></div>
-<div class="terrarium-text" style="top: calc(210vh + 100px);">Oval</div>
-<div class="large-image" style="top: 190vh; background-image: url('https://jwk.no/pictures/index/oval.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(210vh + 0px);">Oval</div>
+    <!-- Oval -->
+    <div class="small-image oval-image-small"></div>
+    <div class="terrarium-text oval-text-small">Oval</div>
+    <div class="large-image oval-image-large"></div>
+    <div class="large-terrarium-text oval-text-large">Oval</div>
 
-<!-- 2 -->
-<div class="small-image" style="top: 270vh; background-image: url('https://jwk.no/pictures/index/front_without.jpg');"></div>
-<div class="terrarium-text" style="top: calc(270vh + 100px);">Woody</div>
-<div class="large-image" style="top: 250vh; background-image: url('https://jwk.no/pictures/index/front_without.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(270vh + 0px);">Woody</div>
+    <!-- Woody -->
+    <div class="small-image woody-image-small"></div>
+    <div class="terrarium-text woody-text-small">Woody</div>
+    <div class="large-image woody-image-large"></div>
+    <div class="large-terrarium-text woody-text-large">Woody</div>
 
-<!-- 3 -->
-<div class="small-image" style="top: 330vh; background-image: url('https://jwk.no/pictures/index/benk.jpg');"></div>
-<div class="terrarium-text" style="top: calc(330vh + 100px);">Terrarium benk</div>
-<div class="large-image" style="top: 310vh; background-image: url('https://jwk.no/pictures/index/benk.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(330vh + 0px);">Terrarium benk</div>
+    <!-- Terrarium benk -->
+    <div class="small-image terrarium-image-small"></div>
+    <div class="terrarium-text terrarium-text-small">Terrarium benk</div>
+    <div class="large-image terrarium-image-large"></div>
+    <div class="large-terrarium-text terrarium-text-large">Terrarium benk</div>
 
-<!-- 4 -->
-<div class="small-image" style="top: 390vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
-<div class="terrarium-text" style="top: calc(390vh + 100px);">Ludo</div>
-<div class="large-image" style="top: 370vh; background-image: url('https://jwk.no/pictures/index/ludo.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(390vh + 0px);">Ludo</div>
+    <!-- Ludo -->
+    <div class="small-image ludo-image-small"></div>
+    <div class="terrarium-text ludo-text-small">Ludo</div>
+    <div class="large-image ludo-image-large"></div>
+    <div class="large-terrarium-text ludo-text-large">Ludo</div>
 
-<!-- 5 -->
-<div class="small-image" style="top: 450vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
-<div class="terrarium-text" style="top: calc(450vh + 100px);">Ryggrad</div>
-<div class="large-image" style="top: 430vh; background-image: url('https://jwk.no/pictures/index/stolen.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(450vh + 0px);">Ryggrad</div>
+    <!-- Ryggrad -->
+    <div class="small-image ryggrad-image-small"></div>
+    <div class="terrarium-text ryggrad-text-small">Ryggrad</div>
+    <div class="large-image ryggrad-image-large"></div>
+    <div class="large-terrarium-text ryggrad-text-large">Ryggrad</div>
 
-<!-- 6 -->
-<div class="small-image" style="top: 510vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
-<div class="terrarium-text" style="top: calc(510vh + 100px);">Dørhåndtak</div>
-<div class="large-image" style="top: 490vh; background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');"></div>
-<div class="large-terrarium-text" style="top: calc(510vh + 0px);">Dørhåndtak</div>
+    <!-- Dørhåndtak -->
+    <div class="small-image doorhandle-image-small"></div>
+    <div class="terrarium-text doorhandle-text-small">Dørhåndtak</div>
+    <div class="large-image doorhandle-image-large"></div>
+    <div class="large-terrarium-text doorhandle-text-large">Dørhåndtak</div>
 
-
-    
     <!-- Magnifying glass fixed on the right -->
     <div class="magnifying-glass">
         <div class="glass-header-content"></div>
@@ -268,13 +568,12 @@
         <div class="glass-header-content"></div>
     </div>
 
-
-
     <!-- Scroll indicator -->
     <div class="scroll-indicator">
         <div class="scroll-arrow">↑</div>
         <div>Scroll opp for portefølje</div>
     </div>
+
 
     <script>
         let glassInstances = [];
@@ -557,15 +856,15 @@
         }
     
         window.addEventListener('resize', () => {
-            if (resizeTimeout) return;
-            resizeTimeout = setTimeout(() => {
-                glassInstances.forEach(inst => {
-                    inst.lastRenderKey = null;
-                    inst.render();
-                });
-                resizeTimeout = null;
-            }, 100);
+    if (resizeTimeout) return;
+    resizeTimeout = setTimeout(() => {
+        glassInstances.forEach(inst => {
+            inst.lastRenderKey = null;
+            inst.render();
         });
+        resizeTimeout = null;
+    }, 200); // Øk delay for å gi CSS tid til å oppdatere
+});
     
         window.addEventListener('load', () => {
             console.log('Page loaded, initializing magnifying glass');
@@ -593,120 +892,160 @@
         });
     
         (() => {
-            let scrollPositions = [];
-            let isAnimating = false;
-            let lastDelta = 0;
-            let lastTime = 0;
-            const scrollOffset = -30;
-    
-            function updateScrollPositions() {
-                scrollPositions = Array.from(document.querySelectorAll('.small-image'))
-                    .map((el, i) => {
-                        const elTop = el.getBoundingClientRect().top + window.scrollY;
-                        const offset = elTop - (window.innerHeight / 2) + (el.offsetHeight / 2) + scrollOffset;
-                        return i === 0 ? 0 : Math.round(offset);
-                    });
+    let scrollPositions = [];
+    let isAnimating = false;
+    let lastDelta = 0;
+    let lastTime = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    const scrollOffset = 90;
+
+    function updateScrollPositions() {
+        // Beregn scroll-posisjoner basert på faktisk element-posisjon
+        scrollPositions = Array.from(document.querySelectorAll('.small-image'))
+            .map((el, i) => {
+                if (i === 0) return 0;
+                
+                // Finn den faktiske posisjonen til elementet
+                const elTop = el.getBoundingClientRect().top + window.scrollY;
+                // Beregn offset slik at glass-objektene sentreres på bildet
+                const offset = elTop - (window.innerHeight / 2) + (el.offsetHeight / 2) + scrollOffset;
+                return Math.round(offset);
+            });
+        
+        console.log('Updated scroll positions:', scrollPositions);
+    }
+
+    function findCurrentIndex(scrollY) {
+        let closest = 0;
+        let smallestDiff = Infinity;
+
+        scrollPositions.forEach((pos, i) => {
+            const diff = Math.abs(pos - scrollY);
+            if (diff < smallestDiff) {
+                closest = i;
+                smallestDiff = diff;
             }
-    
-            function findCurrentIndex(scrollY) {
-                let closest = 0;
-                let smallestDiff = Infinity;
-    
-                scrollPositions.forEach((pos, i) => {
-                    const diff = Math.abs(pos - scrollY);
-                    if (diff < smallestDiff) {
-                        closest = i;
-                        smallestDiff = diff;
-                    }
-                });
-    
-                return closest;
-            }
-    
-            function animateScroll(to, duration = 700) {
-                if (isAnimating) return;
-                isAnimating = true;
-    
-                const start = window.scrollY;
-                const change = to - start;
-                const startTime = performance.now();
-    
-                function easeInOutQuad(t) {
-                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-                }
-    
-                function step(timestamp) {
-                    const elapsed = timestamp - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const easedProgress = easeInOutQuad(progress);
-                    
-                    window.scrollTo(0, start + change * easedProgress);
-    
-                    if (elapsed < duration) {
-                        requestAnimationFrame(step);
-                    } else {
-                        isAnimating = false;
-                    }
-                }
-    
+        });
+
+        return closest;
+    }
+
+    function animateScroll(to, duration = 700) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const start = window.scrollY;
+        const change = to - start;
+        const startTime = performance.now();
+
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        function step(timestamp) {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeInOutQuad(progress);
+            
+            window.scrollTo(0, start + change * easedProgress);
+
+            if (elapsed < duration) {
                 requestAnimationFrame(step);
+            } else {
+                isAnimating = false;
             }
-    
-            function findNextScroll(currentY, direction) {
-                const currentIndex = findCurrentIndex(currentY);
-                let targetIndex = currentIndex + direction;
-    
-                if (targetIndex < 0) targetIndex = 0;
-                if (targetIndex >= scrollPositions.length) targetIndex = scrollPositions.length - 1;
-    
-                return scrollPositions[targetIndex];
-            }
-    
-            window.addEventListener('wheel', (e) => {
-                const now = performance.now();
-                const timeDiff = now - lastTime;
-                const delta = e.deltaY;
-                const accel = Math.abs(delta) > Math.abs(lastDelta) && timeDiff < 300;
-    
-                lastTime = now;
-                lastDelta = delta;
-    
-                if (!accel || isAnimating) return;
-    
-                e.preventDefault();
-    
-                const direction = delta > 0 ? 1 : -1;
-                const target = findNextScroll(window.scrollY, direction);
-                animateScroll(target, 700);
-            }, { passive: false });
-    
-            window.addEventListener('keydown', (e) => {
-                if (isAnimating) return;
-    
-                const direction =
-                    (e.key === 'ArrowDown' || e.key === 'PageDown') ? 1 :
-                    (e.key === 'ArrowUp' || e.key === 'PageUp') ? -1 : 0;
-    
-                if (direction !== 0) {
-                    e.preventDefault();
-                    const target = findNextScroll(window.scrollY, direction);
-                    animateScroll(target, 700);
-                }
-            });
-    
-            window.addEventListener('resize', () => {
-                setTimeout(updateScrollPositions, 200);
-            });
-    
-            window.addEventListener('load', () => {
-                window.scrollTo(0, 0);
-                updateScrollPositions();
-            });
-    
-            window.addEventListener('scroll', () => {
-                console.log('Scroll Y:', window.scrollY.toFixed(0));
-            });
-        })();
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    function findNextScroll(currentY, direction) {
+        const currentIndex = findCurrentIndex(currentY);
+        let targetIndex = currentIndex + direction;
+
+        if (targetIndex < 0) targetIndex = 0;
+        if (targetIndex >= scrollPositions.length) targetIndex = scrollPositions.length - 1;
+
+        return scrollPositions[targetIndex];
+    }
+
+    window.addEventListener('wheel', (e) => {
+        const now = performance.now();
+        const timeDiff = now - lastTime;
+        const delta = e.deltaY;
+        const accel = Math.abs(delta) > Math.abs(lastDelta) && timeDiff < 300;
+
+        lastTime = now;
+        lastDelta = delta;
+
+        if (!accel || isAnimating) return;
+
+        e.preventDefault();
+
+        const direction = delta > 0 ? 1 : -1;
+        const target = findNextScroll(window.scrollY, direction);
+        animateScroll(target, 700);
+    }, { passive: false });
+
+    window.addEventListener('keydown', (e) => {
+        if (isAnimating) return;
+
+        const direction =
+            (e.key === 'ArrowDown' || e.key === 'PageDown') ? 1 :
+            (e.key === 'ArrowUp' || e.key === 'PageUp') ? -1 : 0;
+
+        if (direction !== 0) {
+            e.preventDefault();
+            const target = findNextScroll(window.scrollY, direction);
+            animateScroll(target, 700);
+        }
+    });
+
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = performance.now();
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+        if (isAnimating) return;
+
+        const touchEndY = e.changedTouches[0].clientY;
+        const deltaY = touchStartY - touchEndY;
+        const timeDiff = performance.now() - touchStartTime;
+
+        if (Math.abs(deltaY) > 50 && timeDiff < 500) {
+            const direction = deltaY > 0 ? 1 : -1;
+            const target = findNextScroll(window.scrollY, direction);
+            animateScroll(target, 700);
+        }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+    // Oppdater scroll-posisjoner når vinduet endres
+    setTimeout(() => {
+        updateScrollPositions();
+        // Finn nærmeste posisjon og juster scroll gradvis
+        const currentIndex = findCurrentIndex(window.scrollY);
+        const targetScroll = scrollPositions[currentIndex];
+        if (Math.abs(window.scrollY - targetScroll) > 50) {
+            animateScroll(targetScroll, 300);
+        }
+    }, 500); // Lengre delay for å sikre at alle CSS-endringer er ferdige
+});
+
+    window.addEventListener('load', () => {
+        window.scrollTo(0, 0);
+        // Oppdater scroll-posisjoner etter at alt er lastet
+        setTimeout(() => {
+            updateScrollPositions();
+        }, 500);
+    });
+
+    window.addEventListener('scroll', () => {
+        console.log('Scroll Y:', window.scrollY.toFixed(0));
+    });
+})();
     </script>
 </body>
 </html>
