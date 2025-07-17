@@ -154,16 +154,16 @@ body {
 }
 
 .hero-text-small {
-    top: calc(50vh + 50px);
+    top: calc(50vh + 0px);
 }
 
 .hero-image-large {
-    top: calc(50vh - 125px);
+    top: calc(50vh - 210px);
     background-image: url('https://jwk.no/pictures/about/meg.jpg');
 }
 
 .hero-text-large {
-    top: calc(50vh + 25px);
+    top: calc(50vh - 75px);
 }
 
 /* Oval - posisjon 2 */
@@ -638,7 +638,7 @@ body {
                 this.cachedBodyClone.querySelectorAll('*').forEach(el => {
                     el.style.boxShadow = 'none';
                     el.style.textShadow = 'none';
-                    el.style.filter = 'none';
+                    
                     el.style.backdropFilter = 'none';
                 });
             }
