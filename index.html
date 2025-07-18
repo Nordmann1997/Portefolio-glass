@@ -12,6 +12,7 @@
     box-sizing: border-box;
 }
 
+
 html, body {
     /* Hindrer den vanlige, innebygde scrollingen */
     overflow: hidden;
@@ -149,22 +150,23 @@ body {
 
 /* POSISJONERING AV ELEMENTER */
 /* Velkommen - posisjon 1 */
+
 .hero-image-small {
-    top: calc(50vh - 100px);
+    top: calc(50 * var(--vh) - 100px);
     background-image: url('https://jwk.no/pictures/about/meg.jpg');
 }
 
 .hero-text-small {
-    top: calc(50vh + 0px);
+    top: calc(50 * var(--vh) + 0px);
 }
 
 .hero-image-large {
-    top: calc(50vh - 200px);
+    top: calc(50 * var(--vh) - 200px);
     background-image: url('https://jwk.no/pictures/about/meg.jpg');
 }
 
 .hero-text-large {
-    top: calc(50vh - 74px);
+    top: calc(50 * var(--vh) - 74px);
 }
 
 /* Oval - posisjon 2 */
@@ -389,21 +391,21 @@ body {
 
     /* Mobile positioning for all elements */
     /* Velkommen - posisjon 1 */
-     .hero-image-small {
-        top: calc(50vh - 160px);
-    }
-    
-    .hero-text-small {
-        top: calc(50vh + 140px);
-    }
-    
-    .hero-image-large {
-        top: calc(50vh - 230px);
-    }
-    
-    .hero-text-large {
-        top: calc(50vh + 100px);
-    }
+    .hero-image-small {
+    top: calc(50 * var(--vh) - 160px);
+}
+
+.hero-text-small {
+    top: calc(50 * var(--vh) + 140px);
+}
+
+.hero-image-large {
+    top: calc(50 * var(--vh) - 230px);
+}
+
+.hero-text-large {
+    top: calc(50 * var(--vh) + 105px);
+}
 
     /* Oval - posisjon 2 */
     .oval-image-small {
@@ -1108,6 +1110,17 @@ window.addEventListener('keydown', (e) => {
         console.log('Scroll Y:', window.scrollY.toFixed(0));
     });
 })();
+
+
+// Sett --vh til faktisk høyde på enheten
+function updateVh() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+updateVh();
+window.addEventListener('resize', updateVh);
+
+
     </script>
 </body>
 </html>
