@@ -1012,8 +1012,8 @@ body {
     }
 
     // Stopp ved første og siste bilde - ingen loop
-    if (targetIndex < 0) return scrollPositions[0];
-    if (targetIndex >= scrollPositions.length) return scrollPositions[scrollPositions.length - 1];
+    if (targetIndex < 0) return null; // Endret fra scrollPositions[0]
+    if (targetIndex >= scrollPositions.length) return null; // Endret fra scrollPositions[scrollPositions.length - 1]
 
     console.log(`Scrolling to position: ${scrollPositions[targetIndex]}`);
     return scrollPositions[targetIndex];
@@ -1065,18 +1065,23 @@ window.addEventListener('keydown', (e) => {
     }, { passive: true });
 
     window.addEventListener('touchend', (e) => {
-        if (isAnimating) return;
+    if (isAnimating) return;
 
-        const touchEndY = e.changedTouches[0].clientY;
-        const deltaY = touchStartY - touchEndY;
-        const timeDiff = performance.now() - touchStartTime;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+    const timeDiff = performance.now() - touchStartTime;
 
-        if (Math.abs(deltaY) > 50 && timeDiff < 500) {
-            const direction = deltaY > 0 ? 1 : -1;
-            const target = findNextScroll(window.scrollY, direction);
+    if (Math.abs(deltaY) > 50 && timeDiff < 500) {
+        e.preventDefault(); // Legg til denne linjen
+        const direction = deltaY > 0 ? 1 : -1;
+        const target = findNextScroll(window.scrollY, direction);
+        
+        // Only animate if target is not null
+        if (target !== null) {
             animateScroll(target, 700);
         }
-    }, { passive: true });
+    }
+}, { passive: false }); // Endre fra passive: true til passive: false
 
     window.addEventListener('resize', () => {
         // Oppdater scroll-posisjoner når vinduet endres
