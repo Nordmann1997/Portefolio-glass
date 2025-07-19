@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWK - About Me</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="site">
+    <nav id="desktop-nav">
+        <div class="logo">
+            <a href="tiles/index.html">JWK</a>
+        </div>
+        <div class="product_name">
+            <h1></h1>
+        </div>
+        <div>
+          
+        </div>
+        <button class="menu-btn" id="menuButton">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </button>
+      
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="about.html">About me</a>
+            <a href="contact.html">Contact info</a>
+        </div>
+
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="about-header">
+                <div class="about-intro">
+                    <h1>About Me</h1>
+                    <p>My name is Johannes Worren Kløcker and I am soon to be a graduate product designer from OsloMet Product Design.</p>
+                </div>
+                <div class="about-image">
+                    <img src="../pictures/about/meg.jpg" alt="Johannes Worren Kløcker">
+                </div>
+            </section>
+
+            <section class="about-details">
+                <p>My main interests are the development of physical products and functional solutions. Previously, I attended SKAP Creative Folk High School and it was there that I discovered that giving an idea form and function is an incredibly fun thing.</p>
+            </section>
+
+            <section class="skills-hardware">
+                <div class="skills">
+                    <h2>Software</h2>
+                    <ul>
+                        <li>Fusion 360</li>
+                        <li>Photoshop</li>
+                        <li>Illustrator</li>
+                        <li>Lightroom</li>
+                        <li>Premiere Pro</li>
+                        <li>After Effects</li>
+                    </ul>
+                </div>
+                <div class="hardware">
+                    <h2>Hardware</h2>
+                    <ul>
+                        <li>CNC Operation</li>
+                        <li>3D Printing</li>
+                        <li>Laser Cutter</li>
+                        <li>Welding Machine</li>
+                        <li>Metalworking</li>
+                        <li>Woodworking</li>
+                    </ul>
+                </div>
+                <div class="quote">
+                    <p>“I haven’t done that before, so it’s definitely worth a try!”</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div id="socials-container">
+            <a href="https://www.instagram.com/made_by_jwk/">Instagram</a>
+        </div>
+        <p>2025 - All rights reserved</p>
+    </footer>
+    </div>
+
+    <script src="../scripts/about.js"></script>
+
+    <script>   const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+    
+        menuButton.addEventListener('click', () => {
+            menuButton.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
+        });
+    
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                menuButton.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

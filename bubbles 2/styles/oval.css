@@ -1,0 +1,218 @@
+/* GENERAL */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  color: rgb(85, 85, 85);
+}
+
+/* TRANSITION */
+
+
+
+
+
+
+
+
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    text-align: center;
+}
+
+
+p {
+    font-family: sans-serif;
+    
+    font-size: 15px;
+    margin-top: 10px;
+    color: black;
+    text-align: left;
+}
+
+
+h1 {
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.product_name {
+    padding-bottom: 40px;
+    padding-top: 49px;
+    }
+
+.main-image {
+    width: 90vw;
+    border-radius: 10px;
+}
+
+.description {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* To kolonner */
+    grid-template-rows: repeat(3, auto); /* Tre rader */
+    gap: 30px;
+    justify-items: center;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.image-grid img,
+.image-grid video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.description-box {
+    
+    border-radius: 10px;
+    padding: 40px;
+    text-align: left;
+    max-width: 100%;
+    display: flex;
+    flex-direction: auto;
+    justify-content: center;
+    align-items: center;
+    /* height: 100%; */
+    min-height: 200px;
+    line-height: 1.5;
+    background: whitesmoke;
+    }
+    
+
+
+/* Plasserer beskrivelsen i grid-systemet */
+.description-box {
+    grid-column: 2 / 3; /* Plasseres i høyre kolonne */
+    grid-row: 1 / 2; /* På samme rad som "åpen høyttaler"-bildet */
+}
+
+
+/* Generell styling for seksjonen */
+.how-its-made {
+    margin-top: 40px;
+    padding: 40px;
+    text-align: center;
+}
+
+.how-its-made h1 {
+    font-size: 40px;
+    font-weight: normal;
+}
+
+/* Flex for å stable process-step-elementene vertikalt */
+.how-its-made .image-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+/* Styling for hver process-step */
+.process-step {
+    display: flex;
+    align-items: center; /* Midtstiller innhold vertikalt */
+    justify-content: flex-start; /* Starter fra venstre */
+    background: linear-gradient(to right, #e9f7fe, #adcaea); /* Gradient fra grå til hvit */
+    padding: 20px; /* Fast padding rundt */
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+/* Bilder og video */
+.process-step img,
+.process-step video {
+    width: 100%;
+    max-width: 500px; /* Litt mindre for et renere utseende */
+    height: auto;
+    max-height: 300px; /* Begrenser høyden innenfor process-step */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 70px; /* Fast avstand til teksten */
+}
+
+.process-step video {
+    object-position: bottom;
+    object-position: 0 -500px;
+}
+
+/* Tekstboks */
+.text-box {
+    flex: 1; /* Tar opp resten av plassen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Midtstiller teksten vertikalt i sin boks */
+    text-align: left;
+    max-width: 500px; /* Begrenser tekstbredde */
+}
+
+/* Overskrift og paragraf i tekstboksen */
+.text-box h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    color: black;
+}
+
+.text-box p {
+    font-size: 15px;
+    margin: 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Responsivitet for mobil */
+@media (max-width: 768px) {
+    .process-step {
+        flex-direction: column; /* Stable bilde og tekst */
+        height: auto; /* Fjerner fast høyde i mobil */
+        padding: 20px;
+        align-items: flex-start; /* Justerer til venstre i stedet for sentrert */
+    }
+
+    .process-step img,
+    .process-step video {
+        max-width: 100%;
+        max-height: none; /* Fjerner høydebegrensning i mobil */
+        margin-right: 0;
+        margin-bottom: 15px; /* Avstand til tekst under */
+    }
+
+    .process-step video {
+        object-position: bottom;
+        object-position: 0; /* Korrigerer til én verdi */
+    }
+
+    .text-box {
+        text-align: left; /* Venstrejustert tekst */
+        max-width: 100%;
+        width: 100%; /* Sørger for at boksen strekker seg til venstre */
+    }
+}

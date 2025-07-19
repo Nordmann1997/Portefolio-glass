@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Half-Oval Layout</title>
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">
+            <a href="../index.html">JWK</a>
+        </div>
+        <div class="expand-banner">
+            Press to expand the image
+        </div>
+        <button class="menu-btn" id="menuButton">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </button>
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="../about.html">About Me</a>
+            <a href="../contact.html">Contact Info</a>
+        </div>
+    </nav>
+
+    <!-- Sections with Inverted Oval Order -->
+    <div class="section toggleClipSection">
+        <div class="oval">
+            <img src="../../pictures/index/oval.jpg" alt="Oval" class="toggleClip img-oval-1">
+        </div>
+        <div class="text-box">
+            <div class="description">Oval</div>
+            <div class="small-description">A speaker made of solid pine designed to fit into your home.</div>
+        </div>
+        <button id="exploreButton" class="hidden" onclick="location.href='../oval.html'">Explore</button>
+    </div>
+
+    <div class="section toggleClipSection">
+        <div class="oval">
+            <img src="../../pictures/index/front_without.jpg" alt="Woody" class="toggleClip img-woddy">
+        </div>
+        <div class="text-box">
+            <div class="description">Woody</div>
+            <div class="small-description">A speaker made of solid Indian rosewood.</div>
+        </div>
+        <button id="exploreButton" class="hidden" onclick="location.href='../woody.html'">Explore</button>
+    </div>
+
+    <div class="section toggleClipSection">
+        <div class="oval">
+            <img src="../../pictures/index/benk.jpg" alt="Bench" class="toggleClip img-oval-2">
+        </div>
+        <div class="text-box">
+            <div class="description">Terrarium Bench</div>
+            <div class="small-description">A bench combined with a terrarium in Indian Rosewood.</div>
+        </div>
+        <button id="exploreButton" class="hidden" onclick="location.href='../benk.html'">Explore</button>
+    </div>
+
+    <div class="section toggleClipSection">
+        <div class="oval">
+            <img src="../../pictures/index/ludo.jpg" alt="Ludo" class="toggleClip img-oval-3">
+        </div>
+        <div class="text-box">
+            <div class="description">Ludo Book</div>
+            <div class="small-description">A board game reborn as a beautiful functional decor element in oak.</div>
+        </div>
+        <button id="exploreButton" class="hidden" onclick="location.href='../ludo.html'">Explore</button>
+    </div>
+
+    <div class="section toggleClipSection">
+        <div class="oval">
+            <img src="../../pictures/index/stolen.jpg" alt="Chair" class="toggleClip img-oval-5">
+        </div>
+        <div class="text-box">
+            <div class="description">Spine</div>
+            <div class="small-description">A chair in metal with its own spine combined with an electric foot.</div>
+        </div>
+        <button id="exploreButton" class="hidden" onclick="location.href='../stolen.html'">Explore</button>
+    </div>
+
+    <div class="section toggleClipSection">
+        <div class="oval">
+            <img src="../../pictures/index/dorhondtak.jpg" alt="Door Handle" class="toggleClip img-oval-4">
+        </div>
+        <div class="text-box">
+            <div class="description">Door Handle</div>
+            <div class="small-description">A door handle that shows the way for everyone.</div>
+        </div>
+        <button id="exploreButton" class="hidden" onclick="location.href='../doorhandle.html'">Explore</button>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuButton.addEventListener('click', () => {
+            menuButton.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                menuButton.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+    <footer>
+        <div id="socials-container">
+            <a href="https://www.instagram.com/made_by_jwk/">Instagram</a>
+        </div>
+        <p>2025 - All rights reserved</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="../../scripts/product.js"></script>
+    <script src="../../scripts/about.js"></script>
+</body>
+</html>

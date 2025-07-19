@@ -1,0 +1,173 @@
+/* GENERAL */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Lagt til for bedre kontroll */
+}
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+p {
+    color: rgb(85, 85, 85);
+}
+/* TRANSITION */
+a,
+.btn {
+    transition: all 300ms ease;
+}
+
+/* DESKTOP NAV - Kombinert og ryddet opp */
+nav#desktop-nav {
+    /* Layout og posisjonering */
+  
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Sentrerer horisontalt */
+    width: calc(100% - 20px); /* Full bredde minus margin */
+    max-width: 1200px; /* Eventuell max-bredde */
+    height: 60px;
+    z-index: 100;
+    
+    /* Glass effect */
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    
+    /* Performance optimering */
+    transform: translateX(-50%) translate3d(0,0,0);
+    will-change: transform;
+}
+
+#socials-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 30px;
+}
+
+#socials-container a {
+    color: inherit !important; /* Uses the parent text color */
+    text-decoration: none !important; /* Removes underline */
+}
+
+#socials-container a:hover {
+    color: #0778b1;
+    scale: 1.1;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    filter: grayscale(100%);
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: grayscale(0%);
+}
+
+nav#desktop-nav::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 50px; /* Matcher header radius */
+    z-index: 5;
+}
+
+.glass-header-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    will-change: transform;
+}
+
+.glass-header-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.header-ui {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 20px;
+    }
+    
+    nav#desktop-nav {
+        width: calc(100% - 10px); /* Mindre margin på mobil */
+        max-width: none; /* Fjern max-width på små skjermer */
+    }
+    
+    #socials-container {
+        margin-right: 20px; /* Mindre margin på mobil */
+        gap: 0.5rem; /* Mindre gap mellom ikoner */
+    }
+    
+    .icon {
+        width: 28px; /* Litt mindre ikoner på mobil */
+        height: 28px;
+    }
+}
+
+/* Hero sections */
+.hero-image-small {
+    top: calc(50 * var(--vh) - 100px);
+    background-image: url('https://jwk.no/pictures/about/meg.jpg');
+}
+
+.hero-text-small {
+    top: calc(50 * var(--vh) + 0px);
+}
+
+.hero-image-large {
+    top: calc(50 * var(--vh) - 200px);
+    background-image: url('https://jwk.no/pictures/about/meg.jpg');
+}
+
+.hero-text-large {
+    top: calc(50 * var(--vh) - 74px);
+}

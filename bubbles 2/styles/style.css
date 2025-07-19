@@ -1,0 +1,437 @@
+/* GENERAL */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100dvh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  color: rgb(85, 85, 85);
+}
+
+/* TRANSITION */
+a,
+.btn {
+  transition: all 300ms ease;
+}
+
+/* DESKTOP NAV */
+nav#desktop-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background:none;
+  z-index: 100;
+}
+
+nav#desktop-nav > div {
+  display: flex;
+  align-items: center;
+}
+
+nav#desktop-nav > .product_name {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.product_name {
+  padding-bottom: 40px;
+  padding-top: 42px;
+  margin: 0 auto;
+  font-family: "Noto Sans Batak", sans-serif;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-left: 40px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #222;
+  transition: color 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo a:hover {
+  color: #f09c14;
+}
+
+#socials-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 30px;
+}
+
+#socials-container a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+#socials-container a:hover {
+  color: #0473ab;
+  scale: 1.1;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%);
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* SITE GRID */
+.site {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+
+/* MAIN CONTENT */
+main {
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center content */
+  min-height: 0;
+}
+
+/* SECTION STYLING */
+section {
+  margin: 0 5rem;
+  box-sizing: border-box;
+  /* Remove fixed height to allow dynamic centering */
+}
+
+/* PROFILE SECTION */
+#profile {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center within itself */
+  gap: 5rem;
+  height: 40vh; /* Reverted to fixed height to match original size perception */
+  margin-top: 14vh;
+   /* Offset from top */
+}
+
+.section__pic-container {
+  flex: 0 0 auto;
+  width: 330px;
+  height: 330px;
+  margin: auto 0;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 0;
+  box-shadow: 0 5px 16px 1px rgb(207, 207, 207);
+
+}
+
+.section__pic-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+.section__text {
+  align-self: center;
+  text-align: center;
+}
+
+.section__text p {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.section__text__p1 {
+  text-align: center;
+}
+
+.section__text__p2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ICONS */
+.icon {
+  cursor: pointer;
+  height: 2rem;
+}
+
+/* BUTTONS */
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align buttons */
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  font-weight: 600;
+  transition: all 300ms ease;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.3rem rgb(199, 199, 199);
+}
+
+.btn-color-1,
+.btn-color-2 {
+  background: none;
+  color: black;
+}
+
+.btn-color-1:hover,
+.btn-color-2:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.btn-color-2 {
+  background: none;
+}
+
+.btn1 {
+  padding: 20px 20px;
+  font-size: 0.8em;
+  cursor: pointer;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  width: 10rem;
+  margin-right: 10px;
+  background-color: #f0ad4e;
+}
+
+.btn2 {
+  padding: 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  background-color: #f0ad4e;
+  width: 272px;
+  
+}
+
+.btn1:hover {
+  scale: 1.1;
+  transition: all 300ms ease;
+}
+
+.btn2:hover {
+  scale: 1.1;
+  transition: all 300ms ease;
+}
+
+.btn-color-3 {
+  background-color: #f0ad4e;
+}
+
+
+.btn-color-4 {
+  background-color: #f0ad4e;
+}
+
+.ballinfo p {
+  font-size: 10px !important;
+}
+
+.ballinfo {
+  padding-top: 2vh;
+}
+
+.mode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mode-container .mode-text {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+/* FOOTER SECTION */
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #272727;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  position: relative;
+}
+
+footer p {
+  margin: 0;
+  font-size: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 760px) {
+  .logo {
+    font-size: 20px;
+    margin-left:20px;
+  }
+
+  .product_name h1 {
+    font-size: 21px;
+  }
+
+  nav#desktop-nav > .product_name {
+    margin-right: 0;
+  }
+
+  footer p {
+    font-size: 10px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  #profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 11vh; /* Reduced from 12vh to eliminate excess space */
+    gap: 1rem;
+  }
+
+  .section__pic-container {
+    width: 80%;
+    max-width: 200px;
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    flex: 0 0 auto;
+  }
+
+  .section__pic-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section__text {
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .section__text .title {
+    font-size: 1.9rem;
+    
+  }
+
+  .section__text p {
+    font-size: 1rem;
+    padding: 5px;
+  }
+
+  #exploreButton {
+    font-size: 1.2em;
+    padding: 15px 30px;
+    width: 50vw;
+  }
+
+   .btn2 {
+    padding: 15px 0 15px 0;
+    font-size: 1em;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    width: 280px;
+    font-weight:600 ;
+  }
+
+  .btn1 {
+    padding: 4px 40px;
+    font-size: 1em;
+    cursor: pointer;
+    color: black;
+    width: 7rem;
+    font-weight:1000 ;
+  }
+  main {
+    grid-area: main;
+    display: block;
+    justify-content: center;
+    align-items: center; /* Vertically center content */
+    min-height: 0;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1200px)  {
+
+#profile {
+ flex-direction: column;
+ gap: 3rem;
+ }
+}

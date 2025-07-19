@@ -1,0 +1,254 @@
+/* Grunnleggende reset og typografi */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.site {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Fixed typo: '1ft' to '1fr' */
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+}
+
+/* Container and About Page Specific Styles */
+.container {
+    width: 90vw;
+    margin: 40px 0 0 41px;
+    min-height: 80vh; /* Changed from height: 80vh to allow growth */
+    /* Alternatively: height: auto; if you don’t need a minimum */
+}
+
+section {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    
+}
+
+.line {
+    width: 4px;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
+    margin-right: 20px;
+}
+
+.content {
+    flex: 1;
+    /* Fixed syntax error: border-left: 1px solid rgb(255, 255, 255); if intended */
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: 400;
+    color:rgb(46, 46, 46) solid;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+ul li {
+    margin-bottom: 5px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+.container p {
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+.profile-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* About Header Section */
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 95%;
+    margin-top:-30px;
+}
+
+.about-intro {
+    flex: 1;
+    margin-right: 20px; /* Add space between text and image */
+    
+    padding-left: 25px;
+    
+    align-content: center;
+    
+    border-left: 3px rgb(46, 46, 46) solid;
+}
+
+.about-intro h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: rgb(46, 46, 46) solid;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+.about-intro p {
+    font-size: 1.3rem;
+}
+
+.about-image {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    margin-left:50px;
+}
+
+.about-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+
+/* About Details Section */
+.about-details {
+    
+    font-size: 1rem;
+    margin-top: 100px;
+    border-left: 3px rgb(46, 46, 46) solid;
+
+    padding-left: 25px;
+    margin-left: 20px;
+    
+}
+
+/* Skills and Hardware Section */
+.skills-hardware {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+.skills, .hardware {
+    flex: 1;
+    margin-right: 20px;
+
+    border-left: 3px rgb(46, 46, 46) solid;
+
+    padding-left: 25px;
+}
+
+.skills h2, .hardware h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(46, 46, 46);
+    margin-bottom: 10px;
+}
+
+.skills ul, .hardware ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills ul li, .hardware ul li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Quote Section */
+.quote {
+    flex: 1;
+    font-size: 1.2rem;
+    font-style: italic;
+    color:  rgb(143, 143, 143);
+    text-align: right;
+}
+.quote p {
+    
+    color: rgb(143, 143, 143);
+}
+    
+
+/* Responsivitet */
+@media (max-width: 778px) {
+
+    .about-intro h1 {
+        font-size: 2.0rem;
+        font-weight: 600;
+        color:  
+        margin-bottom: 10px;
+    }
+    
+    .about-intro p {
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+
+    .container {
+        margin: 20px 0 0 20px; /* Adjusted for mobile */
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-header {
+       
+        align-items: center;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .about-intro {
+        margin-right: 0;
+        margin-bottom: 20px;
+        height: auto;
+    }
+
+    .about-image {
+        margin-left: 0;
+       margin-bottom: 30px;
+        align-content: center;
+        
+    }
+
+    .about-image img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 0%;
+    
+    }
+
+    .skills-hardware {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .skills, .hardware {
+        margin-right: 0;
+        margin-bottom: 50px;
+    }
+
+    .quote {
+        text-align: left;
+    }
+}

@@ -1,0 +1,95 @@
+/* GENERAL */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    color: rgb(85, 85, 85);
+}
+
+/* TRANSITION */
+a,
+.btn {
+    transition: all 300ms ease;
+}
+
+/* DESKTOP NAV */
+nav#desktop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    z-index: 100;
+    
+}
+
+
+
+
+
+
+#socials-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 30px;
+    
+    
+}
+
+#socials-container a {
+    color: inherit !important; /* Uses the parent text color */
+    text-decoration: none !important; /* Removes underline */
+    
+}
+
+#socials-container a:hover {
+    color: #0778b1;
+    scale: 1.1;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    filter: grayscale(100%);
+    
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+
+  }
+
+.icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: grayscale(0%);
+   
+
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Hindrer scrollbars */
+    min-height: 100dvh;
+
+    
+}
+
+section {
+  margin-top: 100px;
+}
+
+
+#gameContainer {
+   
+ 
+
+    
+    
+
+}
+
+.ball {
+    position: absolute;
+    width: 15vw;  /* Størrelsen på ballene */
+    height: 15vw;
+    max-width: 163px;
+    max-height: 163px;
+    border-radius: 50%; /* Ensure the ball remains circular */
+    background-size: cover;
+    overflow: hidden;
+    
+}
+
+ footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+  z-index: 17;
+}
+
+
+.ball:hover {
+    border: 3px solid green;
+}
+
+

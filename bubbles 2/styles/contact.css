@@ -1,0 +1,103 @@
+/* Fullskjerm video-bakgrunn */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.2; /* Senker opasiteten på videoen */
+}
+
+/* Fullskjerm GIF-bakgrunn */
+.gif-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-gif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.2; /* Senker opasiteten på GIF-en */
+}
+
+/* Overlay for å plassere teksten i midten */
+.contact-button {
+  /* Sørg for at knappen har en definert størrelse */
+  padding: 10px 30px;
+  display: inline-block;
+  z-index: 1000; /* Sørger for at knappen er over andre elementer */
+  
+  /* Valgfritt: Styling for bedre utseende */
+  background-color: #434343;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.overlay {
+  /* Sørg for at overlay ikke forstyrrer posisjoneringen */
+  position: relative;
+  pointer-events: none; /* Lar musehendelser gå gjennom til elementer under */
+}
+
+.contact-button {
+  pointer-events: auto; /* Sørger for at knappen fortsatt kan klikkes */
+}
+
+/* Hindrer scrolling */
+body, html {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Plasser footer i bunnen */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Ensure the typewriter text stands out */
+.typewriter-text {
+  font-size: 1.5rem;
+  text-align: center;
+  background: #000000e0; /* Semi-transparent background for readability */
+  padding: 10px 20px;
+  border-radius: 0px;
+  margin-top: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.typewriter-text:hover {
+  transform: scale(1.1); /* Slightly enlarge the box on hover */
+  background-color: #fcaf50; /* Change background color on hover */
+  color: black; /* Change text color on hover */
+}
+
+/* Responsive adjustments */

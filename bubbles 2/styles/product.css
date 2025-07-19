@@ -1,0 +1,594 @@
+/* GENERAL */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+
+
+body {
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+     background: linear-gradient(92deg, #e7e7e7, #dde1e4);
+    text-align: center;
+}
+
+
+p {
+    
+    
+    font-size: 0.9rem;
+    font-family: poppins;
+    color: black;
+    text-align: left;
+    font-weight: 100;
+}
+
+
+h1 {
+    font-size: 25px;
+    
+}
+
+
+
+.main-image {
+    width: 90vw;
+    max-width: 1100px;
+    border-radius: 5px;
+    margin-top: 50px;
+    height: 600px;
+    object-fit: cover;
+    box-shadow: 0 5px 16px 1px rgba(94, 94, 94, 0.618);
+   
+    
+    
+}
+
+.bottom-image {
+    width: 90vw;
+    max-width: 1100px;
+    margin-top: 30px;
+    box-shadow: 0 0 16px 2px rgb(193, 193, 193);
+    border-radius: 5px;
+
+}
+
+
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* To kolonner */
+    grid-template-rows: repeat(3, auto); /* Tre rader */
+    gap: 80px;
+    justify-items: center;
+    width: 90vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.image-grid img,
+.image-grid video {
+    width: 100%;
+    box-shadow: 0 5px 16px 1px rgba(94, 94, 94, 0.618);
+    width: 100%;
+    border-radius: 5px;
+   
+    object-fit: cover;
+    ;
+    
+    
+}
+
+.description-box {
+    text-align: left;
+    max-width: 100%;
+    display: flex;
+    flex-direction: auto;
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    grid-column: 1 / 3; /* Plasseres i høyre kolonne */
+    grid-row: 1 / 2; /* På samme rad som "åpen høyttaler"-bildet */
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+   
+    }
+
+    .text-box h3 {
+        font-size: 20px;
+        margin-top: 5px;
+        font-weight: bold;
+        color:rgb(0, 0, 0);
+         /* Add margin-bottom for mobile */
+        font-weight: 500;
+    }
+
+
+
+    
+
+
+/* Plasserer beskrivelsen i grid-systemet */
+.description-box {
+    grid-column: 1 / 3; /* Plasseres i høyre kolonne */
+    grid-row: 1 / 2; /* På samme rad som "åpen høyttaler"-bildet */
+}
+
+
+/* Generell styling for seksjonen */
+.how-its-made {
+    margin-top: 40px;
+    margin-top: 150px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90vw;
+}
+
+.how-its-made h1 {
+    font-size: 25px;
+    font-weight: 400;
+    padding-bottom: 0px;
+    text-align: left;
+    margin-top: 100px;
+    font-weight: 500;
+   
+}
+
+/* Flex for å stable process-step-elementene vertikalt */
+.how-its-made .image-grid {
+    display: flex;
+    flex-direction: column;
+    
+    max-width: 1200px;  
+    margin: 0 auto;
+    /* Add padding to the sides */
+    
+}
+
+/* Styling for hver process-step */
+.process-step {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+    padding: 5%;
+    box-sizing: border-box;
+    height: auto;
+    flex-direction: row;
+    border-radius: 75px;
+    box-shadow: inset 1px 1px 10px 1px rgba(94, 94, 94, 0.318);
+    }
+
+/* For odd process-steps, place the image on the left side */
+.process-step:nth-child(odd) {
+    flex-direction: row;
+}
+
+/* For even process-steps, place the image on the right side */
+.process-step:nth-child(even) {
+    /*flex-direction: row-reverse;*/
+}
+
+/* Bilder og video */
+.process-step img,
+.process-step video {
+    width: 45%; /* Ensure images take half the width */
+    max-height: 500px;
+    
+    transition: all 0.5s;
+}
+
+/* Tekstboks */
+.text-box {
+    width: 43%; /* Ensure text boxes take half the width */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 50px;
+    line-height: 1,5;
+}
+
+/* Responsivitet for mobil */
+@media (max-width: 1000px) {
+    .process-step {
+        display: flex;
+        flex-direction: column !important; /* Forces image above text */
+        align-items: center;
+        text-align: left;
+        width: 100%;
+        padding: 0%;
+        box-shadow: none;
+        background: none;
+    }
+
+   
+
+
+    .process-step img,
+    .process-step video {
+        width: 100% !important; /* Forces full width */
+        height: auto !important;
+        margin-bottom: 15px !important; /* Space between image and text */
+    }
+
+    .text-box {
+        width: 100% !important;
+        text-align: left;
+        margin-right: 0.1px;
+        
+    }
+
+    .text-box p {
+        margin: 0 !important; /* Removes unnecessary extra spacing */
+    }
+
+
+
+
+    .description-box {
+        grid-column: 1 / -1; /* Tar opp hele bredden */
+        grid-row: 1 / 2; /* Plasseres under hovedbildet */
+        width: 100%; /* Ensure it takes full width */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    .how-its-made .image-grid {
+        flex-direction: column; /* Stable process-step-elementene vertikalt */
+    }
+
+    .how-its-made h1 {
+        font-size: 22px;
+        font-weight: 400;
+        padding-bottom: 30px;
+        
+    }
+
+    .how-its-made {
+        width: 80vw;
+        
+    }
+    
+
+    .image-grid {
+        grid-template-columns: 1fr; /* En kolonne */
+        grid-template-rows: auto; /* Automatisk høyde */
+        width: 100%; /* Ensure it takes full width */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .text-box h3 {
+        font-size: 19px;
+        margin-top: 5px;
+        font-weight: 400;
+        
+        margin-bottom: -5px; /* Add margin-bottom for mobile */
+    }
+    
+    .text-box p {
+        font-size: 12px;
+        margin: 0;
+        margin-top: 0; /* Remove margin-top for mobile */
+    }
+
+    .main-image {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        
+        
+    }
+    
+    .bottom-image {
+        width: 90vw;
+        margin-top: 20px;
+    }
+
+    .image-grid {
+        width: 80vw;
+    }
+    .how-its-made .image-grid {
+        padding: 0;
+}
+}
+
+.three-images {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px; /* Add margin to create space between images and text */
+   
+    position: relative; /* Position relative for sliding */
+    touch-action: pan-y; /* Enable horizontal swipe */
+}
+
+.three-images img {
+    width: 32%; /* Ensure images take up equal space */
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+}
+
+/* Add navigation buttons for sliding */
+.three-images .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%; /* Make buttons round */
+    width: 40px; /* Set width for round shape */
+    height: 40px; /* Set height for round shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.three-images .nav-button.prev {
+    left: 10px;
+}
+
+.three-images .nav-button.next {
+    right: 10px;
+}
+
+/* Dots navigation */
+.dots-container {
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* Responsivitet for mobil */
+@media (max-width: 1000px) {
+    .three-images {
+        overflow: hidden; /* Hide overflow for sliding effect */
+        gap:0; 
+    }
+
+    .three-images img {
+        width: 100%; /* Ensure images take full width */
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        transition: transform 0.5s ease; /* Smooth transition for sliding */
+        max-height: 700px;
+    }
+
+    .three-images .nav-button {
+        display: block; /* Show navigation buttons on mobile */
+    }
+
+    .dots-container {
+        display: block; /* Show dots on mobile */
+    }
+}
+
+.process-step.three-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    
+    
+}
+
+.process-step.three-images-container .text-box {
+    width: 100%;
+    
+    
+}
+
+
+/* Spesialstil for denne produktsiden */
+.special-product {
+    background-color: rgb(0, 0, 0); /* Endret bakgrunnsfarge */
+}
+
+
+
+.special-product p {
+   color: rgb(255, 255, 255); /* Endret bakgrunnsfarge */
+}
+
+.special-product .description-box {
+    background-color: rgba(0, 0, 0, 0.7); /* Mørkere bakgrunn for beskrivelsesboks */
+    color: white; /* Endre tekstfarge for bedre kontrast */
+}
+
+.special-product .image-grid img {
+    box-shadow: none; /* Fjerner skyggeeffekt */
+    filter: grayscale(100%);
+}
+
+.special-product .process-step {
+    background-image: linear-gradient(to right, rgb(31, 31, 31), rgb(21, 21, 21));
+    box-shadow: none;
+}
+
+.special-product .how-its-made h1 {
+    color: white;
+}
+
+
+
+
+/* Background color for the new section */
+.info-boxes, .main-heading {
+    margin-bottom: 50px;
+}
+
+/* Style for the main heading */
+.main-heading {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: left;
+    margin: 50px 0;
+    color: rgb(0, 0, 0); /* Text color for visibility */
+    
+}
+
+/* Layout for the info boxes */
+.info-boxes {
+    display: flex;
+    justify-content: flex-start;
+    
+    
+}
+
+/* Individual info box styles */
+.info-box {
+    text-align: left;
+    margin-right: 100px;
+
+    
+    
+}
+
+/* Info box heading */
+.info-box h3 {
+    font-size: 1.0rem;
+    margin-bottom: 10px;
+}
+
+/* Info box text */
+.info-box p {
+    font-size: 0.8rem;
+    color: #000000;
+}
+
+/* Background container to cover main image and description box */
+.background-container {
+   background: linear-gradient(92deg, #e7e7e7, #dde1e4);
+   margin-bottom: 50px;
+}
+
+.intro-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 90vw;
+ }
+
+
+
+.description-box p {
+    width: 100%;
+    margin-bottom: 90px;
+    
+   
+    }
+
+ @media (max-width: 1000px) {
+
+    .intro-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 90vw;
+     }
+
+    .main-heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: left;
+        margin: 50px 0;
+        color: rgb(0, 0, 0); /* Text color for visibility */
+        
+    }
+    
+    /* Layout for the info boxes */
+    .info-boxes {
+        display: flex;
+        justify-content: flex-start;
+        
+        
+    }
+    
+    /* Individual info box styles */
+    .info-box {
+        text-align: left;
+        margin-right: 100px;
+        margin-right: 30px;
+        display: inline-block;
+        white-space: nowrap;
+    
+        
+        
+    }
+    
+    /* Info box heading */
+    .info-box h3 {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    
+    /* Info box text */
+    .info-box p {
+        font-size: 0.6rem;
+        color: #000000;
+        
+    }
+
+
+    .description-box p {
+        width: 100%;
+        margin-bottom: 100px;
+        font-size: 0.8rem;
+        
+       
+        }
+
+ 
+   
+}

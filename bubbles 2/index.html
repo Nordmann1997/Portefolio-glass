@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWK portefolio</title>
+    <link rel="stylesheet" href="styles/ball.css">
+    <link rel="stylesheet" href="styles/style.css">
+  
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">
+            <a href="index.html">JWK</a>
+        </div>
+        <div class="mode-container">
+            
+            <div class="button-container">
+                
+              
+            </div>
+        </div>
+        <div id="socials-container">
+          
+            <a href="english/index.html" class="language-link">
+                <img src="pictures/index/flagg-english.jpg" alt="Norsk" style="width: 30px; height: 20px; border-radius: 5px;">
+            </a>
+            
+        </div>
+    </nav>
+
+    <main>
+        <section id="profile">
+            <div class="section__pic-container">
+                <img src="pictures/about/meg.jpg" alt="profilbilde" />
+                
+            </div>
+            <div class="section__text">
+                <h1 class="title">Johannes Worren Kløcker</h1>
+                
+                <p class="section__text__p">Velkommen til min portefølje! </p>
+                
+                
+                
+                <div class="btn-container">
+                    <div class="btn-row">
+                        <button class="btn btn-color-2" onclick="location.href='about.html'">Om meg</button>
+                        <button class="btn btn-color-1" onclick="location.href='contact.html'">Kontaktinfo</button>
+                    </div>
+                    <button class="btn2 btn-color-4" onclick="location.href='tiles/index.html'">Til produktside →</button>
+                </div>
+                <div class="ballinfo">
+                    <p>Trykk på en ball for å lære mer om produktet, eller gå til produktsiden</p>
+                   
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="gameContainer"></div>
+    <script src="script.js"></script>
+    <script src="scripts/about.js"></script>
+    <script>
+        fetch('https://ipapi.co/json/')
+          .then(res => res.json())
+          .then(data => {
+            // Lag URL-encoded data
+            const formData = new URLSearchParams();
+            formData.append("city", data.city || "");
+            formData.append("region", data.region || "");
+            formData.append("country_name", data.country_name || "");
+            formData.append("ip", data.ip || "");
+        
+            // Send til Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbx_mRKrYYdvDoqoFbzhhqJZFnadjh7wHVYKZAe3ijXSoZeEdR3gp8jJcjjh8t45xJ9j/exec', {
+              method: 'POST',
+              body: formData
+            })
+            .then(() => console.log("Data sendt til Google Sheets"))
+            .catch(error => console.error("Feil ved sending:", error));
+          })
+          .catch(error => console.error("Feil ved henting av IP-data:", error));
+        </script>
+  
+</body>
+</html>

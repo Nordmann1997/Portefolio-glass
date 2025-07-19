@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oval - Høyttaler</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/product.css">
+    <link rel="stylesheet" href="tiles/header.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
+    <style>
+      .large-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://github.com/Nordmann1997/Portefolio-glass/blob/main/glass2.jpg?raw=true');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        
+        pointer-events: none;
+       
+      }
+    </style>
+</head>
+<body>
+  
+  <nav id="desktop-nav" class="magnifying-glass">
+    <div class="glass-header-content"></div>
+    <div class="header-ui">
+        <div class="logo">
+            <a href="../index.html">JWK</a>
+        </div>
+        <div class="product_name"></div>
+        <button class="menu-btn" id="menuButton">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="about.html">Om meg</a>
+            <a href="contact.html">Kontakt info</a>
+        </div>
+    </div>
+</nav>
+    <main>
+        <div class="background-layer"></div>
+        <div class="background-container">
+            <div class="intro-container">
+                <img src="pictures/oval/front.jpg" alt="Oval høyttaler" class="main-image">
+                <h2 class="main-heading">Oval</h2>
+                <section class="info-boxes">
+                    <div class="info-box">
+                        <h3>Prosjekt type</h3>
+                        <p>Egenprosjekt</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>År</h3>
+                        <p>2023</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Prosjekt lokasjon</h3>
+                        <p>Oslomet Produktdesign</p>
+                    </div>
+                </section>
+                <div class="description-box">
+                    <p>Oval er en høyttaler skapt med interiørdesign i fokus. Den myke formen og valget av naturlige materialer som furu og stål gjør den enkel å integrere i ethvert hjem. Betjeningen er intuitiv med én elegant knapp – laget av stål og furu – som kombinerer høy kvalitet med lang holdbarhet. Høyttaleren er maskinert ut i furu, med en stål seksjon i midten som gir en fin kontrast der topp og bunn møtes.</p>
+                </div>
+            </div>
+        </div>
+        <section class="image-grid">
+            <img src="pictures/oval/side.jpg" alt="Sidevisning">
+            <img src="pictures/oval/bak.jpg" alt="Knapp detalj">
+            <img src="pictures/oval/open.jpg" alt="Komponenter">
+            <img src="pictures/oval/under.jpg" alt="Komponenter">
+            
+        </section>
+        <section class="how-its-made">
+            <h1>Kort om prosessen</h1>
+            <div class="image-grid">
+                <div class="process-step three-images-container">
+                    <div class="three-images">
+                        <img src="pictures/oval/produksjon/blokk1.jpg" alt="Step 1">
+                        <img src="pictures/oval/produksjon/blokk2.jpg" alt="Step 2">
+                        <img src="pictures/oval/produksjon/blokk3.jpg" alt="Step 3">
+                    </div>
+                    <div class="text-box">
+                        <h3>Forberedelse av treverket</h3>
+                        <p>Høyttalerens form består av to deler – en topp og en bunn. For å skape disse med høy presisjon, valgte jeg å bruke CNC-teknologi til å maskinere dem ut av to store treblokker.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <video controls>
+                        <source src="pictures/oval/produksjon/maskinering.mp4" type="video/mp4">
+                        Din nettleser støtter ikke video.
+                    </video>
+                    <div class="text-box">
+                        <h3>Maskinering</h3>
+                        <p>For å få presise mål og den ovale formen, valgte jeg å bruke CNC. Dette er en veldig presis måte å forme treverk på og programmeres til å følge en 3D-modell av høyttaleren i Fusion 360.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <img src="pictures/oval/produksjon/resultat_maskinering.jpg" alt="Grovt maskinert resultat">
+                    <div class="text-box">
+                        <h3>Grovt maskinert</h3>
+                        <p>Her ser du delene halvveis i prosessen, etter grovmaskinering med CNC, før de snus for videre bearbeiding. Deretter kjøres maskinen igjen for å gi en nesten perfekt overflate.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <img src="pictures/oval/produksjon/before_after.jpg" alt="Fra mockup til prototype">
+                    <div class="text-box">
+                        <h3>Fra mockup til prototype</h3>
+                        <p>Før jeg gikk i gang med maskinering, lagde jeg en mockup-modell i skum for å visualisere størrelsen og formen. Her kan man se at den ferdige prototypen er litt større med en litt annen form.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <img src="pictures/oval/produksjon/knapp.jpg" alt="Knapp i stål og furu">
+                    <div class="text-box">
+                        <h3>Knapp</h3>
+                        <p>Siden høyttaleren er en fungerende prototype, designet jeg en knapp med både form og funksjon. Den er maskinert ut av stål, med et senter i furu, og omgitt av en akrylring som lyser for å vise om høyttaleren er på eller i Bluetooth-modus.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="socials-container">
+            <a href="https://www.instagram.com/made_by_jwk/">Instagram</a>
+        </div>
+        <p>2025 - All rights reserved</p>
+    </footer>
+
+    <script src="scripts/product.js"></script>
+    <script src="scripts/about.js"></script>
+    <script src="scripts/background.js"></script>
+    <script src="scripts/slider.js"></script>
+    <script src="tiles/script.js"></script>
+</body>
+</html>

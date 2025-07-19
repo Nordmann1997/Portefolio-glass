@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWK - Contact</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">
+            <a href="tiles/index.html">JWK</a>
+        </div>
+
+        <button class="menu-btn" id="menuButton">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </button>
+      
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="about.html">About me</a>
+            <a href="contact.html">contact info</a>
+        </div>
+        
+    </nav>
+    
+    <main>
+        <div class="gif-container">
+            <img src="../pictures/contact/hands.gif" alt="Background GIF" class="background-gif">
+            <div class="overlay">
+                <a href="#" class="contact-button">Contact Me</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div id="socials-container">
+            <a href="https://www.instagram.com/made_by_jwk/">Instagram</a>
+        </div>
+        <p>2025 - All rights reserved</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('.contact-button');
+            
+            // Set initial position to the center of the window
+            let spawnX = window.innerWidth / 2;
+            let spawnY = window.innerHeight / 1.15;
+            let currentX = spawnX;
+            let currentY = spawnY;
+            let targetX = currentX;
+            let targetY = currentY;
+            let followMouse = true;
+
+            // Initialize button position
+            const buttonWidth = button.offsetWidth / 2;
+            const buttonHeight = button.offsetHeight / 2;
+            button.style.position = 'absolute';
+            button.style.left = `${currentX - buttonWidth}px`;
+            button.style.top = `${currentY - buttonHeight}px`;
+
+            // Listen to mouse movements
+            document.body.addEventListener('mousemove', (e) => {
+                if (followMouse) {
+                    targetX = e.clientX;
+                    targetY = e.clientY;
+                }
+            });
+
+            // Animation function for the button
+            function animate() {
+                currentX += (targetX - currentX) * 0.1;
+                currentY += (targetY - currentY) * 0.1;
+
+                button.style.left = `${currentX - buttonWidth}px`;
+                button.style.top = `${currentY - buttonHeight}px`;
+
+                requestAnimationFrame(animate);
+            }
+
+            // Start button animation
+            animate();
+
+            // Typewriter effect on button click
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default mailto link behavior
+
+                // Create typewriter text element
+                const typewriterText = document.createElement("a");
+                typewriterText.classList.add("typewriter-text");
+                typewriterText.style.position = "fixed";
+                typewriterText.style.top = "40%"; // Position in the upper part of the screen
+                typewriterText.style.left = "50%";
+                typewriterText.style.transform = "translate(-50%, 0)";
+                typewriterText.style.color = "white";
+                typewriterText.style.fontFamily = "Poppins, sans-serif";
+                typewriterText.style.zIndex = "1000";
+                typewriterText.href = "mailto:Jwklocker@hotmail.com"; // Make it a mailto link
+                typewriterText.style.textDecoration = "none";
+                document.body.appendChild(typewriterText);
+
+                // Typewriter effect for email
+                let text = "Jwklocker@hotmail.com";
+                let index = 0;
+
+                function typeWriter() {
+                    if (index < text.length) {
+                        typewriterText.textContent += text.charAt(index);
+                        index++;
+                        setTimeout(typeWriter, 100); // Adjust speed of typing (150ms per character)
+                    }
+                }
+
+                // Start typing effect
+                typeWriter();
+
+                // Make the button fly back to its spawn location and stop following the mouse
+                followMouse = false;
+                targetX = spawnX;
+                targetY = spawnY;
+
+                // Make the button disappear
+                button.style.display = 'none';
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const video = document.querySelector(".video-container video");
+            if (video) {
+                video.muted = true; // Ensure it is muted
+                video.play().catch(error => console.log("Autoplay failed:", error));
+            }
+        });
+
+       const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+    
+        menuButton.addEventListener('click', () => {
+            menuButton.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
+        });
+    
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                menuButton.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+    </script>
+    <script src="../scripts/about.js"></script>
+</body>
+</html>

@@ -23,7 +23,7 @@ html, body {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(92deg, #ffe6cf, #dde1e4);
+    background: linear-gradient(92deg, #e7e7e7, #dde1e4);
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
@@ -39,7 +39,7 @@ body {
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
-    filter: blur(1.1);
+    filter: grayscale(0.8);
 }
 
 .magnifying-glass {
@@ -157,12 +157,9 @@ body {
     right: 0;
     width: 200px;
     border-radius: 15px;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+   
     opacity: 0;
-    visibility: hidden;
+   
     transform: translateY(-10px);
     transition: all 0.3s ease;
     z-index: 3001;
@@ -538,7 +535,7 @@ body {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
+    color: rgb(43, 43, 43);
     text-align: center;
     font-size: 14px;
     opacity: 0.7;
@@ -791,8 +788,129 @@ body {
     
 }
 
+
+.menu-btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transform: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    background-color: inherit;
+    outline: none;
+}
+
+.menu-btn:active {
+    transform: none !important;
+    box-shadow: none !important;
+    background-color: inherit !important;
+}
+
+/* Hamburger Button */
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+   
+    position: relative;
+    z-index: 10;
+    margin-left: auto;
+    margin-bottom: 5px;
+    flex-shrink: 0;
+}
+
+.menu-btn div {
+    width: 30px;
+    height: 3px;
+    background: rgb(102, 102, 102);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Rotating lines when active */
+.menu-btn.active .line1 {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-btn.active .line2 {
+    opacity: 0;
+}
+
+.menu-btn.active .line3 {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    
+    right: 60px;
+    width: 200px;
+    max-width: calc(100vw - 80px); /* Sikrer at dropdown ikke går utenfor skjermen */
+    
+    border-radius: 23px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    display: flex;
+    top: 6px;
+    z-index: 100000;
+    
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: black;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    color: #5e5e5e;
+}
+
+
+
+/* Responsivitet */
+@media (max-width: 768px) {
+   
+
+ 
+
+   
+
+
+
+    .menu-btn {
+        margin-right: 30px;
+    }
+
+    .dropdown-menu {
+        right: 20px;
+        width: 200px;
+        max-width: calc(100vw - 40px);
+    }
+
+ 
+
+
+}
+
     </style>
 </head>
+
+
 <body>
 
 <div class="large-background"></div>
@@ -803,18 +921,16 @@ body {
 
     <div class="click-message">Trykk på en kule</div> 
 
-    <div class="dropdown">
-        <button class="dropdown-btn" onclick="toggleDropdown()">
-            Meny
-            <span class="dropdown-arrow">▼</span>
-        </button>
-        <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">Portefølje</a>
-            <a href="#" class="dropdown-item">Om meg</a>
-            <a href="#" class="dropdown-item">Tjenester</a>
-            <a href="#" class="dropdown-item">Kontakt</a>
-        </div>
+    <button class="menu-btn" id="menuButton">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </button>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="about.html">Om meg</a>
+        <a href="contact.html">Kontakt info</a>
     </div>
+</div>
 </div>  
 
     <!-- Velkommen -->
@@ -878,24 +994,23 @@ body {
 
 
 <!-- Oval clickable area -->
-<a href="file:///Users/johannesworrenklocker/Documents/Oslomet/portefolio/bubbles%202/oval.html" class="clickable-area oval-clickable"></a>
+<a href="bubbles 2/oval.html" class="clickable-area oval-clickable"></a>
 
 <!-- Woody clickable area -->
-<a href="#woody" class="clickable-area woody-clickable"></a>
+<a href="bubbles 2/woody.html" class="clickable-area woody-clickable"></a>
 
 <!-- Terrarium benk clickable area -->
-<a href="#terrarium" class="clickable-area terrarium-clickable"></a>
+<a href="bubbles 2/benk.html" class="clickable-area terrarium-clickable"></a>
 
 <!-- Ludo clickable area -->
-<a href="#ludo" class="clickable-area ludo-clickable"></a>
+<a href="bubbles 2/ludo.html" class="clickable-area ludo-clickable"></a>
 
 <!-- Ryggrad clickable area -->
-<a href="#ryggrad" class="clickable-area ryggrad-clickable"></a>
+<a href="bubbles 2/stolen.html" class="clickable-area ryggrad-clickable"></a>
 
 <!-- Dørhåndtak clickable area -->
-<a href="file:///Users/johannesworrenklocker/Documents/Oslomet/portefolio/bubbles2/oval.html" class="clickable-area doorhandle-clickable">
-    Åpne oval.html
-  </a>
+<a href="bubbles 2/doorhandle.html" class="clickable-area doorhandle-clickable"></a>
+
 
 
     <script>
@@ -911,7 +1026,7 @@ body {
                 this.glassContent = element.querySelector('.glass-header-content');
                 this.currentZoom = 1.05; // Zoom for alle elementer, inkludert .large-background
                 this.edgeThicknessRatio = 0.14;
-                this.numLayers = 15;
+                this.numLayers = 10;
                 this.cachedBodyClone = null;
                 this.lastRenderKey = null;
                 this.lastScrollY = window.scrollY;
@@ -952,7 +1067,7 @@ body {
                 
                 // Make the background visible with correct sizing and repetition
                 this.cachedBodyClone.querySelectorAll('.large-background').forEach(el => {
-                    el.style.opacity = '0.1';
+                    el.style.opacity = '0.2';
                     el.style.visibility = 'visible';
                     el.style.zIndex = '99';
                     
@@ -1446,6 +1561,24 @@ window.addEventListener('pageshow', function(event) {
     // Siden ble lastet fra back-forward cache (bfcache)
     window.location.reload();
   }
+});
+
+
+
+const menuButton = document.getElementById('menuButton');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+menuButton.addEventListener('click', () => {
+    menuButton.classList.toggle('active');
+    dropdownMenu.classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        menuButton.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+    }
 });
 
     

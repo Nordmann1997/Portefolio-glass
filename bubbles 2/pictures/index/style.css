@@ -1,0 +1,290 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-family: poppins;
+    width: 100vw;
+    height: 100vh; /* Ensure body takes full viewport height */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Seksjoner */
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensure section takes full viewport height */
+    max-height: 500px;
+    
+}
+
+.oval {
+    width: 100%;
+    height: auto !important; /* Adjust height based on image */
+    display: flex; /* Makes sure it wraps around the image */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    z-index: 10;
+    
+}
+
+/* For odd sections, place the oval on the left side */
+.section:nth-child(odd) .oval {
+    clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+/* For even sections, place the oval on the right side */
+.section:nth-child(even) .oval {
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+/* Enlarging effect on hover */
+.oval:hover {
+    transform: scale(1.05);
+    z-index: 15;
+}
+
+.oval.toggled {
+    transform: scale(1.05);
+    z-index: 15;
+}
+
+.section:nth-child(odd) .oval.toggled {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.section:nth-child(even) .oval.toggled {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.section:nth-child(odd) .oval:not(.toggled) {
+    clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+.section:nth-child(even) .oval:not(.toggled) {
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.oval img {
+    width: 100%;
+    height: auto; /* Ensure image maintains aspect ratio */
+    object-fit: cover;
+    min-width: 1700px;
+} 
+
+.toggleClip.img-woddy {
+    margin-top: 00px; /* Juster etter behov */
+}
+
+
+    
+
+/* Text Box */
+.text-box {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Vertikal sentrering */
+    width: 40%; /* Begrenset bredde for teksten */
+    z-index: 10;
+    text-align: center;
+   /* Margin til høyre */
+}
+
+/* For odd sections, place text-box on the right side */
+.section:nth-child(odd) .text-box {
+    left: 75%; /* Midt i høyre halvdel */
+    transform: translate(-50%, -50%); /* Sentrerer horisontalt og vertikalt */
+}
+
+/* For even sections, place text-box on the left side */
+.section:nth-child(even) .text-box {
+    left: 25%; /* Midt i venstre halvdel */
+    transform: translate(-50%, -50%); /* Sentrerer horisontalt og vertikalt */
+}
+
+.description {
+    font-size: 3rem;
+    color: #000;
+    
+    font-weight: 300;
+    
+    text-align: left;
+}
+
+.small-description {
+    font-size: 1.3rem;
+    color: #5a5a5a;
+    
+    font-weight: 300;  
+    text-align: left;
+}
+
+/* Explore-knapp */
+#exploreButton {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20vw;
+    padding: 15px 0;
+    font-size: 1.1em;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;    
+    border-radius: 50px;
+}
+
+#exploreButton:hover {
+    background-color: #f7b162;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.mode-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mode-container .mode-text {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.button-container {
+    
+    gap: 30px;
+  }
+  
+  .btn1  {
+    padding: 10px 20px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    width: 9rem;
+    
+    
+  }
+  
+  .btn2  {
+    padding: 10px 20px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    width: 9rem;
+
+  }
+  
+  .btn1:hover {
+    scale: 1.1;
+    transition: all 300ms ease;
+  }
+  
+  .btn2:hover {
+    scale: 1.1;
+    transition: all 300ms ease;
+  }
+  
+  .btn-color-3 {
+    background-color: #f0ad4e; /* Fun-stil */
+  }
+  
+  .button-container .btn-color-4 {
+    background: none; /* Serious-stil */
+    border: black 2px solid; 
+    color : black;
+    
+  }
+  
+  .btn-color-4 {
+    background-color: #f0ad4e; /* Fun-stil */ /* Serious-stil, definert for referanse */
+  }
+
+
+/* Add specific styles for img-oval-1 */
+
+
+/* Responsivitet */
+@media (max-width: 768px) {
+    
+        .section {
+            height: 100vh; /* Ensure sections still take full screen height */
+        }
+        .toggleClip.img-woddy {
+            margin-top: 0px; /* Juster etter behov */
+        }
+
+    .description {
+        font-size: 2rem;
+    }
+
+    .oval img {
+        
+        min-width: 1100px;
+    } 
+
+    .small-description {
+        font-size: 1rem;
+    }
+
+    .text-box {
+        width: 40vw /* Litt bredere på mobil */
+    }
+
+    #exploreButton {
+        font-size: 1.0em;
+        padding: 15px 30px;
+        width: 55vw;
+    }
+    .mode-container .btn2 {
+        padding: 10px 20px;
+        font-size: 0.5em;
+        cursor: pointer;
+        color: black;
+        width: 6rem;
+    }
+    .mode-container .btn1 {
+        padding: 10px 20px;
+        font-size: 0.5em;
+        cursor: pointer;
+        color: black;
+        width: 7rem;
+    }
+    .mode-container {
+        
+      }
+    .oval:hover {
+        transform: none;
+        
+    }
+    .section {
+        height: auto; /* Adjust height to content on mobile */
+    }
+
+    .oval {
+        height: auto; /* Adjust height to content on mobile */
+    }
+}
+
+
+
