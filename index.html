@@ -22,15 +22,15 @@ html, body {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(92deg, #000000, #6698bb);
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(92deg, #ffe6cf, #dde1e4);
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
 }
 
 .large-background {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-image: url('https://github.com/Nordmann1997/Portefolio-glass/blob/main/glass2.jpg?raw=true');
     background-repeat: repeat-y;
     background-size: 200% 100%; /* dekker bredden, høyden følger bildet */
@@ -68,7 +68,12 @@ body {
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
     z-index: 1000;
+     transition: 0.5s ease;
+    
 }
+
+
+
 
 
 /* LEGG TIL DISSE STILENE I <style> SEKSJONEN */
@@ -101,7 +106,7 @@ body {
 .header-logo {
     font-size: 24px;
     font-weight: bold;
-    color: #ffffff;
+    color: #393939;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -120,7 +125,7 @@ body {
 .dropdown-btn {
     background: none;
     border: none;
-    color: white;
+    color: #393939;
     font-size: 18px;
     cursor: pointer;
     padding: 8px 12px;
@@ -266,8 +271,8 @@ body {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: #393939;
+    
     z-index: 100;
     transform: translateY(-50%);
 }
@@ -301,7 +306,7 @@ body {
     justify-content: center;
     font-size: 60px;
     font-weight: bold;
-    color: white;
+    color: #393939;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     z-index: -1;
     opacity: 0;
@@ -309,6 +314,87 @@ body {
     pointer-events: none;
     border-radius: 75px;
     backdrop-filter: blur(5px);
+}
+
+/* INVISIBLE CLICKABLE AREAS */
+.clickable-area {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2000; /* Over glass-effekten */
+    right: 75px;
+    transition: background-color 0.3s ease;
+}
+
+.clickable-area:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Desktop positioning for clickable areas */
+
+
+.oval-clickable {
+    top: calc(50vh + 160vh - 150px);
+}
+
+.woody-clickable {
+    top: calc(50vh + 220vh - 160px);
+}
+
+.terrarium-clickable {
+    top: calc(50vh + 280vh - 160px);
+}
+
+.ludo-clickable {
+    top: calc(50vh + 340vh - 160px);
+}
+
+.ryggrad-clickable {
+    top: calc(50vh + 400vh - 160px);
+}
+
+.doorhandle-clickable {
+    top: calc(50vh + 460vh - 160px);
+}
+
+/* Mobile positioning for clickable areas */
+@media screen and (max-width: 1299px) {
+    .clickable-area {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+   
+
+    .oval-clickable {
+        top: calc(50vh + 130vh - 290px);
+    }
+
+    .woody-clickable {
+        top: calc(50vh + 190vh - 280px);
+    }
+
+    .terrarium-clickable {
+        top: calc(50vh + 250vh - 280px);
+    }
+
+    .ludo-clickable {
+        top: calc(50vh + 310vh - 280px);
+    }
+
+    .ryggrad-clickable {
+        top: calc(50vh + 370vh - 280px);
+    }
+
+    .doorhandle-clickable {
+        top: calc(50vh + 430vh - 280px);
+    }
 }
 
 /* POSISJONERING AV ELEMENTER */
@@ -551,6 +637,26 @@ body {
         right: auto;
         transform: translateX(-50%);
     }
+    
+
+    /* Hover effects for large images */
+.large-image:hover {
+    transform: translateX(50%) scale(1.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effects for large text */
+.large-terrarium-text:hover {
+    transform: translateX(-50%) scale(1.15);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Make sure transitions are smooth */
+.large-image, .large-terrarium-text {
+    transition: transform 0.3s ease;
+}
 
     /* Mobile positioning for all elements */
     /* Velkommen - posisjon 1 */
@@ -673,6 +779,18 @@ body {
     }
 }
 
+.click-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.0rem;
+    color: rgb(61, 61, 61);
+    font-weight: 400;
+    pointer-events: none; /* gjør at den ikke blokkerer klikk */
+    
+}
+
     </style>
 </head>
 <body>
@@ -682,6 +800,9 @@ body {
 <div class="glass-header">
     
     <a href="#" class="header-logo">JWK</a>
+
+    <div class="click-message">Trykk på en kule</div> 
+
     <div class="dropdown">
         <button class="dropdown-btn" onclick="toggleDropdown()">
             Meny
@@ -753,6 +874,28 @@ body {
         <div class="scroll-arrow">↑</div>
         <div>Scroll opp for portefølje</div>
     </div>
+
+
+
+<!-- Oval clickable area -->
+<a href="file:///Users/johannesworrenklocker/Documents/Oslomet/portefolio/bubbles%202/oval.html" class="clickable-area oval-clickable"></a>
+
+<!-- Woody clickable area -->
+<a href="#woody" class="clickable-area woody-clickable"></a>
+
+<!-- Terrarium benk clickable area -->
+<a href="#terrarium" class="clickable-area terrarium-clickable"></a>
+
+<!-- Ludo clickable area -->
+<a href="#ludo" class="clickable-area ludo-clickable"></a>
+
+<!-- Ryggrad clickable area -->
+<a href="#ryggrad" class="clickable-area ryggrad-clickable"></a>
+
+<!-- Dørhåndtak clickable area -->
+<a href="file:///Users/johannesworrenklocker/Documents/Oslomet/portefolio/bubbles2/oval.html" class="clickable-area doorhandle-clickable">
+    Åpne oval.html
+  </a>
 
 
     <script>
@@ -1297,6 +1440,15 @@ function updateVh() {
 updateVh();
 window.addEventListener('resize', updateVh);
 
+
+window.addEventListener('pageshow', function(event) {
+  if (event.persisted) {
+    // Siden ble lastet fra back-forward cache (bfcache)
+    window.location.reload();
+  }
+});
+
+    
 
     </script>
 </body>
