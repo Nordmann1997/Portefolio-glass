@@ -39,7 +39,7 @@ body {
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
-    filter: grayscale(0.8);
+    
 }
 
 .magnifying-glass {
@@ -52,7 +52,7 @@ body {
     transform: translateY(-50%);
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
+    
     z-index: 1000;
 }
 
@@ -66,7 +66,7 @@ body {
     transform: translateY(-50%);
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
+    
     z-index: 1000;
      transition: 0.5s ease;
     
@@ -310,7 +310,7 @@ body {
     visibility: hidden;
     pointer-events: none;
     border-radius: 75px;
-    backdrop-filter: blur(5px);
+    
 }
 
 /* INVISIBLE CLICKABLE AREAS */
@@ -1557,12 +1557,13 @@ window.addEventListener('resize', updateVh);
 
 
 window.addEventListener('pageshow', function(event) {
-  if (event.persisted) {
-    // Siden ble lastet fra back-forward cache (bfcache)
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+
+  if (event.persisted && !isMobile) {
+    // Bare reload på desktop
     window.location.reload();
   }
 });
-
 
 
 const menuButton = document.getElementById('menuButton');
