@@ -15,7 +15,7 @@
 
 html, body {
     /* Hindrer den vanlige, innebygde scrollingen */
-    overflow: hidden;
+    
    
     margin: 0;
     padding: 0;
@@ -920,7 +920,7 @@ body {
   
 
  
-
+}
 
 }
 
@@ -1360,219 +1360,7 @@ body {
             glassInstances = [];
         });
     
-        (() => {
-    let scrollPositions = [];
-    let isAnimating = false;
-    let lastDelta = 0;
-    let lastTime = 0;
-    let touchStartY = 0;
-    let touchStartTime = 0;
-    
-    // Funksjon for å få riktig offset basert på skjermstørrelse
-    function getScrollOffset() {
-        const width = window.innerWidth;
-        
-        if (width < 1300) {
-            return 90; // Offset for mobile/tablet (kan justeres)
-        }
-        return 0; // Standard offset for desktop
-    }
 
-    function updateScrollPositions() {
-    const scrollOffset = getScrollOffset();
-    
-    // Get all small images and ensure we only process the expected 7
-    const smallImages = Array.from(document.querySelectorAll('.small-image'));
-    console.log('Found small images:', smallImages.length);
-    
-    // Force to only use the first 7 images to prevent extra positions
-    const imagesToProcess = smallImages.slice(0, 7);
-    
-    // Beregn scroll-posisjoner basert på faktisk element-posisjon
-    scrollPositions = imagesToProcess.map((el, i) => {
-        if (i === 0) return 0;
-        
-        // Finn den faktiske posisjonen til elementet
-        const elTop = el.getBoundingClientRect().top + window.scrollY;
-        // Beregn offset slik at glass-objektene sentreres på bildet
-        const offset = elTop - (window.innerHeight / 2) + (el.offsetHeight / 2) + scrollOffset;
-        return Math.round(offset);
-    });
-    
-    // Ensure we have exactly 7 positions
-    if (scrollPositions.length !== 7) {
-        console.error('Wrong number of scroll positions:', scrollPositions.length);
-        // Force to 7 positions if something went wrong
-        scrollPositions = scrollPositions.slice(0, 7);
-    }
-    
-    console.log('Updated scroll positions:', scrollPositions);
-    console.log('Array length:', scrollPositions.length);
-    console.log('Current offset:', scrollOffset);
-}
-
-    function findCurrentIndex(scrollY) {
-    let closest = 0;
-    let smallestDiff = Infinity;
-
-    scrollPositions.forEach((pos, i) => {
-        const diff = Math.abs(pos - scrollY);
-        if (diff < smallestDiff) {
-            closest = i;
-            smallestDiff = diff;
-        }
-    });
-
-    console.log(`Current scroll: ${scrollY}, closest index: ${closest}, position: ${scrollPositions[closest]}, diff: ${Math.abs(scrollPositions[closest] - scrollY)}`);
-    return closest;
-}
-
-    function animateScroll(to, duration = 700) {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        const start = window.scrollY;
-        const change = to - start;
-        const startTime = performance.now();
-
-        function easeInOutQuad(t) {
-            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        }
-
-        function step(timestamp) {
-            const elapsed = timestamp - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const easedProgress = easeInOutQuad(progress);
-            
-            window.scrollTo(0, start + change * easedProgress);
-
-            if (elapsed < duration) {
-                requestAnimationFrame(step);
-            } else {
-                isAnimating = false;
-            }
-        }
-
-        requestAnimationFrame(step);
-    }
-
-    function findNextScroll(currentY, direction) {
-    const currentIndex = findCurrentIndex(currentY);
-    let targetIndex = currentIndex + direction;
-
-    console.log(`Direction: ${direction}, Current index: ${currentIndex}, Target index: ${targetIndex}, Total positions: ${scrollPositions.length}`);
-
-    // More strict boundary checking with tolerance
-    const tolerance = 50; // pixels
-    const isAtFirst = currentIndex === 0 && Math.abs(currentY - scrollPositions[0]) < tolerance;
-    const isAtLast = currentIndex === scrollPositions.length - 1 && Math.abs(currentY - scrollPositions[scrollPositions.length - 1]) < tolerance;
-
-    if (direction < 0 && isAtFirst) {
-        console.log('At first image, blocking up scroll');
-        return null;
-    }
-    if (direction > 0 && isAtLast) {
-        console.log('At last image, blocking down scroll');
-        return null;
-    }
-
-    // Stopp ved første og siste bilde - ingen loop
-    if (targetIndex < 0) return null; // Endret fra scrollPositions[0]
-    if (targetIndex >= scrollPositions.length) return null; // Endret fra scrollPositions[scrollPositions.length - 1]
-
-    console.log(`Scrolling to position: ${scrollPositions[targetIndex]}`);
-    return scrollPositions[targetIndex];
-}
-
-window.addEventListener('wheel', (e) => {
-    const now = performance.now();
-    const timeDiff = now - lastTime;
-    const delta = e.deltaY;
-    const accel = Math.abs(delta) > Math.abs(lastDelta) && timeDiff < 300;
-
-    lastTime = now;
-    lastDelta = delta;
-
-    if (!accel || isAnimating) return;
-
-    e.preventDefault();
-
-    const direction = delta > 0 ? 1 : -1;
-    const target = findNextScroll(window.scrollY, direction);
-    
-    // Only animate if target is not null
-    if (target !== null) {
-        animateScroll(target, 700);
-    }
-}, { passive: false });
-
-window.addEventListener('keydown', (e) => {
-    if (isAnimating) return;
-
-    const direction =
-        (e.key === 'ArrowDown' || e.key === 'PageDown') ? 1 :
-        (e.key === 'ArrowUp' || e.key === 'PageUp') ? -1 : 0;
-
-    if (direction !== 0) {
-        e.preventDefault();
-        const target = findNextScroll(window.scrollY, direction);
-        
-        // Only animate if target is not null
-        if (target !== null) {
-            animateScroll(target, 700);
-        }
-    }
-});
-
-    window.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-        touchStartTime = performance.now();
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-    if (isAnimating) return;
-
-    const touchEndY = e.changedTouches[0].clientY;
-    const deltaY = touchStartY - touchEndY;
-    const timeDiff = performance.now() - touchStartTime;
-
-    if (Math.abs(deltaY) > 50 && timeDiff < 500) {
-        e.preventDefault(); // Legg til denne linjen
-        const direction = deltaY > 0 ? 1 : -1;
-        const target = findNextScroll(window.scrollY, direction);
-        
-        // Only animate if target is not null
-        if (target !== null) {
-            animateScroll(target, 700);
-        }
-    }
-}, { passive: false }); // Endre fra passive: true til passive: false
-
-    window.addEventListener('resize', () => {
-        // Oppdater scroll-posisjoner når vinduet endres
-        setTimeout(() => {
-            updateScrollPositions();
-            // Finn nærmeste posisjon og juster scroll gradvis
-            const currentIndex = findCurrentIndex(window.scrollY);
-            const targetScroll = scrollPositions[currentIndex];
-            if (Math.abs(window.scrollY - targetScroll) > 50) {
-                animateScroll(targetScroll, 300);
-            }
-        }, 500); // Lengre delay for å sikre at alle CSS-endringer er ferdige
-    });
-
-    window.addEventListener('load', () => {
-        window.scrollTo(0, 0);
-        // Oppdater scroll-posisjoner etter at alt er lastet
-        setTimeout(() => {
-            updateScrollPositions();
-        }, 500);
-    });
-
-    window.addEventListener('scroll', () => {
-        console.log('Scroll Y:', window.scrollY.toFixed(0));
-    });
-})();
 
 
 // Sett --vh til faktisk høyde på enheten
