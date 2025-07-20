@@ -120,9 +120,9 @@ class MagnifyingGlass {
         
         this.element = element;
         this.glassContent = element.querySelector('.glass-header-content');
-        this.currentZoom = 1.15;
-        this.edgeThicknessRatio = 0.4;
-        this.numLayers = 15;
+        this.currentZoom = 1.1;
+        this.edgeThicknessRatio = 0.25;
+        this.numLayers = 5;
         this.cachedBodyClone = null;
         this.lastRenderKey = null;
         this.lastScrollY = window.scrollY;

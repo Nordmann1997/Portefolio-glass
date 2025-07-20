@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:  "Poppins", sans-serif;
     background: linear-gradient(92deg, #e7e7e7, #dde1e4);
     min-height: 610vh;
     color: white;
@@ -30,7 +30,7 @@ body {
 }
 
 .large-background {
-    font-family: Arial, Helvetica, sans-serif;
+   
     background-image: url('https://github.com/Nordmann1997/Portefolio-glass/blob/main/glass2.jpg?raw=true');
     background-repeat: repeat-y;
     background-size: 200% 100%; /* dekker bredden, høyden følger bildet */
@@ -59,7 +59,7 @@ body {
 .pill-box {
     width: 550px;
     height: 150px;
-    border-radius: 75px;
+    border-radius: 705px;
     position: fixed;
     top: 50%;
     left: 75px;
@@ -244,6 +244,14 @@ body {
         padding: 10px 16px;
         font-size: 15px;
     }
+
+    .dropdown-menu {
+        right: 70px;
+        width: 80%;
+        max-width: calc(100vw - 40px);
+        top:4px;
+        background: #dadada;
+    }
 }
 
 /* VISIBLE SMALL ELEMENTS */
@@ -413,6 +421,7 @@ body {
 
 .hero-text-large {
     top: calc(50 * var(--vh) - 74px);
+    
 }
 
 /* Oval - posisjon 2 */
@@ -845,11 +854,11 @@ body {
 /* Dropdown Menu */
 .dropdown-menu {
     position: absolute;
-    
+    height: 45px;
     right: 60px;
     width: 200px;
     max-width: calc(100vw - 80px); /* Sikrer at dropdown ikke går utenfor skjermen */
-    
+    background-color: #ffffff;
     border-radius: 23px;
     overflow: hidden;
     opacity: 0;
@@ -870,9 +879,9 @@ body {
 
 .dropdown-menu a {
     display: block;
-    padding: 12px;
+    padding: 13px;
     text-decoration: none;
-    color: black;
+    color: rgb(66, 66, 66);
     transition: background 0.3s;
 }
 
@@ -893,19 +902,31 @@ body {
 
 
     .menu-btn {
-        margin-right: 30px;
+        margin-right: 0px;
     }
 
     .dropdown-menu {
-        right: 20px;
-        width: 200px;
+        right: 70px;
+        width: 80%;
+        height: 50px;
         max-width: calc(100vw - 40px);
+        top:5px;
+        background: #dadada;
     }
+
+    .dropdown-menu a {
+   
+    padding: 15px;
+  
 
  
 
 
 }
+
+
+
+
 
     </style>
 </head>
@@ -927,8 +948,8 @@ body {
         <div class="line3"></div>
     </button>
     <div class="dropdown-menu" id="dropdownMenu">
-        <a href="about.html">Om meg</a>
-        <a href="contact.html">Kontakt info</a>
+        <a href="bubbles 2/about.html">Om meg</a>
+        <a href="bubbles 2/contact.html">Kontakt info</a>
     </div>
 </div>
 </div>  
@@ -1107,6 +1128,13 @@ body {
                     }
                 }
             }
+
+            setPillBoxHeight(height) {
+  if (this.element.classList.contains('pill-box')) {
+    this.element.style.height = height;
+  }
+}
+
     
             render() {
                 if (this.animationFrameId) {
@@ -1582,7 +1610,18 @@ document.addEventListener('click', (event) => {
     }
 });
 
-    
+/*
+
+window.addEventListener('scroll', () => {
+  const height = window.scrollY <= 500 ? '150px' : '150px';
+
+  glassInstances.forEach(inst => {
+    inst.setPillBoxHeight(height);
+  });
+});
+
+*/
+
 
     </script>
 </body>
