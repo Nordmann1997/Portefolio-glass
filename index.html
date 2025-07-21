@@ -81,175 +81,319 @@ body {
    HEADER & NAVIGATION
    ========================================================================== */
 
-.glass-header {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    height: 60px;
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 3000;
-    display: flex;
-    align-items: center;
-    padding: 0 25px;
-    transition: all 0.3s ease;
-}
+       /* Navigation - modifisert for dropdown */
+       #desktop-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.353);
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10000;
+            overflow: hidden;
+        }
 
-.glass-header:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
+        #desktop-nav.open {
+            height: 95vh;
+            border-radius: 40px;
+        }
 
-.header-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #393939;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+        .magnifying-glass {
+            /* Din eksisterende magnifying-glass stil */
+        }
 
-.header-logo:hover {
-    color: #ccc;
-}
+        .glass-header-content {
+            /* Din eksisterende glass-header-content stil */
+        }
 
-/* Old JWK logo (hidden) */
-.jwk-logo {
-    display: none;
-}
+        .header-ui {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            height: 60px;
+        }
 
-/* ==========================================================================
-   DROPDOWN MENU
-   ========================================================================== */
+        .logo a {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+        }
 
-.dropdown {
-    position: relative;
-    margin-left: auto;
-}
+        .product_name {
+            /* Din eksisterende product_name stil */
+        }
 
-.dropdown-btn {
-    background: none;
-    border: none;
-    color: #393939;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
 
-.dropdown-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+        .menu-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
 
-.dropdown-arrow {
-    transition: transform 0.3s ease;
-    font-size: 14px;
-}
+        /* Skjul original dropdown-menu når ny dropdown er aktiv */
+        .dropdown-menu {
+            display: none;
+        }
 
-.dropdown.open .dropdown-arrow {
-    transform: rotate(180deg);
-}
+        /* Ny dropdown content */
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            padding: 20px 30px;
+            height: calc(100% - 80px);
+            overflow-y: auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-.dropdown-menu {
-    position: absolute;
-    top: calc(100% + 15px);
-    right: 0;
-    width: 200px;
-    border-radius: 15px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 3001;
-}
+        #desktop-nav.open .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+        }
 
-.dropdown.open .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        /* Container som matcher din about.css */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.dropdown-item {
-    display: block;
-    padding: 12px 20px;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+        /* About header section */
+        .about-header {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
 
-.dropdown-item:first-child {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
+        .about-intro {
+            flex: 1;
+        }
 
-.dropdown-item:last-child {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom: none;
-}
+        .about-intro h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-.dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-}
+        .about-intro p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+        }
 
-/* ==========================================================================
-   HAMBURGER MENU
-   ========================================================================== */
+        .about-image {
+            flex: 0 0 300px;
+        }
 
-.menu-btn {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    position: relative;
-    z-index: 10;
-    margin-left: auto;
-    margin-bottom: 5px;
-    flex-shrink: 0;
-    transform: none !important;
-    box-shadow: none !important;
-    transition: none !important;
-    background-color: inherit;
-    outline: none;
-}
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-.menu-btn:active {
-    transform: none !important;
-    box-shadow: none !important;
-    background-color: inherit !important;
-}
+        /* About details */
+        .about-details {
+            margin-bottom: 40px;
+        }
 
-.menu-btn div {
-    width: 30px;
-    height: 3px;
-    background: rgb(102, 102, 102);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+        .about-details p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+        }
 
-.menu-btn.active .line1 {
-    transform: translateY(8px) rotate(45deg);
-}
+        /* Skills and Hardware section */
+        .skills-hardware {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
 
-.menu-btn.active .line2 {
-    opacity: 0;
-}
+        .skills, .hardware {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
 
-.menu-btn.active .line3 {
-    transform: translateY(-8px) rotate(-45deg);
-}
+        .skills h2, .hardware h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .skills ul, .hardware ul {
+            list-style: none;
+        }
+
+        .skills li, .hardware li {
+            padding: 12px 0;
+            color: #666;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .skills li:last-child, .hardware li:last-child {
+            border-bottom: none;
+        }
+
+        .quote {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+        }
+
+        .quote p {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #007bff;
+            font-weight: 300;
+        }
+
+        /* Main content som ikke er i dropdown */
+        main {
+            margin-top: 100px;
+            padding: 40px 0;
+        }
+
+        /* Footer */
+        
+
+        #socials-container {
+            margin-bottom: 20px;
+        }
+
+        #socials-container a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        #socials-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Custom scrollbar */
+        .dropdown-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            #desktop-nav {
+                width: 95%;
+                top: 20px;
+            }
+
+            .header-ui {
+                padding: 10px 30px;
+            }
+
+            .dropdown-content {
+                padding: 15px 20px;
+            }
+
+            .about-header {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .about-image {
+                flex: none;
+                align-self: center;
+            }
+
+            .about-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-intro h1 {
+                font-size: 2rem;
+            }
+
+            .skills-hardware {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .skills, .hardware {
+                min-width: auto;
+            }
+
+            .quote p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-ui {
+                padding: 10px 20px;
+            }
+
+            .menu-btn {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .about-intro h1 {
+                font-size: 1.8rem;
+            }
+
+            .about-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills, .hardware {
+                padding: 20px;
+            }
+        }
 
 /* ==========================================================================
    CONTENT ELEMENTS - IMAGES & TEXT
@@ -1029,23 +1173,66 @@ body {
 
 <div class="large-background"></div>
         
-<div class="glass-header">
-    
-    <a href="#" class="header-logo">JWK</a>
-
-    <div class="click-message">Trykk på en kule</div> 
-
-    <button class="menu-btn" id="menuButton">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </button>
-    <div class="dropdown-menu" id="dropdownMenu">
-        <a href="bubbles 2/about.html">Om meg</a>
-        <a href="bubbles 2/contact.html">Kontakt info</a>
+<nav id="desktop-nav" class="magnifying-glass1">
+    <div class="glass-header-content"></div>
+    <div class="header-ui">
+        <div class="logo">
+            <a href="tiles/index.html">JWK</a>
+        </div>
+        <div class="product_name"></div>
+        <button class="menu-btn" id="menuButton">
+            hvem er jeg
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="about.html">Om meg</a>
+            <a href="contact.html">Kontakt info</a>
+        </div>
     </div>
-</div>
-</div>  
+    
+    <!-- Ny dropdown content med about-innhold -->
+    <div class="dropdown-content">
+        <div class="container">
+            <section class="about-header">
+                <div class="about-intro">
+                    <h1>Om meg</h1>
+                    <p>Mitt navn er Johannes Worren Kløcker og jeg er snart ferdig utdannet produktdesigner fra OsloMet Produktdesign.</p>
+                </div>
+                
+                </div>
+            </section>
+            <section class="about-details">
+                <p>Mine hovedinteresser er utvikling av fysiske produkter og funksjonelle løsninger. Tidligere har jeg gått på SKAP kreative folkehøyskole og det var her jeg fant ut av at det å gi en ide form og funksjon er en utrolig morsom ting.</p>
+            </section>
+            <section class="skills-hardware">
+                <div class="skills">
+                    <h2>Software</h2>
+                    <ul>
+                        <li>Fusion 360</li>
+                        <li>Photoshop</li>
+                        <li>Illustrator</li>
+                        <li>Lightroom</li>
+                        <li>Premiere Pro</li>
+                        <li>After Effects</li>
+                    </ul>
+                </div>
+                <div class="hardware">
+                    <h2>Hardware</h2>
+                    <ul>
+                        <li>CNC operasjon</li>
+                        <li>3D print</li>
+                        <li>Laserkutter</li>
+                        <li>Sveiseapparat</li>
+                        <li>Metall bearbeiding</li>
+                        <li>Treverk bearbeiding</li>
+                    </ul>
+                </div>
+                <div class="quote">
+                    <p>"Det har jeg ikke gjort før, så det kan jeg helt sikkert."</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</nav>
 
     <!-- Velkommen -->
     <div class="small-image hero-image-small"></div>
@@ -1690,21 +1877,7 @@ window.addEventListener('pageshow', function(event) {
 });
 
 
-const menuButton = document.getElementById('menuButton');
-const dropdownMenu = document.getElementById('dropdownMenu');
 
-menuButton.addEventListener('click', () => {
-    menuButton.classList.toggle('active');
-    dropdownMenu.classList.toggle('active');
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (event) => {
-    if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-        menuButton.classList.remove('active');
-        dropdownMenu.classList.remove('active');
-    }
-});
 
 /*
 
@@ -1719,7 +1892,34 @@ window.addEventListener('scroll', () => {
 */
 
 
+/* Header script*/
 
+const menuButton = document.getElementById('menuButton');
+        const nav = document.getElementById('desktop-nav');
+        
+        menuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nav.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', (event) => {
+            if (!nav.contains(event.target)) {
+                nav.classList.remove('open');
+            }
+        });
+
+        // Forhindre at menyen lukkes når man klikker inne i dropdown-innholdet
+        const dropdownContent = document.querySelector('.dropdown-content');
+        dropdownContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Lukk meny med Escape-tasten
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                nav.classList.remove('open');
+            }
+        });
 
 
 
