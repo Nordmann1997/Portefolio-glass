@@ -6,95 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magnifying Glass Effect</title>
     <style>
-   * {
+  /* ==========================================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 html, body {
-    /* Hindrer den vanlige, innebygde scrollingen */
-   
-   
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family:  "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     background: linear-gradient(92deg, #e7e7e7, #dde1e4);
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
 }
 
-@media screen and (max-width: 1299px) {
-    html {
-        height: -webkit-fill-available;
-    }
-    
-    body {
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
-    }
-}
+/* ==========================================================================
+   BACKGROUND & LAYOUT
+   ========================================================================== */
 
 .large-background {
-   
     background-image: url('https://github.com/Nordmann1997/Portefolio-glass/blob/main/glass2.jpg?raw=true');
     background-repeat: repeat-y;
-    background-size: 200% 100%; /* dekker bredden, høyden følger bildet */
+    background-size: 200% 100%;
     background-position: top center;
-    opacity: 0; /* NB: dette skjuler hele elementet hvis ikke endret */
+    opacity: 0;
     min-height: 610vh;
     color: white;
     overflow-x: hidden;
-    
 }
 
+/* ==========================================================================
+   GLASS EFFECTS - MAGNIFYING GLASS & PILL BOX
+   ========================================================================== */
+
 .magnifying-glass {
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  position: fixed;
-  top: 50dvh; /* Dynamic viewport height */
-  right: 75px;
-  transform: translateY(-50%);
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  z-index: 1000;
-  
-  /* Fallback for eldre nettlesere */
-  top: 50vh;
-  top: 50dvh;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    position: fixed;
+    top: 50svh;
+    right: calc(50% - 625px);
+    transform: translateY(-50%);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    z-index: 1000;
 }
 
 .pill-box {
-  width: 550px;
-  height: 150px;
-  border-radius: 705px;
-  position: fixed;
-  top: 50dvh; /* Dynamic viewport height */
-  left: 75px;
-  transform: translateY(-50%);
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  z-index: 1000;
-  transition: 0.5s ease;
-  
-  /* Fallback for eldre nettlesere */
-  top: 50vh;
-  top: 50dvh;
+    width: 550px;
+    height: 150px;
+    border-radius: 705px;
+    position: fixed;
+    top: 50svh;
+    left: calc(50% - 600px);
+    transform: translateY(-50%);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: 0.5s ease;
 }
 
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
 
-
-
-
-/* LEGG TIL DISSE STILENE I <style> SEKSJONEN */
-
-/* Header med glasseeffekt */
 .glass-header {
     position: fixed;
     top: 20px;
@@ -118,7 +102,6 @@ body {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* JWK logo i headeren */
 .header-logo {
     font-size: 24px;
     font-weight: bold;
@@ -131,13 +114,20 @@ body {
     color: #ccc;
 }
 
-/* Dropdown container */
+/* Old JWK logo (hidden) */
+.jwk-logo {
+    display: none;
+}
+
+/* ==========================================================================
+   DROPDOWN MENU
+   ========================================================================== */
+
 .dropdown {
     position: relative;
     margin-left: auto;
 }
 
-/* Dropdown button */
 .dropdown-btn {
     background: none;
     border: none;
@@ -156,7 +146,6 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Dropdown arrow */
 .dropdown-arrow {
     transition: transform 0.3s ease;
     font-size: 14px;
@@ -166,16 +155,13 @@ body {
     transform: rotate(180deg);
 }
 
-/* Dropdown menu */
 .dropdown-menu {
     position: absolute;
     top: calc(100% + 15px);
     right: 0;
     width: 200px;
     border-radius: 15px;
-   
     opacity: 0;
-   
     transform: translateY(-10px);
     transition: all 0.3s ease;
     z-index: 3001;
@@ -187,7 +173,6 @@ body {
     transform: translateY(0);
 }
 
-/* Dropdown items */
 .dropdown-item {
     display: block;
     padding: 12px 20px;
@@ -213,70 +198,68 @@ body {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Skjul den gamle JWK logoen */
-.jwk-logo {
-    display: none;
+/* ==========================================================================
+   HAMBURGER MENU
+   ========================================================================== */
+
+.menu-btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    z-index: 10;
+    margin-left: auto;
+    margin-bottom: 5px;
+    flex-shrink: 0;
+    transform: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    background-color: inherit;
+    outline: none;
 }
 
-/* Responsive design for header */
-@media screen and (max-width: 1299px) {
-    .glass-header {
-        width: 95%;
-        
-        top: 15px;
-    }
-    
-    .dropdown-menu {
-        width: 180px;
-        right: -10px;
-    }
-    
-    .header-logo {
-        font-size: 22px;
-    }
-    
-    .dropdown-btn {
-        font-size: 16px;
-        padding: 6px 10px;
-    }
+.menu-btn:active {
+    transform: none !important;
+    box-shadow: none !important;
+    background-color: inherit !important;
 }
 
-@media screen and (max-width: 480px) {
-    .glass-header {
-        width: 95%;
-        height: 55px;
-        padding: 0 20px;
-    }
-    
-    .header-logo {
-        font-size: 20px;
-    }
-    
-    .dropdown-menu {
-        width: 160px;
-    }
-    
-    .dropdown-item {
-        padding: 10px 16px;
-        font-size: 15px;
-    }
-
-    .dropdown-menu {
-        right: 70px;
-        width: 80%;
-        max-width: calc(100vw - 40px);
-        top:4px;
-        background: #dadada;
-    }
+.menu-btn div {
+    width: 30px;
+    height: 3px;
+    background: rgb(102, 102, 102);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* VISIBLE SMALL ELEMENTS */
+.menu-btn.active .line1 {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-btn.active .line2 {
+    opacity: 0;
+}
+
+.menu-btn.active .line3 {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   CONTENT ELEMENTS - IMAGES & TEXT
+   ========================================================================== */
+
+/* Small visible elements */
 .small-image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     position: absolute;
-    right: 320px;
+    right: calc(50% - 380px);
     transform: translateX(50%);
     background-size: cover;
     background-position: center;
@@ -287,24 +270,23 @@ body {
 
 .terrarium-text {
     position: absolute;
-    left: 200px;
+    left: calc(50% - 470px);
     width: 300px;
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     color: #393939;
-    
     z-index: 100;
     transform: translateY(-50%);
 }
 
-/* HIDDEN LARGE ELEMENTS - SAME SIZE AS GLASS BOXES */
+/* Large hidden elements */
 .large-image {
     width: 500px;
     height: 500px;
     border-radius: 50%;
     position: absolute;
-    right: 320px;
+    right: calc(50% - 377px);
     transform: translateX(50%);
     background-size: cover;
     background-position: center;
@@ -313,13 +295,14 @@ body {
     border: 2px solid rgba(255,255,255,0.6);
     opacity: 0;
     visibility: hidden;
-    pointe-events: none;
+    pointer-events: none;
     z-index: -1;
+    transition: transform 0.3s ease;
 }
 
 .large-terrarium-text {
     position: absolute;
-    left: 75px;
+    left: calc(50% - 600px);
     width: 550px;
     height: 150px;
     display: flex;
@@ -334,10 +317,24 @@ body {
     visibility: hidden;
     pointer-events: none;
     border-radius: 75px;
-    
+    transition: transform 0.3s ease;
 }
 
-/* INVISIBLE CLICKABLE AREAS */
+/* Hover effects for large elements */
+.large-image:hover {
+    transform: translateX(50%) scale(1.05);
+    cursor: pointer;
+}
+
+.large-terrarium-text:hover {
+    transform: translateX(-50%) scale(1.15);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   CLICKABLE AREAS
+   ========================================================================== */
+
 .clickable-area {
     position: absolute;
     width: 500px;
@@ -345,18 +342,14 @@ body {
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
-    z-index: 2000; /* Over glass-effekten */
+    z-index: 2000;
     right: 75px;
     transition: background-color 0.3s ease;
 }
 
-.clickable-area:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
+
 
 /* Desktop positioning for clickable areas */
-
-
 .oval-clickable {
     top: calc(50vh + 160vh - 150px);
 }
@@ -381,9 +374,432 @@ body {
     top: calc(50vh + 460vh - 160px);
 }
 
-/* Mobile positioning for clickable areas */
-@media screen and (max-width: 1299px) {
+/* ==========================================================================
+   ELEMENT POSITIONING - DESKTOP
+   ========================================================================== */
+
+/* Hero section - position 1 */
+.hero-image-small {
+    top: calc(50 * var(--vh) - 100px);
+    background-image: url('https://jwk.no/pictures/about/meg.jpg');
+}
+
+.hero-text-small {
+    top: calc(50 * var(--vh) + 0px);
+}
+
+.hero-image-large {
+    top: calc(50 * var(--vh) - 200px);
+    background-image: url('https://jwk.no/pictures/about/meg.jpg');
+}
+
+.hero-text-large {
+    top: calc(50 * var(--vh) - 74px);
+}
+
+/* Oval - position 2 */
+.oval-image-small {
+    top: calc(50vh + 160vh - 0px);
+    background-image: url('https://jwk.no/pictures/index/oval.jpg');
+}
+
+.oval-text-small {
+    top: calc(50vh + 160vh + 100px);
+}
+
+.oval-image-large {
+    top: calc(50vh + 160vh - 165px);
+    background-image: url('https://jwk.no/pictures/index/oval.jpg');
+}
+
+.oval-text-large {
+    top: calc(50vh + 160vh + 25px);
+}
+
+/* Woody - position 3 */
+.woody-image-small {
+    top: calc(50vh + 220vh - 10px);
+    background-image: url('https://jwk.no/pictures/index/front_without.jpg');
+}
+
+.woody-text-small {
+    top: calc(50vh + 220vh + 95px);
+}
+
+.woody-image-large {
+    top: calc(50vh + 220vh - 165px);
+    background-image: url('https://jwk.no/pictures/index/front_without.jpg');
+}
+
+.woody-text-large {
+    top: calc(50vh + 220vh + 15px);
+}
+
+/* Terrarium bench - position 4 */
+.terrarium-image-small {
+    top: calc(50vh + 280vh - 10px);
+    background-image: url('https://jwk.no/pictures/index/benk.jpg');
+}
+
+.terrarium-text-small {
+    top: calc(50vh + 280vh + 95px);
+}
+
+.terrarium-image-large {
+    top: calc(50vh + 280vh - 165px);
+    background-image: url('https://jwk.no/pictures/index/benk.jpg');
+}
+
+.terrarium-text-large {
+    top: calc(50vh + 280vh + 15px);
+}
+
+/* Ludo - position 5 */
+.ludo-image-small {
+    top: calc(50vh + 340vh - 10px);
+    background-image: url('https://jwk.no/pictures/index/ludo.jpg');
+}
+
+.ludo-text-small {
+    top: calc(50vh + 340vh + 95px);
+}
+
+.ludo-image-large {
+    top: calc(50vh + 340vh - 165px);
+    background-image: url('https://jwk.no/pictures/index/ludo.jpg');
+}
+
+.ludo-text-large {
+    top: calc(50vh + 340vh + 15px);
+}
+
+/* Ryggrad - position 6 */
+.ryggrad-image-small {
+    top: calc(50vh + 400vh - 10px);
+    background-image: url('https://jwk.no/pictures/index/stolen.jpg');
+}
+
+.ryggrad-text-small {
+    top: calc(50vh + 400vh + 95px);
+}
+
+.ryggrad-image-large {
+    top: calc(50vh + 400vh - 165px);
+    background-image: url('https://jwk.no/pictures/index/stolen.jpg');
+}
+
+.ryggrad-text-large {
+    top: calc(50vh + 400vh + 15px);
+}
+
+/* Door handle - position 7 */
+.doorhandle-image-small {
+    top: calc(50vh + 460vh - 10px);
+    background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
+}
+
+.doorhandle-text-small {
+    top: calc(50vh + 460vh + 95px);
+}
+
+.doorhandle-image-large {
+    top: calc(50vh + 460vh - 165px);
+    background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
+}
+
+.doorhandle-text-large {
+    top: calc(50vh + 460vh + 15px);
+}
+
+/* ==========================================================================
+   UI ELEMENTS
+   ========================================================================== */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(43, 43, 43);
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+    z-index: 100;
+}
+
+.scroll-arrow {
+    font-size: 20px;
+    animation: bounce 2s infinite;
+}
+
+.click-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.0rem;
+    color: rgb(61, 61, 61);
+    font-weight: 400;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - UNDER 1349px
+   ========================================================================== */
+
+@media screen and (max-width: 1349px) {
+    /* Glass elements adjustments */
+    .magnifying-glass {
+        width: 400px;
+        height: 400px;
+        right: calc(50% - 500px);
+    }
+
+    .pill-box {
+        width: 450px;
+        height: 120px;
+        left: calc(50% - 500px);
+    }
+
+    /* Small elements adjustments */
+    .small-image {
+        width: 200px;
+        height: 200px;
+        right: calc(50% - 300px);
+    }
+
+    .terrarium-text {
+        left: calc(50% - 420px);
+        width: 300px;
+    }
+
+    /* Large elements adjustments */
+    .large-image {
+        width: 400px;
+        height: 400px;
+        right: calc(50% - 305px);
+    }
+
+    .large-terrarium-text {
+        left: calc(50% - 500px);
+        width: 450px;
+        height: 120px;
+    }
+
     .clickable-area {
+    width: 400px;
+    height: 400px;
+    right: calc(50% - 505px);
+   
+}
+
+    
+/* Hero section */
+.hero-image-small {
+  top: calc(50 * var(--vh) - 50px);
+}
+.hero-text-small {
+  top: calc(50 * var(--vh) + 50px);
+}
+.hero-image-large {
+  top: calc(50 * var(--vh) - 185px);
+}
+.hero-text-large {
+  top: calc(50 * var(--vh) - 64px);
+}
+
+
+/* Oval */
+.oval-image-small {
+  top: calc(50vh + 160vh + 10px);
+}
+.oval-text-small {
+  top: calc(50vh + 160vh + 110px);
+}
+.oval-image-large {
+  top: calc(50vh + 160vh - 85px);
+}
+.oval-text-large {
+  top: calc(50vh + 160vh + 75px);
+}
+.oval-clickable {
+  top: calc(50vh + 160vh - 85px);
+}
+
+/* Woody */
+.woody-image-small {
+  top: calc(50vh + 220vh + 20px);
+}
+.woody-text-small {
+  top: calc(50vh + 220vh + 145px);
+}
+.woody-image-large {
+  top: calc(50vh + 220vh - 85px);
+}
+.woody-text-large {
+  top: calc(50vh + 220vh + 65px);
+}
+.woody-clickable {
+  top: calc(50vh + 220vh - 85px);
+}
+
+/* Terrarium */
+.terrarium-image-small {
+  top: calc(50vh + 280vh + 20px);
+}
+.terrarium-text-small {
+  top: calc(50vh + 280vh + 145px);
+}
+.terrarium-image-large {
+  top: calc(50vh + 280vh - 85px);
+}
+.terrarium-text-large {
+  top: calc(50vh + 280vh + 65px);
+}
+.terrarium-clickable {
+  top: calc(50vh + 280vh - 85px);
+}
+
+/* Ludo */
+.ludo-image-small {
+  top: calc(50vh + 340vh + 20px);
+}
+.ludo-text-small {
+  top: calc(50vh + 340vh + 145px);
+}
+.ludo-image-large {
+  top: calc(50vh + 340vh - 85px);
+}
+.ludo-text-large {
+  top: calc(50vh + 340vh + 65px);
+}
+.ludo-clickable {
+  top: calc(50vh + 340vh - 85px);
+}
+
+/* Ryggrad */
+.ryggrad-image-small {
+  top: calc(50vh + 400vh + 20px);
+}
+.ryggrad-text-small {
+  top: calc(50vh + 400vh + 145px);
+}
+.ryggrad-image-large {
+  top: calc(50vh + 400vh - 85px);
+}
+.ryggrad-text-large {
+  top: calc(50vh + 400vh + 65px);
+}
+.ryggrad-clickable {
+  top: calc(50vh + 400vh - 85px);
+}
+
+/* Door handle */
+.doorhandle-image-small {
+  top: calc(50vh + 460vh + 20px);
+}
+.doorhandle-text-small {
+  top: calc(50vh + 460vh + 145px);
+}
+.doorhandle-image-large {
+  top: calc(50vh + 460vh - 85px);
+}
+.doorhandle-text-large {
+  top: calc(50vh + 460vh + 65px);
+}
+.doorhandle-clickable {
+  top: calc(50vh + 460vh - 85px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - UNDER 1000px (MOBILE)
+   ========================================================================== */
+
+@media screen and (max-width: 1000px) {
+    /* Base adjustments */
+    html {
+        height: -webkit-fill-available;
+    }
+    
+    body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    /* Header adjustments */
+    .glass-header {
+        width: 95%;
+        top: 15px;
+    }
+    
+    .dropdown-menu {
+        width: 180px;
+        right: -10px;
+    }
+    
+    .header-logo {
+        font-size: 22px;
+    }
+    
+    .dropdown-btn {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+
+    /* Glass elements - mobile positioning */
+    .magnifying-glass {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        top: calc(50vh - 100px);
+        top: calc(50svh - 50px);
+    }
+
+    .pill-box {
+        width: 350px;
+        height: 100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: calc(50vh + 150px);
+        top: calc(50svh + 200px);
+    }
+
+    /* Content elements - mobile positioning */
+    .small-image {
+        width: 150px;
+        height: 150px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .terrarium-text {
+        width: 250px;
+        font-size: 20px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .large-image {
         width: 300px;
         height: 300px;
         left: 50%;
@@ -391,7 +807,23 @@ body {
         transform: translateX(-50%);
     }
 
-   
+    .large-terrarium-text {
+        width: 350px;
+        height: 100px;
+        font-size: 40px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    /* Clickable areas - mobile positioning */
+    .clickable-area {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
 
     .oval-clickable {
         top: calc(50vh + 130vh - 290px);
@@ -416,289 +848,26 @@ body {
     .doorhandle-clickable {
         top: calc(50vh + 430vh - 280px);
     }
-}
 
-/* POSISJONERING AV ELEMENTER */
-/* Velkommen - posisjon 1 */
-
-.hero-image-small {
-    top: calc(50 * var(--vh) - 100px);
-    background-image: url('https://jwk.no/pictures/about/meg.jpg');
-}
-
-.hero-text-small {
-    top: calc(50 * var(--vh) + 0px);
-}
-
-.hero-image-large {
-    top: calc(50 * var(--vh) - 200px);
-    background-image: url('https://jwk.no/pictures/about/meg.jpg');
-}
-
-.hero-text-large {
-    top: calc(50 * var(--vh) - 74px);
-    
-}
-
-/* Oval - posisjon 2 */
-.oval-image-small {
-    top: calc(50vh + 160vh - 0px);
-    background-image: url('https://jwk.no/pictures/index/oval.jpg');
-}
-
-.oval-text-small {
-    top: calc(50vh + 160vh + 100px);
-}
-
-.oval-image-large {
-    top: calc(50vh + 160vh - 165px);
-    background-image: url('https://jwk.no/pictures/index/oval.jpg');
-}
-
-.oval-text-large {
-    top: calc(50vh + 160vh + 25px);
-}
-
-/* Woody - posisjon 3 */
-.woody-image-small {
-    top: calc(50vh + 220vh - 10px);
-    background-image: url('https://jwk.no/pictures/index/front_without.jpg');
-}
-
-.woody-text-small {
-    top: calc(50vh + 220vh + 95px);
-}
-
-.woody-image-large {
-    top: calc(50vh + 220vh - 165px);
-    background-image: url('https://jwk.no/pictures/index/front_without.jpg');
-}
-
-.woody-text-large {
-    top: calc(50vh + 220vh + 15px);
-}
-
-/* Terrarium benk - posisjon 4 */
-.terrarium-image-small {
-    top: calc(50vh + 280vh - 10px);
-    background-image: url('https://jwk.no/pictures/index/benk.jpg');
-}
-
-.terrarium-text-small {
-    top: calc(50vh + 280vh + 95px);
-}
-
-.terrarium-image-large {
-    top: calc(50vh + 280vh - 165px);
-    background-image: url('https://jwk.no/pictures/index/benk.jpg');
-}
-
-.terrarium-text-large {
-    top: calc(50vh + 280vh + 15px);
-}
-
-/* Ludo - posisjon 5 */
-.ludo-image-small {
-    top: calc(50vh + 340vh - 10px);
-    background-image: url('https://jwk.no/pictures/index/ludo.jpg');
-}
-
-.ludo-text-small {
-    top: calc(50vh + 340vh + 95px);
-}
-
-.ludo-image-large {
-    top: calc(50vh + 340vh - 165px);
-    background-image: url('https://jwk.no/pictures/index/ludo.jpg');
-}
-
-.ludo-text-large {
-    top: calc(50vh + 340vh + 15px);
-}
-
-/* Ryggrad - posisjon 6 */
-.ryggrad-image-small {
-    top: calc(50vh + 400vh - 10px);
-    background-image: url('https://jwk.no/pictures/index/stolen.jpg');
-}
-
-.ryggrad-text-small {
-    top: calc(50vh + 400vh + 95px);
-}
-
-.ryggrad-image-large {
-    top: calc(50vh + 400vh - 165px);
-    background-image: url('https://jwk.no/pictures/index/stolen.jpg');
-}
-
-.ryggrad-text-large {
-    top: calc(50vh + 400vh + 15px);
-}
-
-/* Dørhåndtak - posisjon 7 */
-.doorhandle-image-small {
-    top: calc(50vh + 460vh - 10px);
-    background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
-}
-
-.doorhandle-text-small {
-    top: calc(50vh + 460vh + 95px);
-}
-
-.doorhandle-image-large {
-    top: calc(50vh + 460vh - 165px);
-    background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
-}
-
-.doorhandle-text-large {
-    top: calc(50vh + 460vh + 15px);
-}
-
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgb(43, 43, 43);
-    text-align: center;
-    font-size: 14px;
-    opacity: 0.7;
-    z-index: 100;
-}
-
-.scroll-arrow {
-    font-size: 20px;
-    animation: bounce 2s infinite;
-}
-
-.jwk-logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 26px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #ffffff;
-    transition: color 0.3s ease;
-    font-family: Arial, Helvetica, sans-serif;
-    z-index: 2000;
-    padding: 8px 16px;
-    border-radius: 12px;
-    
-}
-
-.jwk-logo:hover {
-    color: #000;
-    background-color: rgb(255, 255, 255);
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-/* RESPONSIVE DESIGN - UNDER 1300px */
-@media screen and (max-width: 1299px) {
-    .magnifying-glass {
-        width: 300px;
-        height: 300px;
-        left: 50%;
-        right: auto;
-        transform: translate(-50%, -50%);
-        top: calc(50% - 100px);
-    }
-
-    .pill-box {
-        width: 350px;
-        height: 100px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        top: calc(50% + 150px);
-    }
-
-
-    /* Small visible elements - mobile positioning */
-    .small-image {
-        width: 150px;
-        height: 150px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-    }
-
-    .terrarium-text {
-        width: 250px;
-        font-size: 20px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-    }
-
-    /* Large hidden elements - mobile positioning */
-    .large-image {
-        width: 300px;
-        height: 300px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-    }
-
-    .large-terrarium-text {
-        width: 350px;
-        height: 100px;
-        font-size: 40px;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-    }
-    
-
-    /* Hover effects for large images */
-.large-image:hover {
-    transform: translateX(50%) scale(1.05);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-/* Hover effects for large text */
-.large-terrarium-text:hover {
-    transform: translateX(-50%) scale(1.15);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-/* Make sure transitions are smooth */
-.large-image, .large-terrarium-text {
-    transition: transform 0.3s ease;
-}
-
-    /* Mobile positioning for all elements */
-    /* Velkommen - posisjon 1 */
+    /* Mobile element positioning */
+    /* Hero section */
     .hero-image-small {
-    top: calc(50 * var(--vh) - 160px);
-}
+        top: calc(50 * var(--vh) - 130px);
+    }
 
-.hero-text-small {
-    top: calc(50 * var(--vh) + 140px);
-}
+    .hero-text-small {
+        top: calc(50 * var(--vh) + 190px);
+    }
 
-.hero-image-large {
-    top: calc(50 * var(--vh) - 230px);
-}
+    .hero-image-large {
+        top: calc(50 * var(--vh) - 180px);
+    }
 
-.hero-text-large {
-    top: calc(50 * var(--vh) + 105px);
-}
+    .hero-text-large {
+        top: calc(50 * var(--vh) + 155px);
+    }
 
-    /* Oval - posisjon 2 */
+    /* All other sections */
     .oval-image-small {
         top: calc(50vh + 130vh - 195px);
     }
@@ -715,7 +884,6 @@ body {
         top: calc(50vh + 130vh + 74px);
     }
 
-    /* Woody - posisjon 3 */
     .woody-image-small {
         top: calc(50vh + 190vh - 200px);
     }
@@ -732,7 +900,6 @@ body {
         top: calc(50vh + 190vh + 68px);
     }
 
-    /* Terrarium benk - posisjon 4 */
     .terrarium-image-small {
         top: calc(50vh + 250vh - 200px);
     }
@@ -749,7 +916,6 @@ body {
         top: calc(50vh + 250vh + 68px);
     }
 
-    /* Ludo - posisjon 5 */
     .ludo-image-small {
         top: calc(50vh + 310vh - 200px);
     }
@@ -766,7 +932,6 @@ body {
         top: calc(50vh + 310vh + 68px);
     }
 
-    /* Ryggrad - posisjon 6 */
     .ryggrad-image-small {
         top: calc(50vh + 370vh - 200px);
     }
@@ -783,7 +948,6 @@ body {
         top: calc(50vh + 370vh + 68px);
     }
 
-    /* Dørhåndtak - posisjon 7 */
     .doorhandle-image-small {
         top: calc(50vh + 430vh - 200px);
     }
@@ -799,124 +963,8 @@ body {
     .doorhandle-text-large {
         top: calc(50vh + 430vh + 68px);
     }
-}
 
-.click-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.0rem;
-    color: rgb(61, 61, 61);
-    font-weight: 400;
-    pointer-events: none; /* gjør at den ikke blokkerer klikk */
-    
-}
-
-
-.menu-btn {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    transform: none !important;
-    box-shadow: none !important;
-    transition: none !important;
-    background-color: inherit;
-    outline: none;
-}
-
-.menu-btn:active {
-    transform: none !important;
-    box-shadow: none !important;
-    background-color: inherit !important;
-}
-
-/* Hamburger Button */
-.menu-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-   
-    position: relative;
-    z-index: 10;
-    margin-left: auto;
-    margin-bottom: 5px;
-    flex-shrink: 0;
-}
-
-.menu-btn div {
-    width: 30px;
-    height: 3px;
-    background: rgb(102, 102, 102);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Rotating lines when active */
-.menu-btn.active .line1 {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.menu-btn.active .line2 {
-    opacity: 0;
-}
-
-.menu-btn.active .line3 {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-    position: absolute;
-    height: 45px;
-    right: 60px;
-    width: 200px;
-    max-width: calc(100vw - 80px); /* Sikrer at dropdown ikke går utenfor skjermen */
-    background-color: #ffffff;
-    border-radius: 23px;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
-    display: flex;
-    top: 6px;
-    z-index: 100000;
-    
-}
-
-.dropdown-menu.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 13px;
-    text-decoration: none;
-    color: rgb(66, 66, 66);
-    transition: background 0.3s;
-}
-
-.dropdown-menu a:hover {
-    color: #5e5e5e;
-}
-
-
-
-/* Responsivitet */
-@media (max-width: 768px) {
-   
-
- 
-
-   
-
-
-
+    /* Menu button adjustments */
     .menu-btn {
         margin-right: 0px;
     }
@@ -926,18 +974,43 @@ body {
         width: 80%;
         height: 50px;
         max-width: calc(100vw - 40px);
-        top:5px;
+        top: 5px;
         background: #dadada;
     }
 
     .dropdown-menu a {
-   
-    padding: 15px;
-  
-
- 
+        padding: 15px;
+    }
 }
 
+/* ==========================================================================
+   RESPONSIVE DESIGN - UNDER 480px
+   ========================================================================== */
+
+@media screen and (max-width: 480px) {
+    .glass-header {
+        width: 95%;
+        height: 55px;
+        padding: 0 20px;
+    }
+    
+    .header-logo {
+        font-size: 20px;
+    }
+    
+    .dropdown-menu {
+        width: 160px;
+        right: 70px;
+        width: 80%;
+        max-width: calc(100vw - 40px);
+        top: 4px;
+        background: #dadada;
+    }
+    
+    .dropdown-item {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
 }
 
 
@@ -1063,7 +1136,7 @@ body {
                 this.glassContent = element.querySelector('.glass-header-content');
                 this.currentZoom = 1.05; // Zoom for alle elementer, inkludert .large-background
                 this.edgeThicknessRatio = 0.14;
-                this.numLayers = 10;
+                this.numLayers = 8;
                 this.cachedBodyClone = null;
                 this.lastRenderKey = null;
                 this.lastScrollY = window.scrollY;
