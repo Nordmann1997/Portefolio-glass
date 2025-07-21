@@ -26,7 +26,7 @@ html, body {
 body {
     font-family: "Poppins", sans-serif;
     background: linear-gradient(92deg, #e7e7e7, #dde1e4);
-    min-height: 610vh;
+    min-height: 550vh;
     color: white;
     overflow-x: hidden;
 }
@@ -41,7 +41,7 @@ body {
     background-size: 200% 100%;
     background-position: top center;
     opacity: 0;
-    min-height: 610vh;
+    min-height: 550vh;
     color: white;
     overflow-x: hidden;
 }
@@ -103,13 +103,7 @@ body {
             border-radius: 25px;
         }
 
-        .magnifying-glass {
-            /* Din eksisterende magnifying-glass stil */
-        }
-
-        .glass-header-content {
-            /* Din eksisterende glass-header-content stil */
-        }
+        
 
         .header-ui {
             display: flex;
@@ -126,9 +120,6 @@ body {
             text-decoration: none;
         }
 
-        .product_name {
-            /* Din eksisterende product_name stil */
-        }
 
         .menu-btn {
             background: none;
@@ -141,6 +132,7 @@ body {
             padding: 8px 26px;
             border-radius: 25px;
             transition: all 0.3s ease;
+            text-decoration: none;
             
         }
 
@@ -398,6 +390,81 @@ body {
             }
         }
 
+        #aboutContent,
+#contactContent {
+    display: none;
+} 
+
+/* ==========================================================================
+   Contact 
+   ========================================================================== */
+   /* Container for GIF-bakgrunn */
+.gif-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* Selve GIF-bildet */
+.background-gif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 90vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.2; /* Transparent bakgrunn */
+}
+
+/* Knappen */
+.contact-button {
+ 
+  padding: 10px 30px;
+  display: inline-block;
+  z-index: 1000;
+  background-color: #434343;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 50px;
+  cursor: pointer;
+  pointer-events: auto;
+  text-align: center;
+
+font-size: 1.5rem;
+}
+
+/* Wrapper til knappen */
+.overlay {
+  position: relative;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+
+.typewriter-text {
+    font-size: 1rem;
+    text-align: center;
+    background: rgb(247, 160, 73);
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-top: 20px;
+
+}
+
+
+
 /* ==========================================================================
    CONTENT ELEMENTS - IMAGES & TEXT
    ========================================================================== */
@@ -546,7 +613,30 @@ body {
     top: calc(50 * var(--vh) - 74px);
 }
 
-/* Oval - position 2 */
+/* EasyRemote - position 2 */
+.easyremote-image-small {
+    top: calc(50vh + 100vh - 0px);
+    background-image: url('bubbles 2/pictures/EasyRemote/easyremote.jpg');
+}
+
+.easyremote-text-small {
+    top: calc(50vh + 100vh + 100px);
+}
+
+.easyremote-image-large {
+    top: calc(50vh + 100vh - 165px);
+    background-image: url('bubbles 2/pictures/EasyRemote/easyremote.jpg');
+}
+
+.easyremote-text-large {
+    top: calc(50vh + 100vh + 25px);
+}
+
+.easyremote-clickable {
+    top: calc(50vh + 100vh - 150px);
+}
+
+/* Oval - position 3 */
 .oval-image-small {
     top: calc(50vh + 160vh - 0px);
     background-image: url('https://jwk.no/pictures/index/oval.jpg');
@@ -565,7 +655,7 @@ body {
     top: calc(50vh + 160vh + 25px);
 }
 
-/* Woody - position 3 */
+/* Woody - position 4 */
 .woody-image-small {
     top: calc(50vh + 220vh - 10px);
     background-image: url('https://jwk.no/pictures/index/front_without.jpg');
@@ -584,7 +674,7 @@ body {
     top: calc(50vh + 220vh + 15px);
 }
 
-/* Terrarium bench - position 4 */
+/* Terrarium bench - position 5 */
 .terrarium-image-small {
     top: calc(50vh + 280vh - 10px);
     background-image: url('https://jwk.no/pictures/index/benk.jpg');
@@ -603,7 +693,7 @@ body {
     top: calc(50vh + 280vh + 15px);
 }
 
-/* Ludo - position 5 */
+/* Ludo - position 6 */
 .ludo-image-small {
     top: calc(50vh + 340vh - 10px);
     background-image: url('https://jwk.no/pictures/index/ludo.jpg');
@@ -622,7 +712,7 @@ body {
     top: calc(50vh + 340vh + 15px);
 }
 
-/* Ryggrad - position 6 */
+/* Ryggrad - position 7 */
 .ryggrad-image-small {
     top: calc(50vh + 400vh - 10px);
     background-image: url('https://jwk.no/pictures/index/stolen.jpg');
@@ -641,7 +731,7 @@ body {
     top: calc(50vh + 400vh + 15px);
 }
 
-/* Door handle - position 7 */
+/* Door handle - position 8 */
 .doorhandle-image-small {
     top: calc(50vh + 460vh - 10px);
     background-image: url('https://jwk.no/pictures/index/dorhondtak.jpg');
@@ -707,91 +797,68 @@ body {
         transform: translateY(-5px);
     }
 }
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+    footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #d4d4d4;
+    color: white;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    z-index: 10;
+    position: relative;
+    margin-top: 70px;
+}
+
 
 /* ==========================================================================
    RESPONSIVE DESIGN - UNDER 1349px
    ========================================================================== */
 
 @media screen and (max-width: 1349px) {
-    /* Glass elements adjustments */
-    .magnifying-glass {
-        width: 400px;
-        height: 400px;
-        right: calc(50% - 500px);
+    /* Hero section */
+    .hero-image-small {
+        top: calc(50 * var(--vh) - 50px);
     }
-
-    .pill-box {
-        width: 450px;
-        height: 120px;
-        left: calc(50% - 500px);
-    }
-
-    /* Small elements adjustments */
-    .small-image {
-        width: 200px;
-        height: 200px;
-        right: calc(50% - 300px);
-    }
-
-    .terrarium-text {
-        left: calc(50% - 420px);
-        width: 300px;
-    }
-
-    /* Large elements adjustments */
-    .large-image {
-        width: 400px;
-        height: 400px;
-        right: calc(50% - 305px);
-    }
-
-    .large-terrarium-text {
-        left: calc(50% - 500px);
-        width: 450px;
-        height: 120px;
-    }
-
-    .clickable-area {
-    width: 400px;
-    height: 400px;
-    right: calc(50% - 505px);
-   
-}
-
     
-/* Hero section */
-.hero-image-small {
-  top: calc(50 * var(--vh) - 50px);
-}
-.hero-text-small {
-  top: calc(50 * var(--vh) + 50px);
-}
-.hero-image-large {
-  top: calc(50 * var(--vh) - 185px);
-}
-.hero-text-large {
-  top: calc(50 * var(--vh) - 64px);
-}
+    /* EasyRemote */
+    .easyremote-image-small {
+        top: calc(50vh + 100vh + 10px);
+    }
+    .easyremote-text-small {
+        top: calc(50vh + 100vh + 110px);
+    }
+    .easyremote-image-large {
+        top: calc(50vh + 100vh - 85px);
+    }
+    .easyremote-text-large {
+        top: calc(50vh + 100vh + 75px);
+    }
+    .easyremote-clickable {
+        top: calc(50vh + 100vh - 85px);
+    }
 
-
-/* Oval */
+    /* Oval */
 .oval-image-small {
-  top: calc(50vh + 160vh + 10px);
+  top: calc(50vh + 160vh - 0px);
 }
 .oval-text-small {
-  top: calc(50vh + 160vh + 110px);
+  top: calc(50vh + 160vh + 100px);
 }
 .oval-image-large {
-  top: calc(50vh + 160vh - 85px);
+  top: calc(50vh + 160vh - 165px);
 }
 .oval-text-large {
-  top: calc(50vh + 160vh + 75px);
-}
-.oval-clickable {
-  top: calc(50vh + 160vh - 85px);
+  top: calc(50vh + 160vh + 25px);
 }
 
-/* Woody */
+/* Woody - position 4 */
 .woody-image-small {
   top: calc(50vh + 220vh + 20px);
 }
@@ -1016,102 +1083,103 @@ body {
         top: calc(50 * var(--vh) + 155px);
     }
 
-    /* All other sections */
-    .oval-image-small {
-        top: calc(50vh + 130vh - 195px);
-    }
-    
-    .oval-text-small {
-        top: calc(50vh + 130vh + 113px);
-    }
-    
-    .oval-image-large {
-        top: calc(50vh + 130vh - 280px);
-    }
-    
-    .oval-text-large {
-        top: calc(50vh + 130vh + 74px);
-    }
+    /* EasyRemote - NEW (original 110vh → now 130vh) */
+.easyremote-image-small {
+    top: calc(50vh + 80vh - 200px);
+}
+.easyremote-text-small {
+    top: calc(50vh + 80vh + 110px);
+}
+.easyremote-image-large {
+    top: calc(50vh + 80vh - 280px);
+}
+.easyremote-text-large {
+    top: calc(50vh + 80vh + 68px);
+}
 
-    .woody-image-small {
-        top: calc(50vh + 190vh - 200px);
-    }
-    
-    .woody-text-small {
-        top: calc(50vh + 190vh + 110px);
-    }
-    
-    .woody-image-large {
-        top: calc(50vh + 190vh - 280px);
-    }
-    
-    .woody-text-large {
-        top: calc(50vh + 190vh + 68px);
-    }
+/* Oval (original 130vh → now 150vh) */
+.oval-image-small {
+    top: calc(50vh + 150vh - 200px);
+}
+.oval-text-small {
+    top: calc(50vh + 150vh + 110px);
+}
+.oval-image-large {
+    top: calc(50vh + 150vh - 280px);
+}
+.oval-text-large {
+    top: calc(50vh + 150vh + 68px);
+}
 
-    .terrarium-image-small {
-        top: calc(50vh + 250vh - 200px);
-    }
-    
-    .terrarium-text-small {
-        top: calc(50vh + 250vh + 110px);
-    }
-    
-    .terrarium-image-large {
-        top: calc(50vh + 250vh - 280px);
-    }
-    
-    .terrarium-text-large {
-        top: calc(50vh + 250vh + 68px);
-    }
+/* Woody (original 190vh → now 210vh) */
+.woody-image-small {
+    top: calc(50vh + 210vh - 200px);
+}
+.woody-text-small {
+    top: calc(50vh + 210vh + 110px);
+}
+.woody-image-large {
+    top: calc(50vh + 210vh - 280px);
+}
+.woody-text-large {
+    top: calc(50vh + 210vh + 68px);
+}
 
-    .ludo-image-small {
-        top: calc(50vh + 310vh - 200px);
-    }
-    
-    .ludo-text-small {
-        top: calc(50vh + 310vh + 110px);
-    }
-    
-    .ludo-image-large {
-        top: calc(50vh + 310vh - 280px);
-    }
-    
-    .ludo-text-large {
-        top: calc(50vh + 310vh + 68px);
-    }
+/* Terrarium (original 250vh → now 270vh) */
+.terrarium-image-small {
+    top: calc(50vh + 270vh - 200px);
+}
+.terrarium-text-small {
+    top: calc(50vh + 270vh + 110px);
+}
+.terrarium-image-large {
+    top: calc(50vh + 270vh - 280px);
+}
+.terrarium-text-large {
+    top: calc(50vh + 270vh + 68px);
+}
 
-    .ryggrad-image-small {
-        top: calc(50vh + 370vh - 200px);
-    }
-    
-    .ryggrad-text-small {
-        top: calc(50vh + 370vh + 110px);
-    }
-    
-    .ryggrad-image-large {
-        top: calc(50vh + 370vh - 280px);
-    }
-    
-    .ryggrad-text-large {
-        top: calc(50vh + 370vh + 68px);
-    }
+/* Ludo (original 310vh → now 330vh) */
+.ludo-image-small {
+    top: calc(50vh + 330vh - 200px);
+}
+.ludo-text-small {
+    top: calc(50vh + 330vh + 110px);
+}
+.ludo-image-large {
+    top: calc(50vh + 330vh - 280px);
+}
+.ludo-text-large {
+    top: calc(50vh + 330vh + 68px);
+}
 
-    .doorhandle-image-small {
-        top: calc(50vh + 430vh - 200px);
-    }
-    
-    .doorhandle-text-small {
-        top: calc(50vh + 430vh + 110px);
-    }
-    
-    .doorhandle-image-large {
-        top: calc(50vh + 430vh - 280px);
-    }
-    
-    .doorhandle-text-large {
-        top: calc(50vh + 430vh + 68px);
-    }
+/* Ryggrad (original 370vh → now 390vh) */
+.ryggrad-image-small {
+    top: calc(50vh + 390vh - 200px);
+}
+.ryggrad-text-small {
+    top: calc(50vh + 390vh + 110px);
+}
+.ryggrad-image-large {
+    top: calc(50vh + 390vh - 280px);
+}
+.ryggrad-text-large {
+    top: calc(50vh + 390vh + 68px);
+}
+
+/* Doorhandle (original 430vh → now 450vh) */
+.doorhandle-image-small {
+    top: calc(50vh + 450vh - 200px);
+}
+.doorhandle-text-small {
+    top: calc(50vh + 450vh + 110px);
+}
+.doorhandle-image-large {
+    top: calc(50vh + 450vh - 280px);
+}
+.doorhandle-text-large {
+    top: calc(50vh + 450vh + 68px);
+}
 
     /* Menu button adjustments */
     .menu-btn {
@@ -1171,11 +1239,10 @@ body {
 
 </head>
 
-
 <body>
 
 <div class="large-background"></div>
-        
+
 <nav id="desktop-nav" class="magnifying-glass1">
     <div class="glass-header-content"></div>
     <div class="header-ui">
@@ -1183,24 +1250,22 @@ body {
             <a>JWK</a>
         </div>
         <div class="product_name"></div>
-        <button class="menu-btn" id="menuButton">
-            Om meg
-        </button>
-        <div class="dropdown-menu" id="dropdownMenu">
-            <a href="about.html">Om meg</a>
-            <a href="contact.html">Kontakt info</a>
+        <div>
+            <a href="https://www.instagram.com/made_by_jwk/" target="_blank" class="menu-btn">Instagram</a>
+            <button class="menu-btn" id="aboutButton">Om meg</button>
+            <button class="menu-btn" id="contactButton">Kontakt</button>
+            
+
         </div>
     </div>
-    
-    <!-- Ny dropdown content med about-innhold -->
-    <div class="dropdown-content">
+
+    <!-- Dropdown-innhold: Om meg -->
+    <div class="dropdown-content" id="aboutContent">
         <div class="container">
             <section class="about-header">
                 <div class="about-intro">
                     <h1>Om meg</h1>
                     <p>Mitt navn er Johannes Worren Kløcker og jeg er snart ferdig utdannet produktdesigner fra OsloMet Produktdesign.</p>
-                </div>
-                
                 </div>
             </section>
             <section class="about-details">
@@ -1235,13 +1300,35 @@ body {
             </section>
         </div>
     </div>
+
+    <!-- Dropdown-innhold: Kontakt -->
+    <div class="dropdown-content" id="contactContent">
+        <main>
+            <div class="gif-container">
+                <img src="bubbles 2/pictures/contact/hands.gif" alt="Background GIF" class="background-gif">
+                <div class="overlay">
+                    <a href="#" class="contact-button">Ta kontakt</a>
+                </div>
+            </div>
+        </main>
+    </div>
 </nav>
+
+
+    
+   
 
     <!-- Velkommen -->
     <div class="small-image hero-image-small"></div>
     <div class="terrarium-text hero-text-small">Velkommen</div>
     <div class="large-image hero-image-large"></div>
     <div class="large-terrarium-text hero-text-large">Velkommen</div>
+
+    <!-- EasyRemote -->
+    <div class="small-image easyremote-image-small"></div>
+    <div class="terrarium-text easyremote-text-small">EasyRemote</div>
+    <div class="large-image easyremote-image-large"></div>
+    <div class="large-terrarium-text easyremote-text-large">EasyRemote</div>
 
     <!-- Oval -->
     <div class="small-image oval-image-small"></div>
@@ -1297,6 +1384,8 @@ body {
 
 
 
+<!-- EasyRemote clickable area -->
+<a href="bubbles 2/easyremote.html" class="clickable-area easyremote-clickable"></a>
 <!-- Oval clickable area -->
 <a href="bubbles 2/oval.html" class="clickable-area oval-clickable"></a>
 
@@ -1316,6 +1405,10 @@ body {
 <a href="bubbles 2/doorhandle.html" class="clickable-area doorhandle-clickable"></a>
 
 
+<footer>
+       
+        <p> Designet av JWK</p>
+    </footer>
 
     <script>
 
@@ -1333,7 +1426,7 @@ body {
                 this.glassContent = element.querySelector('.glass-header-content');
                 this.currentZoom = 1.05; // Zoom for alle elementer, inkludert .large-background
                 this.edgeThicknessRatio = 0.14;
-                this.numLayers = 8;
+                this.numLayers = 10;
                 this.cachedBodyClone = null;
                 this.lastRenderKey = null;
                 this.lastScrollY = window.scrollY;
@@ -1897,32 +1990,106 @@ window.addEventListener('scroll', () => {
 
 /* Header script*/
 
-const menuButton = document.getElementById('menuButton');
-        const nav = document.getElementById('desktop-nav');
-        
-        menuButton.addEventListener('click', (e) => {
+const nav = document.getElementById('desktop-nav');
+        const aboutButton = document.getElementById('aboutButton');
+        const contactButton = document.getElementById('contactButton');
+        const aboutContent = document.getElementById('aboutContent');
+        const contactContent = document.getElementById('contactContent');
+
+        function closeAllDropdowns() {
+            nav.classList.remove('open');
+            aboutContent.style.display = 'none';
+            contactContent.style.display = 'none';
+        }
+
+        function toggleDropdown(button, content) {
+            const isOpen = content.style.display === 'block';
+            closeAllDropdowns();
+            if (!isOpen) {
+                nav.classList.add('open');
+                content.style.display = 'block';
+            }
+        }
+
+        aboutButton.addEventListener('click', (e) => {
             e.stopPropagation();
-            nav.classList.toggle('open');
+            toggleDropdown(aboutButton, aboutContent);
         });
-        
+
+        contactButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(contactButton, contactContent);
+        });
+
         document.addEventListener('click', (event) => {
             if (!nav.contains(event.target)) {
-                nav.classList.remove('open');
+                closeAllDropdowns();
             }
         });
 
-        // Forhindre at menyen lukkes når man klikker inne i dropdown-innholdet
-        const dropdownContent = document.querySelector('.dropdown-content');
-        dropdownContent.addEventListener('click', function(e) {
-            e.stopPropagation();
+        document.querySelectorAll('.dropdown-content').forEach((dropdown) => {
+            dropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
         });
 
-        // Lukk meny med Escape-tasten
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                nav.classList.remove('open');
+                closeAllDropdowns();
             }
         });
+
+        // Start skjult
+        closeAllDropdowns();
+
+
+
+     
+      
+        document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.contact-button');
+    let hasTyped = false;
+
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const email = 'jwklocker@hotmail.com';
+
+        if (!hasTyped) {
+            // Første klikk: start typewriter
+            hasTyped = true;
+
+            let index = 0;
+            button.innerHTML = '';
+
+            const mailLink = document.createElement('a');
+            mailLink.href = 'mailto:' + email;
+            mailLink.style.color = 'inherit';
+            mailLink.style.textDecoration = 'none';
+            mailLink.style.pointerEvents = 'auto';
+
+            button.appendChild(mailLink);
+
+            function typeWriter() {
+                if (index < email.length) {
+                    mailLink.textContent += email.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+
+            typeWriter();
+
+        } else {
+            // Andre klikk: åpne mail-klienten
+            window.location.href = 'mailto:' + email;
+        }
+    });
+});
+       
+
+
+        
 
 
 
