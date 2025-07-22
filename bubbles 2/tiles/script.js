@@ -30,7 +30,7 @@ sections.forEach((section, index) => {
             oval.classList.add('toggled');
             exploreButton.classList.remove('hidden');
         }
-        
+      /*  
         // Class sync for magnifying glass
         const isToggled = oval.classList.contains('toggled');
         

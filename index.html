@@ -552,20 +552,32 @@ font-size: 1.5rem;
    ========================================================================== */
 
 .clickable-area {
-    position: absolute;
-    width: 500px;
+     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
-    z-index: 2000;
-    right: 75px;
-    transition: background-color 0.3s ease;
+    position: absolute;
+    right: calc(50% - 377px);
+    transform: translateX(50%);
+  
+   
+   
+   
+    
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    
 }
 
 
 
 /* Desktop positioning for clickable areas */
+
+.easyremote-clickable {
+    top: calc(50vh + 70vh - 290px);
+    
+}
+
+
 .oval-clickable {
     top: calc(50vh + 160vh - 150px);
 }
@@ -829,118 +841,121 @@ font-size: 1.5rem;
     
     /* EasyRemote */
     .easyremote-image-small {
-        top: calc(50vh + 100vh + 10px);
+        top: calc(50vh + 80% + 10px);
     }
     .easyremote-text-small {
-        top: calc(50vh + 100vh + 110px);
+        top: calc(50vh + 80vh + 110px);
     }
     .easyremote-image-large {
-        top: calc(50vh + 100vh - 85px);
+        top: calc(50vh + 80vh - 85px);
     }
     .easyremote-text-large {
-        top: calc(50vh + 100vh + 75px);
+        top: calc(50vh + 80vh + 75px);
     }
     .easyremote-clickable {
-        top: calc(50vh + 100vh - 85px);
+        top: calc(50vh + 80vh - 85px);
     }
 
     /* Oval */
 .oval-image-small {
-  top: calc(50vh + 160vh - 0px);
+  top: calc(50vh + 150vh - 0px);
 }
 .oval-text-small {
-  top: calc(50vh + 160vh + 100px);
+  top: calc(50vh + 150vh + 100px);
 }
 .oval-image-large {
-  top: calc(50vh + 160vh - 165px);
+  top: calc(50vh + 150vh - 165px);
 }
 .oval-text-large {
-  top: calc(50vh + 160vh + 25px);
+  top: calc(50vh + 150vh + 25px);
+}
+.oval-clickable {
+  top: calc(50vh + 130vh + 35px);
 }
 
 /* Woody - position 4 */
 .woody-image-small {
-  top: calc(50vh + 220vh + 20px);
+  top: calc(50vh + 210vh + 20px);
 }
 .woody-text-small {
-  top: calc(50vh + 220vh + 145px);
+  top: calc(50vh + 210vh + 145px);
 }
 .woody-image-large {
-  top: calc(50vh + 220vh - 85px);
+  top: calc(50vh + 210vh - 85px);
 }
 .woody-text-large {
-  top: calc(50vh + 220vh + 65px);
+  top: calc(50vh + 210vh + 65px);
 }
 .woody-clickable {
-  top: calc(50vh + 220vh - 85px);
+  top: calc(50vh + 200vh - 10px);
 }
 
 /* Terrarium */
 .terrarium-image-small {
-  top: calc(50vh + 280vh + 20px);
+  top: calc(50vh + 270vh + 20px);
 }
 .terrarium-text-small {
-  top: calc(50vh + 280vh + 145px);
+  top: calc(50vh + 270vh + 145px);
 }
 .terrarium-image-large {
-  top: calc(50vh + 280vh - 85px);
+  top: calc(50vh + 270vh - 85px);
 }
 .terrarium-text-large {
-  top: calc(50vh + 280vh + 65px);
+  top: calc(50vh + 270vh + 65px);
 }
 .terrarium-clickable {
-  top: calc(50vh + 280vh - 85px);
+  top: calc(50vh + 260vh - 15px);
 }
 
 /* Ludo */
 .ludo-image-small {
-  top: calc(50vh + 340vh + 20px);
+  top: calc(50vh + 330vh + 20px);
 }
 .ludo-text-small {
-  top: calc(50vh + 340vh + 145px);
+  top: calc(50vh + 330vh + 145px);
 }
 .ludo-image-large {
-  top: calc(50vh + 340vh - 85px);
+  top: calc(50vh + 330vh - 85px);
 }
 .ludo-text-large {
-  top: calc(50vh + 340vh + 65px);
+  top: calc(50vh + 330vh + 65px);
 }
 .ludo-clickable {
-  top: calc(50vh + 340vh - 85px);
+  top: calc(50vh + 320vh - 15px);
 }
 
 /* Ryggrad */
 .ryggrad-image-small {
-  top: calc(50vh + 400vh + 20px);
+  top: calc(50vh + 390vh + 20px);
 }
 .ryggrad-text-small {
-  top: calc(50vh + 400vh + 145px);
+  top: calc(50vh + 390vh + 145px);
 }
 .ryggrad-image-large {
-  top: calc(50vh + 400vh - 85px);
+  top: calc(50vh + 390vh - 85px);
 }
 .ryggrad-text-large {
-  top: calc(50vh + 400vh + 65px);
+  top: calc(50vh + 390vh + 65px);
 }
 .ryggrad-clickable {
-  top: calc(50vh + 400vh - 85px);
+  top: calc(50vh + 380vh - 15px);
 }
 
 /* Door handle */
 .doorhandle-image-small {
-  top: calc(50vh + 460vh + 20px);
+  top: calc(50vh + 450vh + 20px);
 }
 .doorhandle-text-small {
-  top: calc(50vh + 460vh + 145px);
+  top: calc(50vh + 450vh + 145px);
 }
 .doorhandle-image-large {
-  top: calc(50vh + 460vh - 85px);
+  top: calc(50vh + 450vh - 85px);
 }
 .doorhandle-text-large {
-  top: calc(50vh + 460vh + 65px);
+  top: calc(50vh + 450vh + 65px);
 }
 .doorhandle-clickable {
-  top: calc(50vh + 460vh - 85px);
+  top: calc(50vh + 440vh - 15px);
 }
 
 /* ==========================================================================
@@ -1036,33 +1051,40 @@ font-size: 1.5rem;
     .clickable-area {
         width: 300px;
         height: 300px;
+    
         left: 50%;
         right: auto;
         transform: translateX(-50%);
     }
 
+    
+    .easyremote-clickable {
+        top: calc(50vh + 80vh - 290px);
+    }
+
+
     .oval-clickable {
-        top: calc(50vh + 130vh - 290px);
+        top: calc(50vh + 150vh - 290px);
     }
 
     .woody-clickable {
-        top: calc(50vh + 190vh - 280px);
+        top: calc(50vh + 210vh - 290px);
     }
 
     .terrarium-clickable {
-        top: calc(50vh + 250vh - 280px);
+        top: calc(50vh + 270vh - 290px);
     }
 
     .ludo-clickable {
-        top: calc(50vh + 310vh - 280px);
+        top: calc(50vh + 330vh - 290px);
     }
 
     .ryggrad-clickable {
-        top: calc(50vh + 370vh - 280px);
+        top: calc(50vh + 390vh - 280px);
     }
 
     .doorhandle-clickable {
-        top: calc(50vh + 430vh - 280px);
+        top: calc(50vh + 450vh - 280px);
     }
 
     /* Mobile element positioning */
@@ -1265,11 +1287,17 @@ font-size: 1.5rem;
             <section class="about-header">
                 <div class="about-intro">
                     <h1>Om meg</h1>
-                    <p>Mitt navn er Johannes Worren Kløcker og jeg er snart ferdig utdannet produktdesigner fra OsloMet Produktdesign.</p>
+                    <p>Mitt navn er Johannes Worren Kløcker og jeg er
+                       utdannet produktdesigner fra OsloMet Produktdesign.</p>
                 </div>
             </section>
             <section class="about-details">
-                <p>Mine hovedinteresser er utvikling av fysiske produkter og funksjonelle løsninger. Tidligere har jeg gått på SKAP kreative folkehøyskole og det var her jeg fant ut av at det å gi en ide form og funksjon er en utrolig morsom ting.</p>
+                <p>Jeg liker å utfordre meg på å realisere design konspeter i form av estetiske og fungerende prototyper.
+                    For meg er det viktig at en prototype viser så mange av konseptets egenskaper som mulig, for å demonstrere produktets kvalitetfølelse,
+                    materiale, taktilitet og funksjon. <p> Jeg trives godt med å kunne jobbe kreativt og finner glede i å få bryne meg på nye utfordringer. 
+                        For alt kan løses med kreativtet, tid og motivasjon. 
+                    </p>
+                </p>
             </section>
             <section class="skills-hardware">
                 <div class="skills">
