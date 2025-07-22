@@ -224,6 +224,322 @@ footer {
     margin-top: 70px;
 }
 
+
+     /* Navigation - modifisert for dropdown */
+       #desktop-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.353);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10000;
+            overflow: hidden;
+        }
+
+        #desktop-nav.open {
+            height: 95vh;
+            border-radius: 25px;
+        }
+
+        
+
+        .header-ui {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px 10px 30px;
+            height: 50px;
+        }
+
+        .logo a {
+            font-size: 23px;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+        }
+
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: #4d4d4d;
+            padding: 8px 26px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            
+        }
+
+        
+
+        .menu-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Skjul original dropdown-menu når ny dropdown er aktiv */
+        .dropdown-menu {
+            display: none;
+        }
+
+        /* Ny dropdown content */
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            padding: 20px 30px;
+            height: calc(100% - 80px);
+            overflow-y: auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #desktop-nav.open .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Container som matcher din about.css */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            
+        }
+
+        /* About header section */
+        .about-header {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .about-intro {
+            flex: 1;
+        }
+
+        .about-intro h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-intro p {
+            font-size: 1.1rem;
+            color: #2e2e2e;
+            line-height: 1.7;
+        }
+
+        .about-image {
+            flex: 0 0 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About details */
+        .about-details {
+            margin-bottom: 40px;
+        }
+
+        .about-details p {
+            font-size: 1rem;
+            color: #2e2e2e;
+            line-height: 1.7;
+        }
+
+        /* Skills and Hardware section */
+        .skills-hardware {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .skills, .hardware {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .skills h2, .hardware h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2e2e2e
+        }
+
+        .skills ul, .hardware ul {
+            list-style: none;
+        }
+
+        .skills li, .hardware li {
+            padding: 12px 0;
+            color: #666;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .skills li:last-child, .hardware li:last-child {
+            border-bottom: none;
+        }
+
+        .quote {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 55px;
+        }
+
+        .quote p {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #858585;
+            font-weight: 300;
+        }
+
+        /* Main content som ikke er i dropdown */
+        main {
+            margin-top: 100px;
+            padding: 40px 0;
+        }
+
+        /* Footer */
+        
+
+        #socials-container {
+            margin-bottom: 20px;
+        }
+
+        #socials-container a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        #socials-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Custom scrollbar */
+        .dropdown-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+
+        .dropdown-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            #desktop-nav {
+                width: 95%;
+                top: 20px;
+            }
+
+            .header-ui {
+                padding: 10px 10px 10px 30px;
+            }
+
+            .dropdown-content {
+                padding: 15px 20px;
+            }
+
+            .about-header {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .about-image {
+                flex: none;
+                align-self: center;
+            }
+
+            .about-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-intro h1 {
+                font-size: 2rem;
+            }
+
+            .skills-hardware {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .skills, .hardware {
+                min-width: auto;
+            }
+
+            .quote p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-ui {
+                padding: 10px 20px;
+            }
+
+            .menu-btn {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .about-intro h1 {
+                font-size: 1.8rem;
+            }
+
+            .about-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills, .hardware {
+                padding: 20px;
+            }
+        }
+
+        #aboutContent,
+#contactContent {
+    display: none;
+} 
+
+
 footer #socials-container {
     display: flex;
     align-items: center;
