@@ -29,6 +29,7 @@ body {
     min-height: 560vh;
     color: white;
     overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* ==========================================================================
@@ -1766,7 +1767,7 @@ font-size: 1.5rem;
             glassInstances.forEach(instance => instance.destroy());
             glassInstances = [];
         });
-    /*
+    
         (() => {
     let scrollPositions = [];
     let isAnimating = false;
@@ -1780,7 +1781,7 @@ font-size: 1.5rem;
         const width = window.innerWidth;
         
         if (width < 1300) {
-            return 90; // Offset for mobile/tablet (kan justeres)
+            return 40; // Offset for mobile/tablet (kan justeres)
         }
         return 0; // Standard offset for desktop
     }
@@ -1793,7 +1794,7 @@ font-size: 1.5rem;
     console.log('Found small images:', smallImages.length);
     
     // Force to only use the first 7 images to prevent extra positions
-    const imagesToProcess = smallImages.slice(0, 7);
+    const imagesToProcess = smallImages.slice(0, 8);
     
     // Beregn scroll-posisjoner basert på faktisk element-posisjon
     scrollPositions = imagesToProcess.map((el, i) => {
@@ -1807,10 +1808,10 @@ font-size: 1.5rem;
     });
     
     // Ensure we have exactly 7 positions
-    if (scrollPositions.length !== 7) {
+    if (scrollPositions.length !== 8) {
         console.error('Wrong number of scroll positions:', scrollPositions.length);
         // Force to 7 positions if something went wrong
-        scrollPositions = scrollPositions.slice(0, 7);
+        scrollPositions = scrollPositions.slice(0, 8);
     }
     
     console.log('Updated scroll positions:', scrollPositions);
@@ -1926,7 +1927,7 @@ window.addEventListener('keydown', (e) => {
         
         // Only animate if target is not null
         if (target !== null) {
-            animateScroll(target, 700);
+            animateScroll(target, 1000);
         }
     }
 });
@@ -1950,7 +1951,7 @@ window.addEventListener('keydown', (e) => {
         
         // Only animate if target is not null
         if (target !== null) {
-            animateScroll(target, 700);
+            animateScroll(target, 1000);
         }
     }
 }, { passive: false }); // Endre fra passive: true til passive: false
@@ -1980,7 +1981,7 @@ window.addEventListener('keydown', (e) => {
         console.log('Scroll Y:', window.scrollY.toFixed(0));
     });
 })();
-*/
+
 
 // Sett --vh til faktisk høyde på enheten
 function updateVh() {
