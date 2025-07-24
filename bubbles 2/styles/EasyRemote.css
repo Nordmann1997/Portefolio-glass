@@ -82,23 +82,26 @@ h1 {
 .image-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* To kolonner */
-    grid-template-rows: repeat(3, auto); /* Tre rader */
+    
     gap: 80px;
     justify-items: center;
     width: 90vw;
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 30px;
+    padding: 50px;
     /* Ensure it takes full width */
     box-sizing: border-box; /* Include padding in width calculation */
+    box-shadow: inset 1px 1px 10px 1px rgba(94, 94, 94, 0.318);
+    border-radius: 55px;
+    margin-bottom: 80px;
 }
 
 .image-grid img,
 .image-grid video {
-    width: 100%;
+    width: 90%;
     box-shadow: 0 5px 16px 1px rgba(94, 94, 94, 0.618);
-    border-radius: 5px;
-   
+    border-radius: 20px;
+;
     object-fit: cover;
     ;
     
@@ -170,7 +173,7 @@ h1 {
 .how-its-made h1 {
     font-size: 25px;
     font-weight: 400;
-    padding-bottom: 0px;
+    padding-bottom: 30px;
     text-align: left;
     margin-top: 100px;
     font-weight: 500;
@@ -179,11 +182,11 @@ h1 {
 
 /* Flex for å stable process-step-elementene vertikalt */
 .how-its-made .image-grid {
-    display: flex;
-    flex-direction: column;
-    
-    max-width: 1200px;  
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px;
+    margin-bottom: 80px;
+
     /* Add padding to the sides */
     
 }
@@ -195,12 +198,12 @@ h1 {
     align-items: center;
     max-width: 100%;
     width: 100%;
-    padding: 5%;
+    
     box-sizing: border-box;
     height: auto;
     flex-direction: row;
     border-radius: 75px;
-    box-shadow: inset 1px 1px 10px 1px rgba(94, 94, 94, 0.318);
+    
     }
 
 /* For odd process-steps, place the image on the left side */
@@ -209,15 +212,12 @@ h1 {
 }
 
 /* For even process-steps, place the image on the right side */
-.process-step:nth-child(even) {
-    /*flex-direction: row-reverse;*/
-}
 
 /* Bilder og video */
 .process-step img,
 .process-step video {
     width: 45%; /* Ensure images take half the width */
-    max-height: 500px;
+    
     
     transition: all 0.5s;
 }
@@ -242,8 +242,10 @@ h1 {
         text-align: left;
         width: 100%;
         padding: 0%;
-        box-shadow: none;
+        
         background: none;
+        padding: 30px;
+        border-radius: 55px;
     }
 
    
@@ -284,12 +286,12 @@ h1 {
     .how-its-made h1 {
         font-size: 22px;
         font-weight: 400;
-        padding-bottom: 30px;
+        
         
     }
 
     .how-its-made {
-        width: 80vw;
+        width:95vw;
         
     }
     
@@ -299,6 +301,8 @@ h1 {
         grid-template-rows: auto; /* Automatisk høyde */
         width: 100%; /* Ensure it takes full width */
         box-sizing: border-box; /* Include padding in width calculation */
+        gap: 40px;
+        border-radius: 35px;
     }
 
     h1 {
@@ -333,10 +337,10 @@ h1 {
     }
 
     .image-grid {
-        width: 80vw;
+        width: 95vw;
     }
     .how-its-made .image-grid {
-        padding: 0;
+        padding: 10px;
 }
 }
 
@@ -354,7 +358,7 @@ h1 {
     width: 100%; /* Ensure images take up equal space */
     height: auto;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 40px;
     transition: transform 0.5s ease; /* Smooth transition for sliding */
 }
 
@@ -528,6 +532,13 @@ h1 {
 .background-container {
    background: linear-gradient(92deg, #e7e7e7, #dde1e4);
    margin-bottom: 50px;
+   box-shadow: inset 1px 1px 10px 1px rgba(94, 94, 94, 0.318);
+margin: 0 auto;
+width: 95%;
+margin-bottom: 50px;
+border-radius: 55px;
+max-width: 1200px;
+
 }
 
 .intro-container {
@@ -535,12 +546,15 @@ h1 {
     margin: 0 auto;
     width: 90vw;
     padding-top: 100px;
+    height: auto;
+    padding:20px
  }
 
  .intro-container video {
 max-width: 1100px;
     margin: 0 auto;
     width: 90vw;
+    max-height: 600px;
 }
 
 .description-box p {
@@ -551,6 +565,17 @@ max-width: 1100px;
     }
 
  @media (max-width: 1000px) {
+
+ .intro-container video {
+
+    width: 80vw;
+   
+}
+
+
+    .background-container {
+        border-radius: 35px;
+    }
 
     .intro-container {
         max-width: 1100px;
