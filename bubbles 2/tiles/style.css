@@ -4,6 +4,7 @@ body {
      background: linear-gradient(92deg, #e7e7e7, #dde1e4);
     font-family: poppins;
     width: 100vw;
+    margin-top: 80px;
    
     overflow-x: hidden; /* Prevent horizontal overflow */
 }
@@ -15,12 +16,16 @@ body {
   border-radius: 300px;
   height: 100vh;
   max-height: 500px;
-  width: 100vw;
+  width: calc(100vw - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin: -1px 50px 0;
   padding: 0;
+}
+
+.section:first-child {
+  margin-top: 100px;
 }
 
 /* Border på venstre halvdel */
