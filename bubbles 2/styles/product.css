@@ -32,7 +32,7 @@ body {
     font-family: poppins;
     margin: 0;
     padding: 0;
-     background: linear-gradient(92deg, #e7e7e7, #dde1e4);
+     background: #ffffff;
     text-align: center;
 }
 
@@ -184,7 +184,7 @@ h1 {
     box-sizing: border-box;
     height: auto;
     flex-direction: row;
-    border-radius: 75px;
+    border-radius: 10px;
     box-shadow: inset 1px 1px 10px 1px rgba(94, 94, 94, 0.318);
     }
 
@@ -511,7 +511,7 @@ h1 {
 
 /* Background container to cover main image and description box */
 .background-container {
-   background: linear-gradient(92deg, #e7e7e7, #dde1e4);
+   background: #ffffff;
    margin-bottom: 50px;
 }
 
